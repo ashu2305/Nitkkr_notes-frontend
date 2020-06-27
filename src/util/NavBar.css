@@ -1,0 +1,34 @@
+.Nav-head{
+    font-size: 28px; 
+    
+    
+}
+.navbar-dark .navbar-nav .nav-item a {
+    color: rgba(255,255,255);
+}
+
+.Nav-item-br{
+    border: white 0.5px solid;
+    border-radius: 25px;
+    margin-left: 15px;
+}
+.navbar-nav .nav-item{
+   
+    
+   padding-left: 15px;
+    padding-right: 15px;
+}
+.Nav-item-br:hover{
+    background-color: white;
+    
+    font-style: bold;
+}
+.navbar-nav .Nav-item:hover .nav-item a {
+    color: #007bff;
+}
+.navbar-nav  .nav-item:hover a {
+    color: #007bff;
+}
+.Nav-color{
+    background-color: #007bff;
+}
