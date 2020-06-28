@@ -220,7 +220,7 @@ const ForgotPass = () => {
                                                            
                                 <input type="submit" className="btn_login" onClick={onSubmit} value="Send OTP" />
                                 <br></br>
-                                <p>If you do not have account, please Click<Link to = '/login'>  here</Link></p>
+                                <p>If you do not have account, please Click<Link to = '/signup'>  here</Link></p>
                                 {/* {samp} */}
                                 {errors=== 1 && 
                                     <p className="error">Please fill all credentials</p>
