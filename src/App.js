@@ -14,6 +14,8 @@ import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
 import logout from './pages/logout';
+import ForgotPass from './pages/ForgotPass';
+import ChangePassword from './pages/ChangePassword';
 
 import Store from './store/store';
 import rootReducer from './rootReducer/rootReducer';
@@ -35,6 +37,8 @@ const  App = () => {
           <Route path = '/login' component = {login} />
           <Route path = '/logout' component = {logout} />
           <Route path = '/signup' component = {signup} />
+          <Route path = '/ForgotPass' component = {ForgotPass} />
+          <Route path = '/ChangePassword' component = {ChangePassword} />
 
         </Switch>
       </Router>

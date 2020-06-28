@@ -10,15 +10,16 @@ import Store from '../store/store';
 import './login.css';
 
 import Avatar from '../images/avatar.svg';
-import LoginMobile from '../images/signin-bg.svg';
+import ChangeMobile from '../images/change-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';
-const Login = () =>{
+const ChangePassword = () =>{
     const{ state, dispatch } = useContext(Store);
     const [data, setData] = useState({
         username: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
     
     const [errors, setError] = useState(0); 
@@ -34,7 +35,7 @@ const Login = () =>{
     const verify = async() => {
         try{
             const res = await axios.post(
-                `${config.BASE}/login` , 
+                `${config.BASE}/changePassword` , 
                 data
             );
             console.log(res);
@@ -61,12 +62,16 @@ const Login = () =>{
 
     const onSubmit = e =>{
         e.preventDefault();
-        if(data.username !== '' && data.password !== ''){
-            setError(0);
-            verify();
-            //samp();
+        if(data.password === data.confirmPassword){
+            if(data.username !== '' && data.password !== ''){
+                setError(0);
+                verify();
+                //samp();
+            }else{
+                setError(1);
+            }
         }else{
-            setError(1);
+            setError(4);
         }
         
         console.log("hello in submit");
@@ -82,12 +87,13 @@ const Login = () =>{
             <img className="wave" src={Wavebg}></img>
             <div className="container_login">
                 <div className="img">
-                    <img src={LoginMobile}></img>
+                    <img src={ChangeMobile}></img>
                 </div>
                 <div className="login-content">
                     <form >
                         <img src={Avatar}></img>
-                        <h2 className="title">Welcome</h2>
+                        <h3 className="title">Change Password</h3>
+                        <br></br>
                         <div className="input-div one focus">
                             <div className="i">
                                     <i className="fas fa-user"></i>
@@ -118,19 +124,36 @@ const Login = () =>{
                                     />
                             </div>
                         </div>
+                        <div className="input-div pass focus">
+                            <div className="i"> 
+                                    <i className="fas fa-lock"></i>
+                            </div>
+                            <div className="div">
+                                    <h4>Confirm Password</h4>
+                                    <input 
+                                        type="password"  
+                                        name='confirmPassword'
+                                        onChange={handleChange}
+                                        required='required'
+                                        className="input" 
+                                    />
+                            </div>
+                        </div>
                         {/* <a href="#">Forgot Password?</a> */}
-                        <input type="submit" className="btn_login" onClick={onSubmit} value="Login" />
+                        <input type="submit" className="btn_login" onClick={onSubmit} value="Change" />
 
                         <br></br>
-                        <p>If you do not have account, please Click<Link to = '/signup'>  here</Link></p>
-                        <br></br>
-                        <p>Forgot Password, please Click<Link to = '/forgotPass'>  here</Link></p>
+                        <p><b>Password must contain: </b><br></br>At least 1 upper case letter (A - Z)<br></br>At least 1 number (0 - 9)
+                        <br></br>At least 8 characters</p>
                         {/* {samp} */}
                         {errors=== 1 && 
                             <p>Please fill all credentials</p>
                         }
                         {errors === 2 &&
                             <p>Wrong Credentials</p>
+                        }
+                        {errors === 4 &&
+                            <p  className="error">Password doesnot match with Confirm Password</p>
                         }
                     </form>
                     
@@ -141,4 +164,4 @@ const Login = () =>{
     );
 }
 
-export default Login;
+export default ChangePassword;

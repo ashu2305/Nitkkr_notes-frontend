@@ -10,18 +10,15 @@ import Store from '../store/store';
 import './login.css';
 
 import Avatar from '../images/avatar.svg';
-import LoginMobile from '../images/login-bg.svg';
+import ForgotMobile from '../images/forgot-bg.svg';
 import OtpMobile from '../images/otp-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';
 
-const Signup = () => {
+const ForgotPass = () => {
     const{ state, dispatch } = useContext(Store);
-    const [data, setData] = useState({
-        emailId: '',
-        password: '',
-        confirmPassword: '', 
+    const [data, setData] = useState({ 
         username: ''
     });
     const [firstVerify, setFirst] = useState(false);
@@ -51,14 +48,12 @@ const Signup = () => {
 
     const verify = async() => {
         const userData = {
-            username: data.username,
-            password: data.password,
-            emailId: data.emailId
+            username: data.username
         }
         try{
             
             const res = await axios({
-                url: `${config.BASE}/signup`,
+                url: `${config.BASE}/forgotPassword`,
                 method: "POST",
                 data : userData
             });
@@ -95,9 +90,7 @@ const Signup = () => {
 
     const resendVerify = async() => {
         const userData = {
-            username: data.username,
-            password: data.password,
-            emailId: data.emailId
+            username: data.username
         }
         try{
             
@@ -128,8 +121,6 @@ const Signup = () => {
     const verifyOTP = async() => {
         const userData = {
             username: data.username,
-            password: data.password,
-            emailId: data.emailId,
             otp: userOTP
         }
         try{
@@ -151,7 +142,7 @@ const Signup = () => {
     //console.log(userOTP);
 
     if(verified){
-        return <Redirect to='/login' />;
+        return <Redirect to='/ChangePassword' />;
     }
 
 
@@ -165,20 +156,16 @@ const Signup = () => {
     const onSubmit = e =>{
 
         e.preventDefault();
-        if(data.password === data.confirmPassword){
-            if(data.emailId !== '' && data.password !== '' && data.confirmPassword !== '' && data.username !== '' ){
-                if(!firstVerify){
-                    verify();
-                }else{
-                    resendVerify();
-                } 
-        
-                //console.log('asdf');
+        if(data.username !== '' ){
+            if(!firstVerify){
+                verify();
             }else{
-                setError(1);
-            }
+                resendVerify();
+            } 
+    
+            //console.log('asdf');
         }else{
-            setError(4);
+            setError(1);
         }
         
         console.log("hello in submit");
@@ -206,57 +193,14 @@ const Signup = () => {
                     <img className="wave" alt="background" src={Wavebg}></img>
                     <div className="container_login">
                         <div className="img">
-                            <img src={LoginMobile} alt="side"></img>
+                            <img src={ForgotMobile} alt="side"></img>
                         </div>
                         <div className="login-content">
                             <form>
                                 <img src={Avatar} alt="avatar img"></img>
-                                <h2 className="title">Welcome</h2>
-                                <div className="input-div one focus">
-                                    <div className="i">
-                                            <i className="fas fa-envelope"></i>
-                                    </div>
-                                    <div className="div">
-                                            <h4>Email Address</h4>
-                                            <input 
-                                                type="email" 
-                                                name='emailId'
-                                                onChange={handleChange}
-                                                required='required'
-                                                className="input" 
-                                            />
-                                    </div>
-                                </div>
-                                <div className="input-div pass focus">
-                                    <div className="i"> 
-                                            <i className="fas fa-lock"></i>
-                                    </div>
-                                    <div className="div">
-                                            <h4>Password</h4>
-                                            <input 
-                                                type="password"  
-                                                name='password'
-                                                onChange={handleChange}
-                                                required='required'
-                                                className="input" 
-                                            />
-                                    </div>
-                                </div>
-                                <div className="input-div pass focus">
-                                    <div className="i"> 
-                                            <i className="fas fa-lock"></i>
-                                    </div>
-                                    <div className="div">
-                                            <h4>Confirm Password</h4>
-                                            <input 
-                                                type="password"  
-                                                name='confirmPassword'
-                                                onChange={handleChange}
-                                                required='required'
-                                                className="input" 
-                                            />
-                                    </div>
-                                </div>
+                                <h3 className="title">Forgot Password</h3>
+                                <br></br><br></br>
+                                
                                 <div className="input-div pass focus">
                                     <div className="i"> 
                                             <i className="fas fa-user"></i>
@@ -272,21 +216,17 @@ const Signup = () => {
                                             />
                                     </div>
                                 </div>
-                                
-                                
-                               
-                                <input type="submit" className="btn_login" onClick={onSubmit} value="Signup" />
                                 <br></br>
-                                <p>If you have an existing account, please Click<Link to = '/login'>  here</Link></p>
+                                                           
+                                <input type="submit" className="btn_login" onClick={onSubmit} value="Send OTP" />
+                                <br></br>
+                                <p>If you do not have account, please Click<Link to = '/login'>  here</Link></p>
                                 {/* {samp} */}
                                 {errors=== 1 && 
                                     <p className="error">Please fill all credentials</p>
                                 }
                                 {errors === 2 &&
                                     <p className="error">Wrong Credentials</p>
-                                }
-                                {errors === 4 &&
-                                    <p  className="error">Password doesnot match with Confirm Password</p>
                                 }
                             </form>
                             
@@ -307,6 +247,7 @@ const Signup = () => {
                             <form>
                                 <img src={Avatar} alt="avatar img"></img>
                                 <h2 className="title">Verify</h2>
+                                <br></br>
                                 <div className="input-div one focus">
                                     <div className="i">
                                             <i className="fas fa-envelope"></i>
@@ -350,4 +291,4 @@ const Signup = () => {
     );
 }
 
-export default Signup;
+export default ForgotPass;
