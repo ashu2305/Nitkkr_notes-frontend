@@ -156,6 +156,7 @@ a{
 
 a:hover{
 	color: #000000;
+	text-decoration: none;
 }
 
 .btn_login{
