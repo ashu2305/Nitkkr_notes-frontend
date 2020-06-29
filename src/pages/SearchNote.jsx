@@ -34,7 +34,7 @@ const SearchNotes = () =>{
 
     const verify = async() => {
         try{
-            const res = await axios.get(
+            const res = await axios.post(
                 `${config.BASE}/getNotes` , 
                 data
             );
@@ -71,13 +71,12 @@ const SearchNotes = () =>{
             setError(0);
             console.log(data.type)
             console.log(data.search)
-            verify();
+            verify();            
             //samp();
         }else{
             setError(1);
         }
 
-        
         console.log(data.type)
         console.log(data.search)
         

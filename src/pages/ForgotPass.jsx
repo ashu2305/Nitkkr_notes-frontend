@@ -359,7 +359,7 @@ const ForgotPass = () => {
                                 <p>Wrong Credentials</p>
                             }
                             {errors === 4 &&
-                                <p  className="error">Password doesnot match with Confirm Password</p>
+                                <p  className="error">Password does not match with Confirm Password</p>
                             }
                         </form>
                         

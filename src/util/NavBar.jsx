@@ -22,13 +22,11 @@ const NavBar = () => {
             {state.isAuth && 
                 <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/'>Notes Upload</Link></Nav.Item></div>    
             }
-            {state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
-            }
+            <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
           </Nav>
           <Nav>
             {state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/'>Profile</Link></Nav.Item></div>
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/Profile'>Profile</Link></Nav.Item></div>
             }
             {state.isAuth && 
                 <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/logout'>Logout</Link></Nav.Item></div>
