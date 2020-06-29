@@ -15,6 +15,61 @@ import LoginMobile from '../images/search-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';
+
+import './AutoCompleteText.css';
+import countries from './countries';
+
+class AutoCompleteText extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            suggestions: [],
+            text: '',
+        };
+    }
+
+    onTextChanged = (e) => {
+        const {items} = this.props;
+        const value = e.target.value;
+        let suggestions = [];
+        if(value.length > 0){
+            const regex = new RegExp(`^${value}`,'i');
+            suggestions = items.sort().filter(v => regex.test(v));
+        }
+
+        this.setState(() => ({suggestions , text: value}));
+    }
+
+    suggestionSelected (value) {
+        this.setState(() => ({
+            text: value,
+            suggestions: [],
+        }))
+    }
+
+    renderSuggestions () {
+        const { suggestions } = this.state;
+        if(suggestions.length === 0){
+            return null;
+        }
+        return (
+            <ul>
+                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+            </ul>
+        );
+    }
+
+    render () {
+        const {text} = this.state;
+        return (
+            <div>
+                <input value={text} onChange={this.onTextChanged} type="text" />
+                {this.renderSuggestions()}
+            </div>
+        )
+    }
+}
+
 const SearchNotes = () =>{
     const{ state, dispatch } = useContext(Store);
     const [data, setData] = useState({
@@ -114,21 +169,11 @@ const SearchNotes = () =>{
                                 <br />
                             </Form.Group>
                 
-                        <div className="input-div pass focus">
-                            <div className="i"> 
-                                    <i className="fas fa-lock"></i>
+                            <h4>Search Value</h4>
+                            <div className="AutoCompleteText">
+                                    <AutoCompleteText items={countries}/>
                             </div>
-                            <div className="div">
-                                    <h4>Search Value</h4>
-                                    <input 
-                                        type="text"  
-                                        name='search'
-                                        onChange={handleChange}
-                                        required='required'
-                                        className="input" 
-                                    />
-                            </div>
-                        </div>
+                        
                             <br></br><br></br>
                         
                         {/* <a href="#">Forgot Password?</a> */}
