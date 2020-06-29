@@ -16,6 +16,7 @@ import signup from './pages/signup';
 import logout from './pages/logout';
 import ForgotPass from './pages/ForgotPass';
 import ChangePassword from './pages/ChangePassword';
+import SearchNotes from './pages/SearchNote';
 
 import Store from './store/store';
 import rootReducer from './rootReducer/rootReducer';
@@ -39,6 +40,7 @@ const  App = () => {
           <Route path = '/signup' component = {signup} />
           <Route path = '/ForgotPass' component = {ForgotPass} />
           <Route path = '/ChangePassword' component = {ChangePassword} />
+          <Route path = '/SearchNotes' component = {SearchNotes} />
 
         </Switch>
       </Router>

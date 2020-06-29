@@ -19,15 +19,28 @@ const NavBar = () => {
           <Nav className="mr-auto">
             <div className = 'Nav-item-br'><Nav.Item><Link className='Nav-a' to = '/'>Home</Link></Nav.Item></div>
             <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/about'>About</Link></Nav.Item></div>
-            <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/'>Notes Upload</Link></Nav.Item></div>
+            {state.isAuth && 
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/'>Notes Upload</Link></Nav.Item></div>    
+            }
+            {state.isAuth && 
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
+            }
           </Nav>
           <Nav>
+            {state.isAuth && 
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/'>Profile</Link></Nav.Item></div>
+            }
             {state.isAuth && 
                 <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/logout'>Logout</Link></Nav.Item></div>
             }
             
-          <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/login'>Login</Link></Nav.Item></div>
-          <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/signup'>SignUp</Link></Nav.Item></div>
+            {!state.isAuth && 
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/login'>Login</Link></Nav.Item></div>
+            }
+            {!state.isAuth && 
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/signup'>SignUp</Link></Nav.Item></div>      
+            }
+          
           </Nav>
         </Navbar.Collapse>
         </Navbar>
