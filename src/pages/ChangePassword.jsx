@@ -89,75 +89,7 @@ const ChangePassword = () =>{
                 <div className="img">
                     <img src={ChangeMobile}></img>
                 </div>
-                <div className="login-content">
-                    <form >
-                        <img src={Avatar}></img>
-                        <h3 className="title">Change Password</h3>
-                        <br></br>
-                        <div className="input-div one focus">
-                            <div className="i">
-                                    <i className="fas fa-user"></i>
-                            </div>
-                            <div className="div">
-                                    <h4>Username</h4>
-                                    <input 
-                                        type="text" 
-                                        name='username'
-                                        onChange={handleChange}
-                                        required='required'
-                                        className="input" 
-                                    />
-                            </div>
-                        </div>
-                        <div className="input-div pass focus">
-                            <div className="i"> 
-                                    <i className="fas fa-lock"></i>
-                            </div>
-                            <div className="div">
-                                    <h4>Password</h4>
-                                    <input 
-                                        type="password"  
-                                        name='password'
-                                        onChange={handleChange}
-                                        required='required'
-                                        className="input" 
-                                    />
-                            </div>
-                        </div>
-                        <div className="input-div pass focus">
-                            <div className="i"> 
-                                    <i className="fas fa-lock"></i>
-                            </div>
-                            <div className="div">
-                                    <h4>Confirm Password</h4>
-                                    <input 
-                                        type="password"  
-                                        name='confirmPassword'
-                                        onChange={handleChange}
-                                        required='required'
-                                        className="input" 
-                                    />
-                            </div>
-                        </div>
-                        {/* <a href="#">Forgot Password?</a> */}
-                        <input type="submit" className="btn_login" onClick={onSubmit} value="Change" />
-
-                        <br></br>
-                        <p><b>Password must contain: </b><br></br>At least 1 upper case letter (A - Z)<br></br>At least 1 number (0 - 9)
-                        <br></br>At least 8 characters</p>
-                        {/* {samp} */}
-                        {errors=== 1 && 
-                            <p>Please fill all credentials</p>
-                        }
-                        {errors === 2 &&
-                            <p>Wrong Credentials</p>
-                        }
-                        {errors === 4 &&
-                            <p  className="error">Password doesnot match with Confirm Password</p>
-                        }
-                    </form>
-                    
-                </div>
+                
             </div>
 
         </>

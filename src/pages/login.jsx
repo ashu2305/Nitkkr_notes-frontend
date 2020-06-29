@@ -7,13 +7,13 @@ import config from '../config.json';
 
 import Store from '../store/store';
 
-import './login.css';
-
 import Avatar from '../images/avatar.svg';
-import LoginMobile from '../images/signin-bg.svg';
+import LoginMobile from '../images/login-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';
+import './login.css';
+
 const Login = () =>{
     const{ state, dispatch } = useContext(Store);
     const [data, setData] = useState({
@@ -22,7 +22,11 @@ const Login = () =>{
     });
     
     const [errors, setError] = useState(0); 
-
+    //0 no error
+    //1 is empty error
+    //2 unauthorized(username exist but isVerified false)
+    //3 username does not exist
+    //4 Password does not match
     
     const handleChange = e =>{
         setData({
@@ -37,10 +41,10 @@ const Login = () =>{
                 `${config.BASE}/login` , 
                 data
             );
-            console.log(res);
+           // console.log(res);
             if(res.data)
             {
-                console.log(res.data);
+                //console.log(res.data);
                 localStorage.setItem('FBIdToken', `${res.data.token}`);
                 dispatch({
                     type: 'ONBOARD',
@@ -48,28 +52,34 @@ const Login = () =>{
                 });
             }            
         }catch(error){
-            // if(error.response.data.non_field_errors[0] === 'wrong'){
-            //     setError(2);
-            // }
-
-            
-            console.log(error);
+            if(error.response.data.error === "unauthorized"){
+                setError(2);
+            }
+            else if(error.response.data.error === "username does not exist"){
+                setError(3);
+            }
+            else if(error.response.data.error === "Password does not match"){
+                setError(4);
+            }
+            else{
+                window.alert("Please try again");
+            }
+            //console.log(error.response);
         }   
     }
-   
-
-
+    if(errors === 2){
+        window.alert("Please verify your email first");
+        return <Redirect to='/signup' />;
+    }
     const onSubmit = e =>{
         e.preventDefault();
         if(data.username !== '' && data.password !== ''){
             setError(0);
             verify();
-            //samp();
         }else{
             setError(1);
         }
-        
-        console.log("hello in submit");
+        //console.log("hello in submit");
     }
 
     //console.log(state.isAuth); 
@@ -118,19 +128,20 @@ const Login = () =>{
                                     />
                             </div>
                         </div>
-                        {/* <a href="#">Forgot Password?</a> */}
+                        <Link to = '/forgotPass' >Forgot Password?</Link>
                         <input type="submit" className="btn_login" onClick={onSubmit} value="Login" />
 
                         <br></br>
                         <p>If you do not have account, please Click<Link to = '/signup'>  here</Link></p>
                         <br></br>
-                        <p>Forgot Password, please Click<Link to = '/forgotPass'>  here</Link></p>
-                        {/* {samp} */}
                         {errors=== 1 && 
                             <p>Please fill all credentials</p>
                         }
-                        {errors === 2 &&
-                            <p>Wrong Credentials</p>
+                        {errors === 3 &&
+                            <p>Username does not exist</p>
+                        }
+                        {errors === 4 &&
+                            <p>Wrong Password</p>
                         }
                     </form>
                     
