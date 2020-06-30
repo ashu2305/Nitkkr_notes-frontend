@@ -8,7 +8,7 @@ class NoteContainer extends Component {
    notes: [],
    note: {},
    isNoteViewOn: false,
-   sortValue: '',
+   sortValue: 'Name',
    inputValue: '',
  }
  
@@ -56,10 +56,11 @@ class NoteContainer extends Component {
      })
    }
    else if(this.state.sortValue === "Title") {
+     console.log(notes);
     return [...notes].sort((a,b) => {
-      if(a.title > b.title) {
+      if(a.title.toLowerCase() > b.title.toLowerCase()) {
         return 1
-      }else if (a.title < b.title) {
+      }else if (a.title.toLowerCase() < b.title.toLowerCase()) {
         return -1
       }else {
         return 0
@@ -88,18 +89,28 @@ class NoteContainer extends Component {
  }
 
  render() {
-
-  const filteredNotes = 
+  const type = this.state.sortValue.toLowerCase();
+  let filteredNotes;
+  if(type === '' || type === 'name'){
+   filteredNotes = 
     this.state.notes.filter(note => {
-      return note.name.toLowerCase().includes(this.state.inputValue.toLowerCase())
-    }) 
+    return note.name.toLowerCase().includes(this.state.inputValue.toLowerCase())
+  })
+  }
+  else if(type === 'title'){
+    filteredNotes = 
+    this.state.notes.filter(note => {
+    return note.title.toLowerCase().includes(this.state.inputValue.toLowerCase())
+  })
+  }
+  
   
 
   return(
    <div className="note-container">
       <br></br>
       <label>Sort Notes</label>
-    
+      
       <select name="sortValue" onChange={this.handleSortNotes}>
         <option value="All">All</option>
         <option value="Title">Title</option>

@@ -17,6 +17,7 @@ import logout from './pages/logout';
 import ForgotPass from './pages/ForgotPass';
 import ChangePassword from './pages/ChangePassword';
 import NoteContainer from './pages/NoteContainer';
+import notesUpload from './pages/notesUpload';
 
 import Store from './store/store';
 import rootReducer from './rootReducer/rootReducer';
@@ -41,7 +42,7 @@ const  App = () => {
           <Route path = '/ForgotPass' component = {ForgotPass} />
           <Route path = '/ChangePassword' component = {ChangePassword} />
           <Route exact path ={"/SearchNotes"} render={renderProps => <NoteContainer renderProps={renderProps}/>}/>
-
+          <Route path = '/notesUpload' component = {notesUpload} />
         </Switch>
       </Router>
       </div>
