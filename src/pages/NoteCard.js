@@ -1,20 +1,26 @@
 import React, {useEffect, useState} from 'react'
 
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 const NoteCard = (props) => {
   
-  const {name, title, author, sem, noteId} = props.note
+  const {name, title, author, sem, noteId, subject, teacher, createdAt} = props.note
   //console.log(sem);
   
   
+  dayjs.extend(relativeTime);
   return(
     <>
       <div className="note-card-container"> 
         <div className="note-card" >
-            <h2><b>Name : </b>{name} </h2>
-            <p><b>Title : </b>{title} </p>
+            <h1><b>Title : </b>{title} </h1>
+            <h3><b>Subject : </b>{subject} </h3>
+            <p><b>Name : </b>{name} </p>
             <p><b>Author : </b> {author}</p>
             <p><b>Semester : </b> {sem}</p>
+            <p><b>Teacher Name : </b> {teacher}</p>
+            <p><b>Upload : </b> {dayjs(`${createdAt}`).fromNow()}</p>
 
           <div className="clear"></div>
         </div>  

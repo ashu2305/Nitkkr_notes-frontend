@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react';
+import {Link} from 'react-router-dom';
 import NoteCard from './NoteCard'
 import { Button } from 'react-bootstrap'
 
@@ -12,7 +13,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card'
 
+import Store from '../store/store';
+
 const NoteViewer = (props) => {
+  const {state} = useContext(Store);
   const [data, setData] = useState({
     noteId: ''
   });
@@ -87,8 +91,15 @@ const NoteViewer = (props) => {
         <br></br><br></br><br></br>
         <NoteCard note={props.note} />
         <br></br>
-          <Button variant="primary" size="lg"   href={props.note.noteUrl} >Download</Button>{' '}
-          <Button variant="primary" size="lg" onClick={props.handleNoteGoBack}>Back</Button>{' '}
+        <div className="note-view-button">
+          {state.isAuth ? 
+            <Button variant="primary" size="lg"   href={props.note.noteUrl} >Download</Button>
+            :
+            <Link to='/login' ><Button variant="primary" size="lg">Login to Download</Button></Link>
+          }
+          
+          {"  "}<Button variant="primary" size="lg" onClick={props.handleNoteGoBack}>Back</Button>{' '}
+        </div>
       </div>
       <br/><br/><br/><br/><br/>
 

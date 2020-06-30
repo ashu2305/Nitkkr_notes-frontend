@@ -8,8 +8,10 @@ const NoteList = (props) => {
 
   return(
  <> 
-   <label htmlFor="search">Search by name </label>
-   <input type="text" value ={props.inputValue}  onChange={props.noteFilterOnChange}/>
+   <div class="search__container">
+      <input class="search__input" type="text" placeholder="Search"  value ={props.inputValue}  onChange={props.noteFilterOnChange}/>
+   </div>
+   
      <div className="note-list">
         {
            props.notes.map(note => {

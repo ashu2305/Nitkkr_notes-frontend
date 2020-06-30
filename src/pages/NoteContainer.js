@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import NoteList from './NoteList'
 import NoteViewer from './NoteViewer'
 
+import './notesSearch.css';
+
 class NoteContainer extends Component {
 
  state = {
@@ -109,16 +111,24 @@ class NoteContainer extends Component {
   return(
    <div className="note-container">
       <br></br>
-      <label>Sort Notes</label>
+      {!this.state.isNoteViewOn &&
+      <>
+        <label>Sort Notes</label>
+        <div class="box">
+          <select  name="sortValue" onChange={this.handleSortNotes}>
+          <option value="Name">All</option>
+          <option value="Title">Title</option>
+          <option value="Name">Name</option>
+          <option value="Name">Author</option>
+          <option value="Name">Teacher</option>
+          <option value="Name">Semester</option>
+          </select>
+        </div>
+        </>
+      }
       
-      <select name="sortValue" onChange={this.handleSortNotes}>
-        <option value="All">All</option>
-        <option value="Title">Title</option>
-        <option value="Name">Name</option>
-        <option value="Name">Author</option>
-        <option value="Name">Teacher</option>
-        <option value="Name">Semester</option>
-      </select>
+      
+      
  
        {
          this.state.isNoteViewOn ? 
