@@ -64,3 +64,8 @@
         width: auto;
     }
 }
+
+.comment_input{
+    width: 40vw;
+    height: 100%
+}
