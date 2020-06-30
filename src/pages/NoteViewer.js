@@ -1,5 +1,6 @@
 import React from 'react'
 import NoteCard from './NoteCard'
+import { Button } from 'react-bootstrap'
 
 const NoteViewer = (props) => {
   
@@ -8,8 +9,8 @@ const NoteViewer = (props) => {
        <br></br><br></br><br></br>
        <NoteCard note={props.note} />
        <br></br>
-       <button onClick={props.handleNoteGoBack}>Download</button>
-       <button onClick={props.handleNoteGoBack}>Back</button>
+        <Button variant="primary" size="lg" onClick={props.handleNoteGoBack}  href={props.note.noteUrl} >Download</Button>{' '}
+        <Button variant="primary" size="lg" onClick={props.handleNoteGoBack}>Back</Button>{' '}
      </div>
      )
 }
