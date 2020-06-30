@@ -14,6 +14,8 @@ import Wavebg from '../images/wave.png';
 
 import './pages.css';
 import './login.css';
+import './notesUpload.css'
+
 
 const Login = () =>{
     const{ state, dispatch } = useContext(Store);
@@ -34,16 +36,6 @@ const Login = () =>{
     //2 unauthorized(username exist but isVerified false)
     //3 username does not exist
     //4 Password does not match
-
-    const subjectName = [
-        {name: 'Sot Computing'},
-        {name: 'Operating System'},
-        {name: 'S V V'},
-        {name: 'Database Management'},
-        {name: 'Communication System'},
-        {name: 'C++'},
-        {name: 'Java'},
-    ]
     
     const handleChange = e =>{
         setData({
@@ -112,101 +104,88 @@ const Login = () =>{
     return(
         <>
             <div className="login-content">
-                <form >
+                <form className="upload">
                     <img src={Avatar}></img>
-                    <h2 className="title">Upload</h2>
-                    <div className="input-div one focus">
-                        <div className="i">
-                                <i className="fas fa-user"></i>
-                        </div>
-                        <div className="div">
-                                <h4>Note Title</h4>
-                                <input 
-                                    type="text" 
-                                    name='title'
-                                    onChange={handleChange}
-                                    required='required'
-                                    className="input" 
-                                />
-                        </div>
+                    <div class="segment">
+                        <h1>Upload</h1>
                     </div>
-                    <div className="input-div pass focus">
-                        <div className="i"> 
-                                <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="div">
-                                <h4>Author</h4>
-                                <input 
-                                    type="text"  
-                                    name='author'
-                                    onChange={handleChange}
-                                    required='required'
-                                    className="input" 
-                                />
-                        </div>
-                    </div>
-                    <div className="input-div pass focus">
-                        <div className="i"> 
-                                <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="div">
-                                <h4>Semester</h4>
-                                <input 
-                                    type="number"  
-                                    name='sem'
-                                    onChange={handleChange}
-                                    required='required'
-                                    className="input" 
-                                />
-                        </div>
-                    </div>
-                    <div className="input-div pass focus">
-                        <div className="i"> 
-                                <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="div">
-                                <h4>Teacher Name</h4>
-                                <input 
-                                    type="text"  
-                                    name='teacher'
-                                    onChange={handleChange}
-                                    required='required'
-                                    className="input" 
-                                />
-                        </div>
-                    </div>
-                    <div className="input-div pass focus">
-                        <div className="i"> 
-                                <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="div">
-                                <h4>Subject</h4>
-                                <select name="subject" onChange={handleChange}>
-                                    {subjectName && subjectName.map((m,i) =>(
-                                        <option key={i}>{m.name}</option>
-                                    ))}
-                                    <option></option>
-                                </select>
-                        </div>
-                    </div>
-                    <div className="input-div pass focus">
-                        <div className="i"> 
-                                <i className="fas fa-user"></i>
-                        </div>
-                        <div className="div">
-                                <h4>Image</h4>
-                                <input 
-                                    name= 'image'
-                                    type ="file"
-                                    onChange ={fileChange}
-                                    className='input'
-                                />
-                        </div>
-                    </div>
-                    <input type="submit" className="btn_login" onClick={onSubmit}  value="Upload" />
 
+                    <div className="set">
+                        
+                    <label className="lab">
+                        <input 
+                            type="text" 
+                            name='title'
+                            onChange={handleChange}
+                            required='required'
+                            className="inp" 
+                            placeholder="Note Title"
+                        />
+                    </label>
+                    <label className="lab">
+                        <input 
+                            type="text"  
+                            name='author'
+                            onChange={handleChange}
+                            required='required'
+                            className="inp" 
+                            placeholder="Author"
+                        />
+                    </label>
+                    </div>
                     
-                </form> 
+                    <div className="set">
+                    <label className="lab">
+                        <input 
+                            type="number"  
+                            name='sem'
+                            onChange={handleChange}
+                            required='required'
+                            className="inp" 
+                            placeholder="Semester"
+                        />
+                    </label>
+                    <label className="lab">
+                        <input 
+                            type="text"  
+                            name='teacher'
+                            onChange={handleChange}
+                            required='required'
+                            className="inp" 
+                            placeholder="Teacher Name"
+                        />
+                    </label>
+                    </div>
+                    
+                    <div className="set">
+                    <label className="lab">
+                        <input 
+                            type="text"  
+                            name='subject'
+                            onChange={handleChange}
+                            required='required'
+                            className="inp" 
+                            placeholder="Subject"
+                        />
+                    </label>
+                    <label className="lab">
+                        <input 
+                            name= 'image'
+                            type ="file"
+                            onChange ={fileChange}
+                            className='inp'
+                        />
+                    </label>
+                    </div>
+                    
+                    <br></br>
+
+
+                    <button className="butt" type="submit" onClick={onSubmit} ><i class="icon ion-md-lock"></i> Upload</button>
+                    
+                    
+                    
+                    </form>
                 
             </div>
 
@@ -215,21 +194,3 @@ const Login = () =>{
 }
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

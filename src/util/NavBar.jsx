@@ -26,7 +26,7 @@ const NavBar = () => {
           </Nav>
           <Nav>
             {state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/Profile'>Profile</Link></Nav.Item></div>
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/profile'>Profile</Link></Nav.Item></div>
             }
             {state.isAuth && 
                 <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/logout'>Logout</Link></Nav.Item></div>

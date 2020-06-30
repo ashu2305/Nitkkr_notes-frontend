@@ -26,6 +26,7 @@ const NoteViewer = (props) => {
     setpostComment(e.target.value);
   };
   console.log(data);
+  
   useEffect(() =>{
     const getComment = async () => {
       const data = {

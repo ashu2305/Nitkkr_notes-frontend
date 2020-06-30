@@ -11,8 +11,8 @@ const NoteCard = (props) => {
     <>
       <div className="note-card-container"> 
         <div className="note-card" >
-            <h2><b>Name : </b>{name} </h2>
-            <p><b>Title : </b>{title} </p>
+            <h2><b>Title : </b>{title} </h2>
+            <p><b>Name : </b>{name} </p>
             <p><b>Author : </b> {author}</p>
             <p><b>Semester : </b> {sem}</p>
 
