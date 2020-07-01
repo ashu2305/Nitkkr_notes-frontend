@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import {Link} from 'react-router-dom';
 
 import './home.css'
 import './homeMain.css'
@@ -16,22 +17,26 @@ const Home = () => {
                             Visiting places in the world, getting a new note, or just looking for a way to find your required study material - this is
                             the perfect place for you.
                         </p>
-                        <a href="#" class="button">Get Started</a>
+                        <Link to='/login' class="button">Get Started</Link>
                         <img class="intro__illustration" src="https://res.cloudinary.com/alexandracaulea/image/upload/v1583497233/intro-illustration_qneuer.svg" alt="" />
                     </section>
                     <section id="features" class="features">
                         <h2 class="visuallyhidden">Features</h2>
                         <ul class="features__list">
                             <li>
-                                <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <use xlinkHref={`#headphones-icon`}></use>
-                                </svg>
+                                <Link to='/SearchNotes'>
+                                    <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <use xlinkHref={`#headphones-icon`}></use>
+                                    </svg>
+                                </Link>    
                                 <p><strong>Find useful material</strong> on a wide range on topics.</p>
                             </li>
                             <li>
-                                <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <use xlinkHref={`#video-icon`}></use>              
-                                </svg>
+                                <Link to='/notesUpload'>
+                                    <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <use xlinkHref={`#video-icon`}></use>              
+                                    </svg>
+                                </Link>
                                 <p><strong>100+ notes pdfs</strong> from professional teachers.</p>
                             </li>
                             <li>
@@ -82,6 +87,7 @@ const Home = () => {
                         </svg>
                     </section>
                     <div id="get-started" class="get-started">
+                    <h1 >Developers</h1>
                         <ul>
                         <li>
                             <svg width="80" height="56" viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -124,6 +130,7 @@ const Home = () => {
                                 Stay up to date with all Notes and Papers by subscribing to our platform.
                             </p>
                             <form id="form" class="footer-form">
+                                <input  type='text' />
                                 <input type="submit" id="submit" class="button button-email" value="Sign Up" />
                             </form>
                         </div>

@@ -131,6 +131,7 @@
 .note-card::before{
   content: '';
   position: absolute;
+  //height: 85vh;
   top: 0;
   left: 0;
   bottom: 0;
@@ -139,13 +140,13 @@
   background-color: #0AF;
 
   transition: transform 500ms ease-in-out;
-  transform: scale(1);
+  transform: scale(0);
   overflow-x: hidden;
 }
 
 .note-card:hover::before,
 .note-card:focus::before{
-  transform: scaleX(0);
+  transform: scaleX(1);
 }
 
 .note-card{
@@ -158,6 +159,7 @@
 
 .note-card-container{
   text-align: center;
+  background-color: #0AF;
 }
 
 .note-container{
@@ -169,6 +171,9 @@
   .note-item {
     width: 80%;
   }
+  /* .note-card::before{
+    //height: auto;
+  } */
   .note-card-container{
     width: 80vw;
   }
