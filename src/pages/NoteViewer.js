@@ -28,6 +28,8 @@ const NoteViewer = (props) => {
 
   const [postComment, setpostComment] = useState('');
 
+  const[load, setLoad] = useState(false);
+
   const { noteId} = props.note
 
   const handleChange = e =>{
@@ -78,10 +80,12 @@ const NoteViewer = (props) => {
           window.alert("Comment added successfull");
            comments.push(res.data.noteData);
            setpostComment("");
+           setLoad(false);
            //console.log(comments);
         }
     }
     catch(error){
+      setLoad(false);
         console.log(error);
     }
   }
@@ -89,6 +93,7 @@ const NoteViewer = (props) => {
   const onSubmit = e =>{
     e.preventDefault();
     if(postComment !== ''){
+      setLoad(true);
       post();
     }else{
       console.log("error");
@@ -116,18 +121,28 @@ const NoteViewer = (props) => {
         <Row>
         <Col sm={1}></Col>
           <Col sm={6}>
-          
+          {/* <input class="search__input" type="text" placeholder="Search"  */}
             <input
               type= "text"
               name = 'body'
               value={postComment}
-              className="comment_input"
+              className="comment__input"
               onChange = {handleChange}
             />
           </Col>
-          <Col></Col>
-          <Col>
-          <Button onClick={onSubmit} variant="outline-primary">Comment</Button>
+          <Col xs={5} sm={2}></Col>
+          <Col >
+          {state.isAuth && !load &&
+            <Button className="comment_button" onClick={onSubmit} variant="outline-primary">Comment</Button>
+          }
+          {state.isAuth && load &&
+            <Button className="comment_button" variant="outline-primary">Loading</Button>
+          }
+          {!state.isAuth &&
+            <Link to='/login'><Button className="comment_button"  variant="outline-primary">Login to Comment</Button></Link>
+
+          }
+          
           </Col>
           
         </Row>
@@ -138,11 +153,11 @@ const NoteViewer = (props) => {
               <Col sm={12} key ={i}>
                 <p style={{fontSize : "150%"}}>{m.body}</p>
                 <Row>
-                  <Col>
+                  <Col xs={8}>
                     <pre> - By  {m.username}</pre>
                   </Col>
                   <Col></Col>
-                  <Col>{dayjs(`${m.createdAt}`).fromNow()}</Col>
+                  <Col xs={3}>{dayjs(`${m.createdAt}`).fromNow()}</Col>
                 </Row>
 
 

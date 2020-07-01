@@ -1,4 +1,4 @@
-import React, { useState, useContext }  from 'react';
+import React, { useState, useContext, useEffect }  from 'react';
 
 import { Redirect, Link } from 'react-router-dom';
 
@@ -17,7 +17,9 @@ import './profile.css'
 
 
 const Login = () =>{
-    const [User, setUser] = useState([]);
+    const [user, setUser] = useState({
+
+    });
     
 
     const [errors, setError] = useState(0); 
@@ -26,24 +28,34 @@ const Login = () =>{
     //2 unauthorized(username exist but isVerified false)
     //3 username does not exist
     //4 Password does not match
-    const getUser = async () => {
 
-        try{
-            const res = await axios({
-            url: `${config.BASE}/getUser`,
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${localStorage.FBIdToken}`
+
+    useEffect(() =>{
+        const getUser = async () => {
+
+            try{
+                const res = await axios({
+                url: `${config.BASE}/getUser`,
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.FBIdToken}`
+                }
+                });
+                if(res.data){
+                    setUser(res.data);
+                console.log(res.data);
+                    console.log(user);
+                } 
             }
-            });
-            setUser([...res.data]);
-            console.log(res.data);
-        }
-        catch(error){
-            console.log(error);
-        }
-    };
-    getUser();
+            catch(error){
+                console.log(error);
+            }
+        };
+        getUser();
+
+    }, []);
+    
+    console.log(user);
    
     return(
         <>
@@ -58,12 +70,14 @@ const Login = () =>{
                 <a class="camera" href="#"><i class="fas fa-camera"></i></a>
                 </aside>
                 <section class="profile-info">
-                <h1 class="first-name">Rakshak</h1>
-                <h1 class="second-name">Aggarwal</h1>
+                <h1 class="first-name">{user.username}</h1>
+                
                 <h2>ABOUT</h2>
-                <p>
-                    hello hello, I'm Rakshak, artist and developer 🌼 student at stanford; intern at zynga 🌱 happy to be here! 🌿 let's code the best we can!
-                </p>
+                <div>
+                <p><b>Email Address : </b>{user.email_id} </p>
+                <p><b>Name : </b>{user.college} </p>
+                <p><b>Name : </b>{user.branch} </p>
+                </div>
 
                 </section>
             </div>
