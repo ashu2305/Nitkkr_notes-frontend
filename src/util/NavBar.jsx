@@ -18,10 +18,10 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <div className = 'Nav-item-br'><Nav.Item><Link className='Nav-a' to = '/'>Home</Link></Nav.Item></div>
-            <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/about'>About</Link></Nav.Item></div>
-            {state.isAuth && 
+            
+            
                 <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/notesUpload'>Notes Upload</Link></Nav.Item></div>    
-            }
+            
             <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
           </Nav>
           <Nav>
@@ -47,3 +47,7 @@ const NavBar = () => {
 }
 
 export default NavBar;
+
+//loading 
+//onn hover search pe
+// profile page
