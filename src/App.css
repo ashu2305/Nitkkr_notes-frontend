@@ -79,7 +79,12 @@
 .note-time{
   margin-left: 40%;
   
-  font-size: 25px;
+  font-size: 20px;
+}
+
+.note-list{
+  text-align: center;
+  padding-left: 40px;
 }
 
 .note-item {
@@ -88,11 +93,17 @@
  margin: 20px;
  text-align: center;
  align-items: center;
- height: auto;
+ height: 340px;
+ overflow: auto;
  box-shadow: 3px 3px 5px 6px #ccc;
  border-radius: 15px;
  font-family: 'Courgette', cursive;
  padding-bottom: 5px;
+ 
+}
+
+.note-card-container{
+  text-align: center;
 }
 
 .note-container{
