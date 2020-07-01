@@ -13,6 +13,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card'
 
+
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
 import Store from '../store/store';
 
 const NoteViewer = (props) => {
@@ -30,7 +34,7 @@ const NoteViewer = (props) => {
     setpostComment(e.target.value);
   };
   console.log(data);
-  
+  dayjs.extend(relativeTime);
   useEffect(() =>{
     const getComment = async () => {
       const data = {
@@ -105,9 +109,10 @@ const NoteViewer = (props) => {
       <br/><br/><br/><br/><br/>
 
       <Container>
-        <h3>Comments: </h3>
+        <h2>Comments: </h2><hr/>
         <Row>
-          <Col>
+        <Col sm={1}></Col>
+          <Col sm={6}>
           
             <input
               type= "text"
@@ -116,9 +121,32 @@ const NoteViewer = (props) => {
               onChange = {handleChange}
             />
           </Col>
+          <Col></Col>
           <Col>
           <Button onClick={onSubmit} variant="outline-primary">Comment</Button>
           </Col>
+          
+        </Row>
+        <hr />
+        <Row>
+          {comments && 
+            comments.map((m,i) => (
+              <Col sm={12} key = {i}>
+                <p style={{fontSize : "150%"}}>{m.body}</p>
+                <Row>
+                  <Col>
+                    <pre>By  {m.username}</pre>
+                  </Col>
+                  <Col></Col>
+                  <Col>{dayjs(`${m.createdAt}`).fromNow()}</Col>
+                </Row>
+
+
+                <hr />
+              </Col>
+            ))
+
+          }
         </Row>
          
       </Container>

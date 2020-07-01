@@ -1,7 +1,7 @@
 
 import React, { useState, useContext }  from 'react';
 
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import config from '../config.json';
@@ -9,16 +9,14 @@ import config from '../config.json';
 import Store from '../store/store';
 
 import Avatar from '../images/avatar.svg';
-import LoginMobile from '../images/login-bg.svg';
-import Wavebg from '../images/wave.png';
 
 import './pages.css';
 import './login.css';
 import './notesUpload.css'
 
 
-const Login = () =>{
-    const{ state, dispatch } = useContext(Store);
+const NotesUpload = () =>{
+    const{ state} = useContext(Store);
     const [data, setData] = useState({
         title: '',
         author: '',
@@ -29,7 +27,7 @@ const Login = () =>{
     });
     console.log(data);
     
-
+    const [load, setLoad] = useState(false);
     const [errors, setError] = useState(0); 
     //0 no error
     //1 is empty error
@@ -81,10 +79,12 @@ const Login = () =>{
                     subject: '', 
                     noteFile: ''
                 })
+                setLoad(false);
+                window.alert("Notes uploaded successfully");
             }            
         }catch(error){
             
-            
+            setLoad(false);
             console.log(error.response);
         }   
     }
@@ -92,6 +92,7 @@ const Login = () =>{
         e.preventDefault();
         if(data.title !== '' && data.author !== '' && data.teacher !== '' && data.noteFile !== '' && data.sem !== '' && data.subject !== ''){
             setError(0);
+            setLoad(true);
             verify();
         }else{
             setError(1);
@@ -116,6 +117,7 @@ const Login = () =>{
                         <input 
                             type="text" 
                             name='title'
+                            value = {data.title}
                             onChange={handleChange}
                             required='required'
                             className="inp" 
@@ -126,6 +128,7 @@ const Login = () =>{
                         <input 
                             type="text"  
                             name='author'
+                            value = {data.author}
                             onChange={handleChange}
                             required='required'
                             className="inp" 
@@ -139,6 +142,7 @@ const Login = () =>{
                         <input 
                             type="number"  
                             name='sem'
+                            value = {data.sem}
                             onChange={handleChange}
                             required='required'
                             className="inp" 
@@ -149,6 +153,7 @@ const Login = () =>{
                         <input 
                             type="text"  
                             name='teacher'
+                            value = {data.teacher}
                             onChange={handleChange}
                             required='required'
                             className="inp" 
@@ -162,6 +167,7 @@ const Login = () =>{
                         <input 
                             type="text"  
                             name='subject'
+                            value = {data.subject}
                             onChange={handleChange}
                             required='required'
                             className="inp" 
@@ -179,9 +185,23 @@ const Login = () =>{
                     </div>
                     
                     <br></br>
+                    
+                    {state.isAuth && load &&
+                         
+                            <button className="butt" type="submit"  ><i class="icon ion-md-lock"></i> Uploading</button>
+                        
+                    } 
+                    {state.isAuth && !load &&
+                         
+                         <button className="butt" type="submit" onClick={onSubmit} ><i class="icon ion-md-lock"></i> Upload</button>
+                     
+                 }  
+                    {!state.isAuth &&
+                        <Link to='/login' > <button className="butt" type="submit"><i class="icon ion-md-lock"></i>Login to Upload</button> </Link>
+                    
+                    }
 
-
-                    <button className="butt" type="submit" onClick={onSubmit} ><i class="icon ion-md-lock"></i> Upload</button>
+                    
                     
                     
                     
@@ -193,4 +213,4 @@ const Login = () =>{
     );
 }
 
-export default Login;
+export default NotesUpload;
