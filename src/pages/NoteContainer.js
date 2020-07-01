@@ -69,6 +69,42 @@ class NoteContainer extends Component {
       }
     })
   }
+  else if(this.state.sortValue === "Author") {
+    console.log(notes);
+   return [...notes].sort((a,b) => {
+     if(a.author.toLowerCase() > b.author.toLowerCase()) {
+       return 1
+     }else if (a.author.toLowerCase() < b.author.toLowerCase()) {
+       return -1
+     }else {
+       return 0
+     }
+   })
+  }
+  else if(this.state.sortValue === "Teacher") {
+    console.log(notes);
+   return [...notes].sort((a,b) => {
+     if(a.teacher.toLowerCase() > b.teacher.toLowerCase()) {
+       return 1
+     }else if (a.teacher.toLowerCase() < b.teacher.toLowerCase()) {
+       return -1
+     }else {
+       return 0
+     }
+   })
+  }
+  else if(this.state.sortValue === "Semester") {
+    console.log(notes);
+   return [...notes].sort((a,b) => {
+     if(a.sem > b.sem) {
+       return 1
+     }else if (a.sem < b.sem) {
+       return -1
+     }else {
+       return 0
+     }
+   })
+  }
   else {
     return notes
   }
@@ -105,7 +141,24 @@ class NoteContainer extends Component {
     return note.title.toLowerCase().includes(this.state.inputValue.toLowerCase())
   })
   }
-  
+  else if(type === 'author'){
+    filteredNotes = 
+    this.state.notes.filter(note => {
+    return note.author.toLowerCase().includes(this.state.inputValue.toLowerCase())
+  })
+  }
+  else if(type === 'teacher'){
+    filteredNotes = 
+    this.state.notes.filter(note => {
+    return note.teacher.toLowerCase().includes(this.state.inputValue.toLowerCase())
+  })
+  }
+  else if(type === 'semester'){
+    filteredNotes = 
+    this.state.notes.filter(note => {
+    return note.sem.toLowerCase().includes(this.state.inputValue)
+  })
+  }
   
 
   return(
@@ -119,8 +172,8 @@ class NoteContainer extends Component {
           <option value="Name">All</option>
           <option value="Title">Title</option>
           <option value="Name">Name</option>
-          <option value="Name">Author</option>
-          <option value="Name">Teacher</option>
+          <option value="Author">Author</option>
+          <option value="Teacher">Teacher</option>
           <option value="Name">Semester</option>
           </select>
         </div>

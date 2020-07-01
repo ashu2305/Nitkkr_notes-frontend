@@ -71,10 +71,14 @@ const NoteViewer = (props) => {
       },
         data : postData
       });
+
         
         if(res.data){
           console.log(res.data);
           window.alert("Comment added successfull");
+           comments.push(res.data.noteData);
+           setpostComment("");
+           //console.log(comments);
         }
     }
     catch(error){
@@ -92,7 +96,7 @@ const NoteViewer = (props) => {
   }
   return(
     <>
-      <div>
+      <div >
         <br></br><br></br><br></br>
         <NoteCard note={props.note} />
         <br></br>
@@ -106,7 +110,7 @@ const NoteViewer = (props) => {
           {"  "}<Button variant="primary" size="lg" onClick={props.handleNoteGoBack}>Back</Button>{' '}
         </div>
       </div>
-      <br/><br/><br/><br/><br/>
+      <br/><br/>
 
       <Container>
         <h2>Comments: </h2><hr/>
@@ -117,6 +121,7 @@ const NoteViewer = (props) => {
             <input
               type= "text"
               name = 'body'
+              value={postComment}
               className="comment_input"
               onChange = {handleChange}
             />
@@ -131,11 +136,11 @@ const NoteViewer = (props) => {
         <Row>
           {comments && 
             comments.map((m,i) => (
-              <Col sm={12} key = {i}>
+              <Col sm={12} key ={i}>
                 <p style={{fontSize : "150%"}}>{m.body}</p>
                 <Row>
                   <Col>
-                    <pre>By  {m.username}</pre>
+                    <pre> - By  {m.username}</pre>
                   </Col>
                   <Col></Col>
                   <Col>{dayjs(`${m.createdAt}`).fromNow()}</Col>
