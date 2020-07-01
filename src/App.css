@@ -37,6 +37,7 @@
   border-radius: 15px;
   padding: 15px;
   font-family: 'Courgette', cursive;
+  background-color: #0AF;
 }
 
 .note-card-img{
@@ -86,6 +87,10 @@
   padding-left: 40px;
 }
 
+.note-container{
+  background-color: #94d3ff; 
+}
+
 .note-item {
  width: 22%;
  float: left;
@@ -98,7 +103,48 @@
  border-radius: 15px;
  font-family: 'Courgette', cursive;
  padding-bottom: 5px;
- 
+ background: linear-gradient(90deg,#03e9f4,#f441a5,#ffeb3b,#03a9f4);
+ background-size: 400%;
+ z-index: 1;
+}
+
+.note-item:hover {
+  animation: animate 8s linear infinite;
+}
+
+@keyframes animate 
+{
+  0%
+  {
+    background-position: 0%;
+  }
+  100%
+  {
+    background-position: 400%;
+  }
+
+}
+
+.note-item::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background-size: 400%;
+  border-radius: 25px;
+  opacity: 0;
+  transition: 0.5s;
+
+}
+
+.note-item:hover::before{
+  filter: blur(20px);
+  opacity: 1;
+  animation: animate 8s linear infinite;
+  
 }
 
 
@@ -136,7 +182,7 @@
   bottom: 0;
   right: 0;
   z-index: -1;
-  background-color: #0AF;
+  background-color: #fff;
 
   transition: transform 500ms ease-in-out;
   transform: scale(1);
