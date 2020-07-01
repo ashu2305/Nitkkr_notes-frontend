@@ -19,9 +19,11 @@ import ChangePassword from './ChangePassword';
 
 const ForgotPass = () => {
     const{ state, dispatch } = useContext(Store);
+
     const [data, setData] = useState({ 
         username: ''
     });
+
     const [sata, setSata] = useState({ 
         password: '',
         confirmPassword: ""
@@ -46,16 +48,18 @@ const ForgotPass = () => {
     // 6 is empty error
     //7 pass does not match
 
-    const handleChange = e =>{
+    const handleChange = e => {
         setData({
             ...data,
             [e.target.name]: e.target.value
         });
     };
-    const otpChange = e =>{
+
+    const otpChange = e => {
         setUserOTP(e.target.value);
     }
-    const handleChangePassword = e =>{
+
+    const handleChangePassword = e => {
         setSata ({
             ...sata,
             [e.target.name]: e.target.value
@@ -66,59 +70,61 @@ const ForgotPass = () => {
         const userData = {
             username: data.username
         }
-        try{
-            
+
+        try {    
             const res = await axios({
                 url: `${config.BASE}/forgotPassword`,
                 method: "POST",
                 data : userData
             });
             
-            if(res.data)
-            {
+            if(res.data) {
                 console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
             }            
-        }catch(error){
-            if(error.response.data.error === "username does not exist"){
+        }
+        catch(error) {
+            if(error.response.data.error === "username does not exist") {
                 setError(2);
-            }else if(error.response.data.error === "username does not verified"){
+            }
+            else if(error.response.data.error === "username does not verified") {
                 setError(3);
-            }else{
+            }
+            else {
                 window.alert("Please try again");
             }
             console.log(error);
         }   
     }
 
-    const onSubmit = e =>{
-
+    const onSubmit = e => {
         e.preventDefault();
-        if(data.username !== '' ){
-            if(!firstVerify){
+        if(data.username !== '' ) {
+            if(!firstVerify) {
                 verify();
             }
-        }else{
+        }
+        else {
             setError(1);
         }
-        console.log("hello in submit");
+
+        //console.log("hello in submit");
     }
 
     const resendVerify = async() => {
         const userData = {
             username: data.username
         }
-        try{
-            
+
+        try {            
             const res = await axios({
                 url: `${config.BASE}/resendOtp`,
                 method: "POST",
                 data: userData
             });
             
-            if(res.data)
-            {
+            if(res.data){
                 console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
@@ -128,52 +134,49 @@ const ForgotPass = () => {
                 //     payload: res.data.token
                 // });
             }            
-        }catch(error){
+        }
+        catch(error) {
             console.log(error);
         }   
     }
-
-    
 
     const verifyOTP = async() => {
         const userData = {
             username: data.username,
             otp: userOTP
         }
-        try{
+
+        try {
             const res = await axios({
                 url: `${config.BASE}/otpVerify`,
                 method: "POST",
                 data: userData
             })
-            if(res.data.status === "otp verified"){
+
+            if(res.data.status === "otp verified") {
                 console.log(res.data.status);
                 setSecond(true);
             }
 
-        }catch(error){
+        }
+        catch(error) {
             setFirst(false);
             console.log(error);
         }
     }
     //console.log(userOTP);
 
-    
-
-
     const resendOTP= (e) => {
         e.preventDefault();
         resendVerify();
     }
-
-    
     
     const submitOTP = (e) => {
         e.preventDefault();
-        if(backOTP === userOTP)
-        {
+        if(backOTP === userOTP) {
             verifyOTP();
-        }else{
+        }
+        else {
             window.alert("OTP does not match");
         }
     }
@@ -183,20 +186,21 @@ const ForgotPass = () => {
             username: data.username,
             password: sata.password
         }
-        try{
+
+        try {
             const res = await axios({
                 url: `${config.BASE}/changePassword`,
                 method: "POST",
                 data: userData
             })
-            if(res.data.pass === "password successfully changed"){
+
+            if(res.data.pass === "password successfully changed") {
                 console.log(res.data.status);
                 window.alert("Password Succesfully changed");
                 setVerified(true);
-                
             }
-
-        }catch(error){
+        }
+        catch(error) {
             setFirst(false);
             setSecond(false);
             console.log(error.response);
@@ -205,27 +209,29 @@ const ForgotPass = () => {
 
     const changePassword = (e) => {
         e.preventDefault();
-        if(sata.password === sata.confirmPassword){
-            if(sata.password !== '' && sata.confirmPassword !== ''){
+        if(sata.password === sata.confirmPassword) {
+            if(sata.password !== '' && sata.confirmPassword !== '') {
                 setError(0);
                 passwordChange();
-            }else{
+            }
+            else {
                 setError(6);
             }
-        }else{
+        }
+        else {
             setError(7);
         }
-
     }
-    if(verified){
+
+    if(verified) {
         return <Redirect to='/login' />;
     }
 
-    if(state.isAuth){
+    if(state.isAuth) {
         return <Redirect to='/login' />;
     }
-    return(
 
+    return (
         <>
             <img className="wave" alt="background" src={Wavebg}></img>
             <div className="container_login">

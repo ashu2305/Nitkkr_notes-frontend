@@ -110,7 +110,6 @@ const NoteViewer = (props) => {
           {"  "}<Button variant="primary" size="lg" onClick={props.handleNoteGoBack}>Back</Button>{' '}
         </div>
       </div>
-      <br/><br/>
 
       <Container>
         <h2>Comments: </h2><hr/>
