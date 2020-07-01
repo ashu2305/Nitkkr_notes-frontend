@@ -1,4 +1,3 @@
-
 import React, { useState, useContext }  from 'react';
 
 import { Redirect, Link } from 'react-router-dom';
@@ -8,16 +7,14 @@ import config from '../config.json';
 
 import Store from '../store/store';
 
-import Avatar from '../images/avatar.svg';
-import LoginMobile from '../images/login-bg.svg';
-import Wavebg from '../images/wave.png';
+import Avatar from '../images/noteupload.svg';
 
 import './pages.css';
 import './login.css';
 import './notesUpload.css'
 
 
-const Login = () =>{
+const NotesUpload = () =>{
     const{ state, dispatch } = useContext(Store);
     const [data, setData] = useState({
         title: '',
@@ -193,4 +190,4 @@ const Login = () =>{
     );
 }
 
-export default Login;
+export default NotesUpload;
