@@ -23,6 +23,8 @@ const Signup = () => {
         confirmPassword: '', 
         username: ''
     });
+
+    const [load, setLoad] = useState(false);
     const [firstVerify, setFirst] = useState(false);
 
     const [userOTP, setUserOTP] = useState('');
@@ -73,6 +75,7 @@ const Signup = () => {
                 console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
+                setLoad(false);
             }            
         }catch(error){
             if(error.response.data.error === "username already exist but verification required"){
@@ -88,6 +91,7 @@ const Signup = () => {
             }else{
                 window.alert("please try again");
             }
+            setLoad(false);
             console.log(error);
         }   
     }
@@ -98,6 +102,7 @@ const Signup = () => {
         if(data.password === data.confirmPassword){
             if(data.emailId !== '' && data.password !== '' && data.confirmPassword !== '' && data.username !== '' ){
                 if(isEmail(data.emailId)){
+                    setLoad(true);
                     verify(); 
                 }else{
                     setError(2)
@@ -135,6 +140,7 @@ const Signup = () => {
 
         }catch(error){
             setFirst(false);
+            setLoad(false);
             console.log(error);
         }
     }
@@ -145,8 +151,10 @@ const Signup = () => {
 
     const submitOTP = (e) => {
         e.preventDefault();
+        
         if(backOTP === userOTP)
         {
+            setLoad(true);
             verifyOTP();
         }else{
             window.alert("OTP does not match");
@@ -171,6 +179,7 @@ const Signup = () => {
                 console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
+                setLoad(false);
             }            
         }catch(error){
             if(error.response.data.error === "unauthorized"){
@@ -181,6 +190,7 @@ const Signup = () => {
             }else{
                 window.alert("please try again");
             }
+            setLoad(false);
             console.log(error);
             
 
@@ -190,6 +200,7 @@ const Signup = () => {
 
     const resendOTP= (e) => {
         e.preventDefault();
+        setLoad(true);
         resendVerify();
     }
 
@@ -274,10 +285,15 @@ const Signup = () => {
                                         />
                                 </div>
                             </div>
+                            {load ? 
+                                <input type="button" className="btn_login"  value="Loading" />
+                                :
+                                <input type="submit" className="btn_login" onClick={onSubmit} value="Signup" />
+
+                            }
                             
                             
-                            
-                            <input type="submit" className="btn_login" onClick={onSubmit} value="Signup" />
+                            {/* <input type="submit" className="btn_login" onClick={onSubmit} value="Signup" /> */}
                             <br></br>
                             <p>If you have an existing account, please Click<Link to = '/login'>  here</Link></p>
                             <br></br>
@@ -303,7 +319,13 @@ const Signup = () => {
                                         />
                                 </div>
                             </div>
-                            <input type="submit" className="btn_login"  onClick = {resendOTP} value="Verify Email" />
+                            {load ? 
+                                <input type="button" className="btn_login" value="Loading" />
+                                :
+                                <input type="submit" className="btn_login"  onClick = {resendOTP} value="Verify Email" />
+                           
+                            }
+                            {/* <input type="submit" className="btn_login"  onClick = {resendOTP} value="Verify Email" /> */}
                             <br></br>
                             {errors=== 8 &&  <><p className="error">Username does not exist , Please Signup first</p><br></br></> }
                         </form>

@@ -20,6 +20,7 @@ const Login = () =>{
         username: '',
         password: ''
     });
+    const[load, setLoad] = useState(false);
     
     const [errors, setError] = useState(0); 
     //0 no error
@@ -50,6 +51,8 @@ const Login = () =>{
                     type: 'ONBOARD',
                     payload: res.data.token
                 });
+                
+                
             }            
         }catch(error){
             if(error.response.data.error === "unauthorized"){
@@ -64,6 +67,7 @@ const Login = () =>{
             else{
                 window.alert("Please try again");
             }
+            setLoad(false);
             //console.log(error.response);
         }   
     }
@@ -75,6 +79,7 @@ const Login = () =>{
         e.preventDefault();
         if(data.username !== '' && data.password !== ''){
             setError(0);
+            setLoad(true);
             verify();
         }else{
             setError(1);
@@ -85,6 +90,7 @@ const Login = () =>{
     //console.log(state.isAuth); 
 
     if(state.isAuth){
+        //setLoad(false);
         return <Redirect to='/' />;
     }
     return(
@@ -129,7 +135,13 @@ const Login = () =>{
                             </div>
                         </div>
                         <Link to = '/forgotPass' >Forgot Password?</Link>
-                        <input type="submit" className="btn_login" onClick={onSubmit} value="Login" />
+                        {load ?
+                            <input  type= "button" className="btn_login"  value="Loading" />
+                            : 
+                            <input type="submit" className="btn_login" onClick={onSubmit} value="Login" />
+
+                        }
+                        
 
                         <br></br>
                         <p>If you do not have account, please Click<Link to = '/signup'>  here</Link></p>
