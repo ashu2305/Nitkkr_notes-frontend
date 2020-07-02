@@ -11,14 +11,12 @@ import './login.css';
 
 import Avatar from '../images/avatar.svg';
 import ForgotMobile from '../images/forgot-bg.svg';
-import OtpMobile from '../images/otp-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';
-import ChangePassword from './ChangePassword';
 
 const ForgotPass = () => {
-    const{ state, dispatch } = useContext(Store);
+    const{ state } = useContext(Store);
 
     const [data, setData] = useState({ 
         username: ''
@@ -94,7 +92,7 @@ const ForgotPass = () => {
             else {
                 window.alert("Please try again");
             }
-            console.log(error);
+            //console.log(error);
         }   
     }
 
@@ -125,7 +123,7 @@ const ForgotPass = () => {
             });
             
             if(res.data){
-                console.log(res.data.otp);
+                //console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
                 // localStorage.setItem('FBIdToken', `${res.data.token}`);
@@ -136,7 +134,7 @@ const ForgotPass = () => {
             }            
         }
         catch(error) {
-            console.log(error);
+            //console.log(error);
         }   
     }
 
@@ -154,14 +152,14 @@ const ForgotPass = () => {
             })
 
             if(res.data.status === "otp verified") {
-                console.log(res.data.status);
+                //console.log(res.data.status);
                 setSecond(true);
             }
 
         }
         catch(error) {
             setFirst(false);
-            console.log(error);
+            //console.log(error);
         }
     }
     //console.log(userOTP);
@@ -195,7 +193,7 @@ const ForgotPass = () => {
             })
 
             if(res.data.pass === "password successfully changed") {
-                console.log(res.data.status);
+                //console.log(res.data.status);
                 window.alert("Password Succesfully changed");
                 setVerified(true);
             }
@@ -203,7 +201,7 @@ const ForgotPass = () => {
         catch(error) {
             setFirst(false);
             setSecond(false);
-            console.log(error.response);
+           // console.log(error.response);
         }
     }
 

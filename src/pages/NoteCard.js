@@ -5,7 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const NoteCard = (props) => {
   
-  const {name, title, author, sem, noteId, subject, teacher, createdAt} = props.note
+  const {name, title, author, sem, subject, teacher, createdAt} = props.note
   //console.log(sem);
   
   
