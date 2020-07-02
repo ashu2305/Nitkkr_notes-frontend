@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 .pro {
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(270deg, #ffead1, #ffb6bd, #e0b5ff);
+  background: linear-gradient(270deg, #adefff, #0Af, #e0b5ff);
   background-size: 150% 150%;
   animation: backgroundAnimation 10s ease infinite;
   display: flex;
@@ -64,7 +64,7 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-color: #ff2256;
+  background-color: #8fe9ff;
   opacity: 0.8;
   mix-blend-mode: screen;
 }

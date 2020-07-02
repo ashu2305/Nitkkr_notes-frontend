@@ -4,6 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import axios from 'axios';
 import config from '../config.json';
+import dayjs from 'dayjs';
 
 import Store from '../store/store';
 
@@ -74,15 +75,17 @@ const Login = () =>{
                 
                 <h2>ABOUT</h2>
                 <div>
-                <p><b>Email Address : </b>{user.email_id} </p>
-                <p><b>Name : </b>{user.college} </p>
-                <p><b>Name : </b>{user.branch} </p>
+                <p>Hello {user.username}, how are you doing during quarantine ? Dear, user your <b>Email address </b> is <b>{user.email_id}</b> </p>
+                <p>you are an eminent student of <b>College: {user.college} </b></p>
+                <p>your specialization is in <b>{user.branch} </b> branch </p>
+                <p>you are currently in <b>{user.semeter}th </b> semester at {user.college}. You are our consistent user since <b>25 June</b> </p>
+
                 </div>
 
                 </section>
             </div>
             <section class="statistics">
-                <p><strong>6</strong> Contributions</p>
+                <p><strong>{user.contribution}</strong> Contributions</p>
             </section>
             </main>
                 
