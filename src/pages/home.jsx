@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import {Link} from 'react-router-dom';
 
+import devrakshak from '../images/dev-rakshak.jpg';
+import devaayush from '../images/dev-aayush.jpg';
+
 import './home.css'
 import './homeMain.css'
 
@@ -87,7 +90,33 @@ const Home = () => {
                         </svg>
                     </section>
                     <div id="get-started" class="get-started">
-                    <h1 >Developers</h1>
+                        <h1>Developers</h1>
+                         <div class="dev_container">
+
+                            <div></div>
+                            <div class="dev_card">
+                                <div class="imgBox">
+                                    <img width='400'src={devaayush} />
+                                 </div>
+                                <div class="dev_details">
+                                    <h2>Aayush</h2>
+                                    <p>SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for 
+                                        fsevents@1.2.13: wanted </p>
+                                </div>
+                            </div>
+                            <div class="dev_card">
+                                <div class="imgBox">
+                                    <img width='400' src={devrakshak}/>
+                                </div>
+                                <div class="dev_details">
+                                    <h2>Aayush</h2>
+                                    <p>SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for 
+                                        fsevents@1.2.13: wanted  </p>
+                                </div>
+                            </div>
+                            <div></div> 
+                         </div> 
+                    {/* <h1 >Developers</h1>
                         <ul>
                         <li>
                             <svg width="80" height="56" viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -103,7 +132,7 @@ const Home = () => {
                                 <p><strong class="counter community-members">Ayush</strong></p>
                                 <p>Developer</p>
                                 </li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </main>
             
