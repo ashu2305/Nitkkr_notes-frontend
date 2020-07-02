@@ -131,7 +131,7 @@
 .note-card::before{
   content: '';
   position: absolute;
-  //height: 85vh;
+  /* height: 85vh; */
   top: 0;
   left: 0;
   bottom: 0;

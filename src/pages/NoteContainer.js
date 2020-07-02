@@ -30,7 +30,7 @@ class NoteContainer extends Component {
  }
 
  noteFilterOnChange = (event) => {
-   console.log("hi from onChange", event.target.value)
+   //console.log("hi from onChange", event.target.value)
    this.setState({
      inputValue: event.target.value
    })
@@ -45,7 +45,7 @@ class NoteContainer extends Component {
  }
 
  sortNotes = (notes) => {
-   console.log(this.state.sortValue);
+   //console.log(this.state.sortValue);
    if(this.state.sortValue === "Name") {
      return [...notes].sort((a,b) => {
        if(a.name > b.name) {
@@ -58,7 +58,7 @@ class NoteContainer extends Component {
      })
    }
    else if(this.state.sortValue === "Title") {
-     console.log(notes);
+     //console.log(notes);
     return [...notes].sort((a,b) => {
       if(a.title.toLowerCase() > b.title.toLowerCase()) {
         return 1
@@ -70,7 +70,7 @@ class NoteContainer extends Component {
     })
   }
   else if(this.state.sortValue === "Author") {
-    console.log(notes);
+    //console.log(notes);
    return [...notes].sort((a,b) => {
      if(a.author.toLowerCase() > b.author.toLowerCase()) {
        return 1
@@ -82,7 +82,7 @@ class NoteContainer extends Component {
    })
   }
   else if(this.state.sortValue === "Teacher") {
-    console.log(notes);
+    //console.log(notes);
    return [...notes].sort((a,b) => {
      if(a.teacher.toLowerCase() > b.teacher.toLowerCase()) {
        return 1
@@ -94,7 +94,7 @@ class NoteContainer extends Component {
    })
   }
   else if(this.state.sortValue === "Semester") {
-    console.log(notes);
+    //console.log(notes);
    return [...notes].sort((a,b) => {
      if(a.sem > b.sem) {
        return 1
@@ -112,7 +112,7 @@ class NoteContainer extends Component {
  }
 
  handleNoteView = (noteItem) => {
-   console.log("click", noteItem)
+   //console.log("click", noteItem)
    this.setState({
      note: noteItem,
      isNoteViewOn: !this.state.isNoteViewOn
@@ -179,20 +179,16 @@ class NoteContainer extends Component {
         </div>
         </>
       }
-      
-      
-      
- 
-       {
-         this.state.isNoteViewOn ? 
-         <NoteViewer  note={this.state.note} 
-                     handleNoteGoBack={this.handleNoteGoBack} /> 
-                     :
-         <NoteList notes={this.sortNotes(filteredNotes)} 
-                  handleNoteView={this.handleNoteView}
-                  noteFilterOnChange={this.noteFilterOnChange}
-                  inputValue={this.state.inputValue} /> 
-       }  
+      {
+        this.state.isNoteViewOn ? 
+        <NoteViewer  note={this.state.note} 
+                    handleNoteGoBack={this.handleNoteGoBack} /> 
+                    :
+        <NoteList notes={this.sortNotes(filteredNotes)} 
+                handleNoteView={this.handleNoteView}
+                noteFilterOnChange={this.noteFilterOnChange}
+                inputValue={this.state.inputValue} /> 
+      }  
    </div>
     )
    }

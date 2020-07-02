@@ -11,7 +11,6 @@ import config from '../config.json';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card'
 
 
 import dayjs from 'dayjs';
@@ -76,7 +75,7 @@ const NoteViewer = (props) => {
 
         
         if(res.data){
-          console.log(res.data);
+          //console.log(res.data);
           window.alert("Comment added successfull");
            comments.push(res.data.noteData);
            setpostComment("");
@@ -89,14 +88,14 @@ const NoteViewer = (props) => {
         console.log(error);
     }
   }
-  console.log(comments);
+  //console.log(comments);
   const onSubmit = e =>{
     e.preventDefault();
     if(postComment !== ''){
       setLoad(true);
       post();
     }else{
-      console.log("error");
+      //console.log("error");
     }
   }
   return(

@@ -74,9 +74,9 @@ const Login = () =>{
                 
                 <h2>ABOUT</h2>
                 <div>
-                <p><b>Email Address : </b>{user.email_id} </p>
-                <p><b>Name : </b>{user.college} </p>
-                <p><b>Name : </b>{user.branch} </p>
+                {/* <p><b>EmailAddress : </b>{name} </p>
+                <p><b>Name : </b>{name} </p>
+                <p><b>Name : </b>{name} </p> */}
                 </div>
 
                 </section>
