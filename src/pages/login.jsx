@@ -8,7 +8,7 @@ import config from '../config.json';
 import Store from '../store/store';
 
 import Avatar from '../images/avatar.svg';
-import LoginMobile from '../images/login-bg.svg';
+import LoginMobile from '../images/signin-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';

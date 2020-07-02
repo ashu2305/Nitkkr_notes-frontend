@@ -94,6 +94,7 @@ const Home = () => {
                          <div class="dev_container">
 
                             <div></div>
+
                             <div class="dev_card">
                                 <div class="imgBox">
                                     <img width='400'src={devaayush} />
@@ -104,16 +105,18 @@ const Home = () => {
                                         fsevents@1.2.13: wanted </p>
                                 </div>
                             </div>
+                            
                             <div class="dev_card">
                                 <div class="imgBox">
                                     <img width='400' src={devrakshak}/>
                                 </div>
                                 <div class="dev_details">
-                                    <h2>Aayush</h2>
+                                    <h2>Rakshak</h2>
                                     <p>SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for 
                                         fsevents@1.2.13: wanted  </p>
                                 </div>
                             </div>
+                            
                             <div></div> 
                          </div> 
                     {/* <h1 >Developers</h1>
