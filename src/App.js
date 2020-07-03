@@ -18,6 +18,7 @@ import ChangePassword from './pages/ChangePassword';
 import NoteContainer from './pages/NoteContainer';
 import notesUpload from './pages/notesUpload';
 import profile from './pages/profile';
+import error from './pages/error';
 
 import Store from './store/store';
 import rootReducer from './rootReducer/rootReducer';
@@ -44,6 +45,7 @@ const  App = () => {
           <Route exact path ={"/SearchNotes"} render={renderProps => <NoteContainer renderProps={renderProps}/>}/>
           <Route path = '/notesUpload' component = {notesUpload} />
           <Route path = '/profile' component = {profile} />
+          <Route path = '/*' component = {error} />
         </Switch>
       </Router>
       </div>

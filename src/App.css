@@ -89,6 +89,25 @@
 
 .note-container{
   background-color: #94d3ff; 
+  font-size: 20px;
+}
+
+.scrolltopbtn{
+  scroll-behavior: smooth;
+  background-color: #0Af;
+  padding: 15px;
+  color: white;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  height: 60px;
+  width: 60px;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 5;
+  text-decoration: none;
 }
 
 .note-item {

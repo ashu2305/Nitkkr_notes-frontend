@@ -163,10 +163,11 @@ class NoteContainer extends Component {
 
   return(
    <div className="note-container">
+      <a href='#' className="scrolltopbtn">Top</a>
       <br></br>
       {!this.state.isNoteViewOn &&
       <>
-        <label>Sort Notes</label>
+        <label>Filter Notes</label>
         <div class="box">
           <select  name="sortValue" onChange={this.handleSortNotes}>
           <option value="Name">All</option>

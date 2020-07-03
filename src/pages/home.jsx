@@ -3,14 +3,18 @@ import {Link} from 'react-router-dom';
 
 import devrakshak from '../images/dev-rakshak.jpg';
 import devaayush from '../images/dev-aayush.jpg';
+import Lk from '../images/linkedin-icon.svg' 
+import Fb from '../images/fb-icon.svg'
+import Gh from '../images/github-icon.svg'
 
 import './home.css'
-import './homeMain.css'
+import './homeMain.css' 
 
 const Home = () => {
     return(
         <>
             <div className="body">
+                <a href='#' className="scrolltopbtn">Top</a>
                 <main>
                     <section class="intro">
                         <h1 class="intro__title">
@@ -90,52 +94,103 @@ const Home = () => {
                         </svg>
                     </section>
                     <div id="get-started" class="get-started">
-                        <h1>Developers</h1>
-                         <div class="dev_container">
+                        <h2 class="intro__title">Developers</h2>
+                         <div class="dev_container">                            
+                         <div class="dev_card">
+                                <div class="imgBox">
+                                    <img width='400'src={devrakshak} />
+                                 </div>
+                                <div class="dev_details">
+                                    <h1>Rakshak Aggarwal</h1>
+                                    <br></br>
+                                    <h4><b>MERN STACK DEVELOPER</b></h4>
+                                    <h4><b>M L ENHUSIAST</b></h4>
+                                    <p><b>Specilaization :</b> Information Technology</p>
+                                    <p><b>College :</b> IIIT Sonepat</p>
+                                    <p>Creative thinking never ends...</p>
+                                    <br></br>
+                                    <span>Email me:&nbsp;<a href="mailto:rakshakagarwal2000@gmail.com">rakshakagarwal2000@gmail.com</a></span>
+                                    <br></br>
+                                    <a href="https://www.linkedin.com/in/rakshak-aggarwal-50192b1a7" rel="noopener noreferrer" target="_blank"><img src={Lk}></img></a>
+                                    <a style={{ marginLeft: '.8rem' }} href="https://www.facebook.com/rakshak.aggarwal.376" rel="noopener noreferrer" target="_blank"><img src={Fb}></img></a>
+                                    <a style={{ marginLeft: '.8rem' }} href="https://github.com/Rakshak001" rel="noopener noreferrer" target="_blank"><img src={Gh}></img></a>
+                                    <a style={{ marginLeft: '.8rem' }}  href="https://www.instagram.com/rakshak.aggarwal/" rel="noopener noreferrer" target="_blank">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.538 4.66203C16.538 5.32484 16.0006 5.86203 15.338 5.86203C14.6753 5.86203 14.138 5.32484 14.138 4.66203C14.138 3.99922 14.6753 3.46203 15.338 3.46203C16.0008 3.46203 16.538 3.99922 16.538 4.66203ZM10 13.3333C8.15906 13.3333 6.66672 11.8409 6.66672 10C6.66672 8.15906 8.15906 6.66672 10 6.66672C11.8409 6.66672 13.3333 8.15906 13.3333 10C13.3333 11.8409 11.8409 13.3333 10 13.3333ZM10 4.86484C7.16391 4.86484 4.86484 7.16391 4.86484 10C4.86484 12.8361 7.16391 15.1352 10 15.1352C12.8361 15.1352 15.1352 12.8361 15.1352 10C15.1352 7.16391 12.8361 4.86484 10 4.86484ZM10 1.80187C12.6702 1.80187 12.9864 1.81203 14.0408 1.86016C15.0158 1.90469 15.5453 2.0675 15.8977 2.20453C16.3644 2.38594 16.6975 2.60266 17.0475 2.95266C17.3975 3.3025 17.6142 3.63563 17.7956 4.1025C17.9325 4.45484 18.0955 4.98437 18.14 5.95937C18.1881 7.01391 18.1983 7.33016 18.1983 10.0003C18.1983 12.6705 18.1881 12.9867 18.14 14.0411C18.0955 15.0161 17.9327 15.5456 17.7956 15.898C17.6142 16.3647 17.3975 16.6978 17.0475 17.0478C16.6977 17.3978 16.3645 17.6145 15.8977 17.7959C15.5453 17.9328 15.0158 18.0958 14.0408 18.1403C12.9864 18.1884 12.6702 18.1986 10 18.1986C7.32969 18.1986 7.01344 18.1884 5.95906 18.1403C4.98406 18.0958 4.45453 17.933 4.10219 17.7959C3.63547 17.6145 3.30234 17.3978 2.95234 17.0478C2.6025 16.698 2.38563 16.3648 2.20422 15.898C2.06734 15.5456 1.90437 15.0161 1.85984 14.0411C1.81172 12.9866 1.80156 12.6703 1.80156 10.0003C1.80156 7.33016 1.81172 7.01391 1.85984 5.95937C1.90437 4.98437 2.06719 4.45484 2.20422 4.1025C2.38563 3.63578 2.60234 3.30266 2.95234 2.95266C3.30219 2.60266 3.63531 2.38594 4.10219 2.20453C4.45453 2.06766 4.98406 1.90469 5.95906 1.86016C7.01359 1.81203 7.32984 1.80187 10 1.80187ZM10 0C7.28422 0 6.94359 0.0115625 5.87703 0.0601562C4.81266 0.10875 4.08562 0.277812 3.44969 0.525C2.79203 0.780469 2.23437 1.1225 1.67844 1.67844C1.1225 2.23437 0.780469 2.79203 0.525 3.44969C0.277812 4.08578 0.10875 4.81266 0.0601562 5.87703C0.0115625 6.94359 0 7.28422 0 10C0 12.7158 0.0115625 13.0564 0.0601562 14.123C0.10875 15.1873 0.277812 15.9142 0.525 16.5503C0.780469 17.208 1.1225 17.7656 1.67844 18.3216C2.23437 18.8775 2.79203 19.2194 3.44969 19.475C4.08578 19.7222 4.81266 19.8912 5.87703 19.9398C6.94359 19.9884 7.28422 20 10 20C12.7158 20 13.0564 19.9884 14.123 19.9398C15.1873 19.8912 15.9142 19.7222 16.5503 19.475C17.208 19.2194 17.7656 18.8775 18.3216 18.3216C18.8775 17.7656 19.2194 17.208 19.475 16.5503C19.7222 15.9142 19.8912 15.1873 19.9398 14.123C19.9884 13.0564 20 12.7158 20 10C20 7.28422 19.9884 6.94359 19.9398 5.87703C19.8912 4.81266 19.7222 4.08578 19.475 3.44969C19.2194 2.79203 18.8775 2.23437 18.3216 1.67844C17.7656 1.1225 17.208 0.780625 16.5503 0.525C15.9142 0.277812 15.1873 0.10875 14.123 0.0601562C13.0564 0.0115625 12.7158 0 10 0Z" fill="url(#paint0_radial)" />
+                                            <defs>
+                                                <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.98611 20.0694) scale(25.555)">
+                                                    <stop offset="0" stop-color="#FFB140" />
+                                                    <stop offset="0.2559" stop-color="#FF5445" />
+                                                    <stop offset="0.599" stop-color="#FC2B82" />
+                                                    <stop offset="1" stop-color="#8E40B7" />
+                                                </radialGradient>
+                                            </defs>
+                                        </svg>
+                                        <span class="visuallyhidden">Instagram</span>
+                                    </a>
+                                    <a style={{ marginLeft: '.8rem' }}  href="https://twitter.com/Rakshak77734770" rel="noopener noreferrer" target="_blank"><svg width="20" height="16" viewBox="0 0 20 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <use xlinkHref={`#twitter-icon`}></use>
+                                        </svg>
+                                        <span class="visuallyhidden">Twitter</span>
+                                    </a>
+                                    <br></br>
+                                    <br></br>
+                                    <h4><b>We Create</b></h4>
+                                    <h4><b>We Design</b></h4>
+                                    <h4><b>We Develop</b></h4>
+                                </div>  
 
-                            <div></div>
-
+                            </div>
+                            
                             <div class="dev_card">
                                 <div class="imgBox">
                                     <img width='400'src={devaayush} />
                                  </div>
                                 <div class="dev_details">
-                                    <h2>Aayush</h2>
-                                    <p>SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for 
-                                        fsevents@1.2.13: wanted </p>
-                                </div>
-                            </div>
-                            
-                            <div class="dev_card">
-                                <div class="imgBox">
-                                    <img width='400' src={devrakshak}/>
-                                </div>
-                                <div class="dev_details">
-                                    <h2>Rakshak</h2>
-                                    <p>SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for 
-                                        fsevents@1.2.13: wanted  </p>
-                                </div>
+                                    <h1>Aayush Gupta</h1>
+                                    <br></br>
+                                    <h4><b>MERN STACK DEVELOPER</b></h4>
+                                    <h4><b>SIH FINALIST</b></h4>
+                                    <p><b>Specilaization :</b> Information Technology</p>
+                                    <p><b>College :</b> NIT Kurukshetra</p>
+                                    <p>Creative thinking never ends...</p>
+                                    <br></br>
+                                    <span>Email me:&nbsp;<a href="mailto:ayushgupta2305@gmail.com">ayushgupta2305@gmail.com</a></span>
+                                    <br></br>
+                                    <a href="https://www.linkedin.com/in/ashu2305" rel="noopener noreferrer" target="_blank"><img src={Lk}></img></a>
+                                    <a style={{ marginLeft: '.8rem' }} href="https://www.facebook.com/profile.php?id=100026521238292" rel="noopener noreferrer" target="_blank"><img src={Fb}></img></a>
+                                    <a style={{ marginLeft: '.8rem' }} href="https://github.com/ashu2305" rel="noopener noreferrer" target="_blank"><img src={Gh}></img></a>
+                                    <a style={{ marginLeft: '.8rem' }}  href="https://www.instagram.com/ashu_2305_/" rel="noopener noreferrer" target="_blank">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.538 4.66203C16.538 5.32484 16.0006 5.86203 15.338 5.86203C14.6753 5.86203 14.138 5.32484 14.138 4.66203C14.138 3.99922 14.6753 3.46203 15.338 3.46203C16.0008 3.46203 16.538 3.99922 16.538 4.66203ZM10 13.3333C8.15906 13.3333 6.66672 11.8409 6.66672 10C6.66672 8.15906 8.15906 6.66672 10 6.66672C11.8409 6.66672 13.3333 8.15906 13.3333 10C13.3333 11.8409 11.8409 13.3333 10 13.3333ZM10 4.86484C7.16391 4.86484 4.86484 7.16391 4.86484 10C4.86484 12.8361 7.16391 15.1352 10 15.1352C12.8361 15.1352 15.1352 12.8361 15.1352 10C15.1352 7.16391 12.8361 4.86484 10 4.86484ZM10 1.80187C12.6702 1.80187 12.9864 1.81203 14.0408 1.86016C15.0158 1.90469 15.5453 2.0675 15.8977 2.20453C16.3644 2.38594 16.6975 2.60266 17.0475 2.95266C17.3975 3.3025 17.6142 3.63563 17.7956 4.1025C17.9325 4.45484 18.0955 4.98437 18.14 5.95937C18.1881 7.01391 18.1983 7.33016 18.1983 10.0003C18.1983 12.6705 18.1881 12.9867 18.14 14.0411C18.0955 15.0161 17.9327 15.5456 17.7956 15.898C17.6142 16.3647 17.3975 16.6978 17.0475 17.0478C16.6977 17.3978 16.3645 17.6145 15.8977 17.7959C15.5453 17.9328 15.0158 18.0958 14.0408 18.1403C12.9864 18.1884 12.6702 18.1986 10 18.1986C7.32969 18.1986 7.01344 18.1884 5.95906 18.1403C4.98406 18.0958 4.45453 17.933 4.10219 17.7959C3.63547 17.6145 3.30234 17.3978 2.95234 17.0478C2.6025 16.698 2.38563 16.3648 2.20422 15.898C2.06734 15.5456 1.90437 15.0161 1.85984 14.0411C1.81172 12.9866 1.80156 12.6703 1.80156 10.0003C1.80156 7.33016 1.81172 7.01391 1.85984 5.95937C1.90437 4.98437 2.06719 4.45484 2.20422 4.1025C2.38563 3.63578 2.60234 3.30266 2.95234 2.95266C3.30219 2.60266 3.63531 2.38594 4.10219 2.20453C4.45453 2.06766 4.98406 1.90469 5.95906 1.86016C7.01359 1.81203 7.32984 1.80187 10 1.80187ZM10 0C7.28422 0 6.94359 0.0115625 5.87703 0.0601562C4.81266 0.10875 4.08562 0.277812 3.44969 0.525C2.79203 0.780469 2.23437 1.1225 1.67844 1.67844C1.1225 2.23437 0.780469 2.79203 0.525 3.44969C0.277812 4.08578 0.10875 4.81266 0.0601562 5.87703C0.0115625 6.94359 0 7.28422 0 10C0 12.7158 0.0115625 13.0564 0.0601562 14.123C0.10875 15.1873 0.277812 15.9142 0.525 16.5503C0.780469 17.208 1.1225 17.7656 1.67844 18.3216C2.23437 18.8775 2.79203 19.2194 3.44969 19.475C4.08578 19.7222 4.81266 19.8912 5.87703 19.9398C6.94359 19.9884 7.28422 20 10 20C12.7158 20 13.0564 19.9884 14.123 19.9398C15.1873 19.8912 15.9142 19.7222 16.5503 19.475C17.208 19.2194 17.7656 18.8775 18.3216 18.3216C18.8775 17.7656 19.2194 17.208 19.475 16.5503C19.7222 15.9142 19.8912 15.1873 19.9398 14.123C19.9884 13.0564 20 12.7158 20 10C20 7.28422 19.9884 6.94359 19.9398 5.87703C19.8912 4.81266 19.7222 4.08578 19.475 3.44969C19.2194 2.79203 18.8775 2.23437 18.3216 1.67844C17.7656 1.1225 17.208 0.780625 16.5503 0.525C15.9142 0.277812 15.1873 0.10875 14.123 0.0601562C13.0564 0.0115625 12.7158 0 10 0Z" fill="url(#paint0_radial)" />
+                                            <defs>
+                                                <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.98611 20.0694) scale(25.555)">
+                                                    <stop offset="0" stop-color="#FFB140" />
+                                                    <stop offset="0.2559" stop-color="#FF5445" />
+                                                    <stop offset="0.599" stop-color="#FC2B82" />
+                                                    <stop offset="1" stop-color="#8E40B7" />
+                                                </radialGradient>
+                                            </defs>
+                                        </svg>
+                                        <span class="visuallyhidden">Instagram</span>
+                                    </a>
+                                    <a style={{ marginLeft: '.5rem' }}  href="https://twitter.com/_ashu_2305" rel="noopener noreferrer" target="_blank"><svg width="20" height="16" viewBox="0 0 20 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <use xlinkHref={`#twitter-icon`}></use>
+                                        </svg>
+                                        <span class="visuallyhidden">Twitter</span>
+                                    </a>
+                                    <br></br>
+                                    <br></br>
+                                    <h4><b>We Create</b></h4>
+                                    <h4><b>We Design</b></h4>
+                                    <h4><b>We Develop</b></h4>
+                                </div>  
+
                             </div>
                             
                             <div></div> 
                          </div> 
-                    {/* <h1 >Developers</h1>
-                        <ul>
-                        <li>
-                            <svg width="80" height="56" viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <use xlinkHref={`#user`}></use>
-                            </svg>
-                            <p><strong class="counter community-members">Rakshak</strong></p>
-                            <p>Developer</p>
-                        </li>
-                        <li>
-                                <svg width="80" height="56" viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <use xlinkHref={`#user`}></use>
-                                </svg>
-                                <p><strong class="counter community-members">Ayush</strong></p>
-                                <p>Developer</p>
-                                </li>
-                        </ul> */}
+                         
                     </div>
                 </main>
             
@@ -169,7 +224,9 @@ const Home = () => {
                         <ul class="footer-social">
                             <li>
                                 <a href="mailto:alexandra.caulea@gmail.com?Subject=Hi%20Alexandra" rel="noopener noreferrer"><svg width="23" height="18" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                </svg><span class="visuallyhidden">email</span>
+                                <use xlinkHref={`#contact-email-icon`}></use>
+                                </svg>
+                                <span class="visuallyhidden">email</span>
                                 </a>
                             </li>
                             <li>
@@ -377,6 +434,7 @@ const Home = () => {
                         <path d="M6.29 16c7.547 0 11.675-6.156 11.675-11.495 0-.175 0-.349-.012-.522A8.265 8.265 0 0020 1.89a8.273 8.273 0 01-2.356.637A4.07 4.07 0 0019.448.293a8.303 8.303 0 01-2.606.98 4.153 4.153 0 00-5.806-.175 4.006 4.006 0 00-1.187 3.86A11.717 11.717 0 011.392.738 4.005 4.005 0 002.663 6.13 4.122 4.122 0 01.8 5.625v.051C.801 7.6 2.178 9.255 4.092 9.636a4.144 4.144 0 01-1.852.069c.537 1.646 2.078 2.773 3.833 2.806A8.315 8.315 0 010 14.185a11.754 11.754 0 006.29 1.812" fill="#1DA1F2" fill-rule="evenodd" />
                     </symbol>
                 </svg>
+
             </div>
                         
         </>

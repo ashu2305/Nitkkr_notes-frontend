@@ -147,24 +147,27 @@ const NoteViewer = (props) => {
         </Row>
         <hr />
         <Row>
-          {comments && 
-            comments.map((m,i) => (
-              <Col sm={12} key ={i}>
-                <p style={{fontSize : "150%"}}>{m.body}</p>
-                <Row>
-                  <Col xs={8}>
-                    <pre> - By  {m.username}</pre>
-                  </Col>
-                  <Col></Col>
-                  <Col xs={3}>{dayjs(`${m.createdAt}`).fromNow()}</Col>
-                </Row>
+            {comments.length !== 0 && 
+              comments.map((m,i) => (
+                <Col sm={12} key ={i}>
+                  <p style={{fontSize : "150%"}}>{m.body}</p>
+                  <Row>
+                    <Col xs={8}>
+                      <pre> - By  {m.username}</pre>
+                    </Col>
+                    <Col></Col>
+                    <Col xs={3}>{dayjs(`${m.createdAt}`).fromNow()}</Col>
+                  </Row>
 
 
-                <hr />
-              </Col>
-            ))
+                  <hr />
+                </Col>
+              ))
 
-          }
+            }
+            {comments.length === 0 &&
+              <h1>No Comments yet !</h1>
+            }
         </Row>
          
       </Container>
