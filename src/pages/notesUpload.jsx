@@ -1,9 +1,11 @@
-import React, { useState, useContext }  from 'react';
+import React, { useState, useContext, useEffect }  from 'react';
 
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import config from '../config.json';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 import Store from '../store/store';
 
@@ -33,6 +35,10 @@ const NotesUpload = () =>{
     //2 unauthorized(username exist but isVerified false)
     //3 username does not exist
     //4 Password does not match
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    },[]);
     
     const handleChange = e =>{
         setData({
@@ -103,7 +109,7 @@ const NotesUpload = () =>{
    
     return(
         <>
-            <div className="login-content">
+            <div data-aos="fade-up" className="login-content">
                 <form className="upload">
                     <img src={Avatar}></img>
                     <div class="segment">

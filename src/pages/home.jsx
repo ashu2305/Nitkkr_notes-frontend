@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import {Link} from 'react-router-dom';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import devrakshak from '../images/dev-rakshak.jpg';
 import devaayush from '../images/dev-aayush.jpg';
@@ -11,12 +13,17 @@ import './home.css'
 import './homeMain.css' 
 
 const Home = () => {
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    },[]);
+
     return(
         <>
             <div className="body">
                 <a href='#' className="scrolltopbtn">Top</a>
                 <main>
-                    <section class="intro">
+                    <section data-aos="fade-right" class="intro">
                         <h1 class="intro__title">
                             Get Notes 
                         </h1>
@@ -25,12 +32,12 @@ const Home = () => {
                             the perfect place for you.
                         </p>
                         <Link to='/login' class="button">Get Started</Link>
-                        <img class="intro__illustration" src="https://res.cloudinary.com/alexandracaulea/image/upload/v1583497233/intro-illustration_qneuer.svg" alt="" />
+                        <img data-aos="fade-left" class="intro__illustration" src="https://res.cloudinary.com/alexandracaulea/image/upload/v1583497233/intro-illustration_qneuer.svg" alt="" />
                     </section>
                     <section id="features" class="features">
                         <h2 class="visuallyhidden">Features</h2>
                         <ul class="features__list">
-                            <li>
+                            <li data-aos="fade-up-right">
                                 <Link to='/SearchNotes'>
                                     <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <use xlinkHref={`#headphones-icon`}></use>
@@ -38,7 +45,7 @@ const Home = () => {
                                 </Link>    
                                 <p><strong>Find useful material</strong> on a wide range on topics.</p>
                             </li>
-                            <li>
+                            <li data-aos="fade-up">
                                 <Link to='/notesUpload'>
                                     <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <use xlinkHref={`#video-icon`}></use>              
@@ -46,7 +53,7 @@ const Home = () => {
                                 </Link>
                                 <p><strong>100+ notes pdfs</strong> from professional teachers.</p>
                             </li>
-                            <li>
+                            <li data-aos="fade-up-left">
                                 <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <use xlinkHref={`#email-icon`}></use>
                                 </svg>
@@ -54,7 +61,7 @@ const Home = () => {
                             </li>
                         </ul>
                     </section>
-                    <section id="how-it-works" class="grow">
+                    <section data-aos="fade-down" id="how-it-works" class="grow">
                         <h2 class="section__title grow__title">Excel Together</h2>
                         <p>
                         Start using our college platform for notes, ask questions when you’re stuck and get help from 
@@ -67,8 +74,8 @@ const Home = () => {
                         <use xlinkHref={`#grow-blob`}></use>
                         </svg>
                     </section>
-                    <div class="arrow-1"></div>
-                    <section class="get-feedback">
+                    <div data-aos="fade-right" class="arrow-1"></div>
+                    <section data-aos="fade-down" class="get-feedback">
                         <h2 class="section__title get-feedback__title">
                         Get quality study material
                         </h2>
@@ -80,8 +87,8 @@ const Home = () => {
                         <use xlinkHref={`#feedback`}></use>
                         </svg>
                     </section>
-                    <div class="arrow-2"></div>
-                    <section class="learning">
+                    <div data-aos="fade-left" class="arrow-2"></div>
+                    <section data-aos="fade-down" class="learning">
                         <h2 class="section__title learning__title">
                         Start using immediately
                         </h2>
@@ -94,8 +101,8 @@ const Home = () => {
                         </svg>
                     </section>
                     <div id="get-started" class="get-started">
-                        <h2 class="intro__title">Developers</h2>
-                         <div class="dev_container">                            
+                        <h2 data-aos="zoom-in" class="intro__title">Developers</h2>
+                         <div data-aos="fade-right" class="dev_container">                            
                          <div class="dev_card">
                                 <div class="imgBox">
                                     <img width='400'src={devrakshak} />
