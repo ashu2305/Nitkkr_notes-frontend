@@ -9,13 +9,10 @@ export default function rootReducer(state, action) {
         case 'ONBOARD':
             localStorage.setItem('FBIdToken',  `${payload}`);
 
-            
-
             return {
                 ...state,
                 token: payload,
                     isAuth: true
-                    
             }
         case 'LOGOUT':
             localStorage.removeItem('FBIdToken')
@@ -23,7 +20,6 @@ export default function rootReducer(state, action) {
                 user: null,
                 token: null,
                 isAuth: false
-                        
             }
         case 'UPDATE' : 
             return{

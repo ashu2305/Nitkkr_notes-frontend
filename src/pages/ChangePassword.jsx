@@ -13,6 +13,7 @@ import ChangeMobile from '../images/change-bg.svg';
 import Wavebg from '../images/wave.png';
 
 import './pages.css';
+
 const ChangePassword = () => {
     const{ state, dispatch } = useContext(Store);
     const [data, setData] = useState({
@@ -36,7 +37,7 @@ const ChangePassword = () => {
                 `${config.BASE}/changePassword` , 
                 data
             );
-            console.log(res);
+            //console.log(res);
             if(res.data) {
                 //console.log(res.data);
                 localStorage.setItem('FBIdToken', `${res.data.token}`);
@@ -69,7 +70,6 @@ const ChangePassword = () => {
         
         //console.log("hello in submit");
     }
-
     //console.log(state.isAuth); 
 
     if(state.isAuth) {

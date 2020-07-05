@@ -8,7 +8,6 @@ import './App.css';
 
 import NavBar from './util/NavBar';
 
-
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
@@ -23,33 +22,31 @@ import error from './pages/error';
 import Store from './store/store';
 import rootReducer from './rootReducer/rootReducer';
 
-
 const  App = () => {
-   const initState = useContext(Store);
-   const [state, dispatch] = useReducer(rootReducer, initState);
-
+  const initState = useContext(Store);
+  const [state, dispatch] = useReducer(rootReducer, initState);
 
   return (
     <>
-    <Store.Provider value={{state,dispatch}} >
-      <div className="App">
-      <Router>
-        <NavBar  />
-        <Switch>
-          <Route exact path = '/' component ={home} />
-          <Route path = '/login' component = {login} />
-          <Route path = '/logout' component = {logout} />
-          <Route path = '/signup' component = {signup} />
-          <Route path = '/ForgotPass' component = {ForgotPass} />
-          <Route path = '/ChangePassword' component = {ChangePassword} />
-          <Route exact path ={"/SearchNotes"} render={renderProps => <NoteContainer renderProps={renderProps}/>}/>
-          <Route path = '/notesUpload' component = {notesUpload} />
-          <Route path = '/profile' component = {profile} />
-          <Route path = '/*' component = {error} />
-        </Switch>
-      </Router>
-      </div>
-    </Store.Provider>  
+      <Store.Provider value={{state,dispatch}} >
+        <div className="App">
+          <Router>
+            <NavBar  />
+            <Switch>
+              <Route exact path = '/' component ={home} />
+              <Route path = '/login' component = {login} />
+              <Route path = '/logout' component = {logout} />
+              <Route path = '/signup' component = {signup} />
+              <Route path = '/ForgotPass' component = {ForgotPass} />
+              <Route path = '/ChangePassword' component = {ChangePassword} />
+              <Route exact path ={"/SearchNotes"} render={renderProps => <NoteContainer renderProps={renderProps}/>}/>
+              <Route path = '/notesUpload' component = {notesUpload} />
+              <Route path = '/profile' component = {profile} />
+              <Route path = '/*' component = {error} />
+            </Switch>
+          </Router>
+        </div>
+      </Store.Provider>  
     </>
   );
 }

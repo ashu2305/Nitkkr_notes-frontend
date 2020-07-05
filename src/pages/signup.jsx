@@ -1,5 +1,4 @@
 import React, { useState, useContext }  from 'react';
-
 import { Redirect, Link } from 'react-router-dom';
 
 import axios from 'axios';
@@ -46,14 +45,14 @@ const Signup = () => {
     //8 username doesnot exist
     //9 already verified
 
-
-    const handleChange = e =>{
+    const handleChange = e => {
         setData({
             ...data,
             [e.target.name]: e.target.value
         });
     };
-    const otpChange = e =>{
+
+    const otpChange = e => {
         setUserOTP(e.target.value);
     }
 
@@ -63,7 +62,8 @@ const Signup = () => {
             password: data.password,
             emailId: data.emailId
         }
-        try{
+
+        try {
             const res = await axios({
                 url: `${config.BASE}/signup`,
                 method: "POST",
@@ -72,54 +72,65 @@ const Signup = () => {
             
             if(res.data)
             {
-                console.log(res.data.otp);
+                //console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
                 setLoad(false);
             }            
-        }catch(error){
-            if(error.response.data.error === "username already exist but verification required"){
+        }
+        catch(error) {
+            if(error.response.data.error === "username already exist but verification required") {
                 setError(4);
                 window.alert("Either choose any other username or verify email as this username already exist");
-            }else if(error.response.data.error === "username already exist"){
+            }
+            else if(error.response.data.error === "username already exist") {
                 setError(5);
                 window.alert("Please login as this username exist");
-            }else if(error.response.data.error === "email already exist"){
+            }
+            else if(error.response.data.error === "email already exist") {
                 setError(6);
-            }else if(error.response.data.error === "smtp error"){
+            } 
+            else if(error.response.data.error === "smtp error") {
                 setError(7);
-            }else{
+            }
+            else {
                 window.alert("please try again");
             }
+
             setLoad(false);
             console.log(error);
         }   
     }
 
-    const onSubmit = e =>{
-
+    const onSubmit = e => {
         e.preventDefault();
-        if(data.password === data.confirmPassword){
-            if(data.emailId !== '' && data.password !== '' && data.confirmPassword !== '' && data.username !== '' ){
-                if(isEmail(data.emailId)){
+        if(data.password === data.confirmPassword) {
+            if(data.emailId !== '' && data.password !== '' && data.confirmPassword !== '' && data.username !== '' ) {
+                if(isEmail(data.emailId)) {
                     setLoad(true);
                     verify(); 
-                }else{
+                }
+                else {
                     setError(2)
                 }
-            }else{
+            }
+            else {
                 setError(1);
             }
-        }else{
+        }
+        else {
             setError(3);
         }
-        console.log("hello in submit");
+
+        //console.log("hello in submit");
     }
     
     const isEmail = (email) => {
         const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (email.match(regEx)) return true;
-        else return false;
+        if (email.match(regEx)) 
+            return true;
+        else 
+            return false;
       };
     
     const verifyOTP = async() => {
@@ -127,36 +138,38 @@ const Signup = () => {
             username: data.username,
             otp: userOTP
         }
-        try{
+
+        try {
             const res = await axios({
                 url: `${config.BASE}/otpVerify`,
                 method: "POST",
                 data: userData
             })
-            if(res.data.status === "otp verified"){
-                console.log(res.data.status);
+
+            if(res.data.status === "otp verified") {
+                //console.log(res.data.status);
                 setVerified(true);
             }
-
-        }catch(error){
+        }
+        catch(error) {
             setFirst(false);
             setLoad(false);
             console.log(error);
         }
     }
 
-    if(verified){
+    if(verified) {
         return <Redirect to='/login' />;
     }
 
     const submitOTP = (e) => {
         e.preventDefault();
         
-        if(backOTP === userOTP)
-        {
+        if(backOTP === userOTP) {
             setLoad(true);
             verifyOTP();
-        }else{
+        }
+        else {
             window.alert("OTP does not match");
         }
     }
@@ -166,37 +179,37 @@ const Signup = () => {
             username: data.username,
             password: data.password,
         }
-        try{
-            
+
+        try {
             const res = await axios({
                 url: `${config.BASE}/resendOtp`,
                 method: "POST",
                 data: userData
             });
             
-            if(res.data)
-            {
-                console.log(res.data.otp);
+            if(res.data) {
+                //console.log(res.data.otp);
                 setBackOTP(res.data.otp);
                 setFirst(true);
                 setLoad(false);
             }            
-        }catch(error){
-            if(error.response.data.error === "unauthorized"){
+        }
+        catch(error) {
+            if(error.response.data.error === "unauthorized") {
                 setError(8);
-            }else if(error.response.data.error === "already verified !"){
+            }
+            else if(error.response.data.error === "already verified !") {
                 window.alert("this user is already verified , please login");
                 setVerified(true);
-            }else{
+            } 
+            else {
                 window.alert("please try again");
             }
+
             setLoad(false);
             console.log(error);
-            
-
         }   
     }
-
 
     const resendOTP= (e) => {
         e.preventDefault();
@@ -210,10 +223,8 @@ const Signup = () => {
     if(state.isAuth){
         return <Redirect to='/login' />;
     }
-    return(
-        
 
-         
+    return (
         <>
             <img className="wave" alt="background" src={Wavebg}></img>
             <div className="container_login">

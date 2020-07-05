@@ -31,12 +31,14 @@ const NoteViewer = (props) => {
 
   const { noteId} = props.note
 
-  const handleChange = e =>{
+  const handleChange = e => {
     setpostComment(e.target.value);
   };
-  console.log(data);
+
+  //console.log(data);
   dayjs.extend(relativeTime);
-  useEffect(() =>{
+
+  useEffect(() => {
     const getComment = async () => {
       const data = {
         noteId : noteId
@@ -48,7 +50,7 @@ const NoteViewer = (props) => {
             data : data
           });
             setComments([...res.data]);
-            console.log(res.data);
+            //console.log(res.data);
         }
         catch(error){
             console.log(error);
@@ -57,8 +59,7 @@ const NoteViewer = (props) => {
     getComment();
   }, []);
 
-
-  const post = async() =>{
+  const post = async() => {
     const postData = {
       body: postComment,
       noteId : noteId
@@ -69,35 +70,37 @@ const NoteViewer = (props) => {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.FBIdToken}`
-      },
+        },
         data : postData
       });
-
-        
-        if(res.data){
-          //console.log(res.data);
-          window.alert("Comment added successfull");
-           comments.push(res.data.noteData);
-           setpostComment("");
-           setLoad(false);
-           //console.log(comments);
-        }
+  
+      if(res.data) {
+        //console.log(res.data);
+        window.alert("Comment added successfull");
+          comments.push(res.data.noteData);
+          setpostComment("");
+          setLoad(false);
+          //console.log(comments);
+      }
     }
-    catch(error){
+    catch(error) {
       setLoad(false);
         console.log(error);
     }
   }
   //console.log(comments);
-  const onSubmit = e =>{
+
+  const onSubmit = e => {
     e.preventDefault();
-    if(postComment !== ''){
+    if(postComment !== '') {
       setLoad(true);
       post();
-    }else{
+    }
+    else{
       //console.log("error");
     }
   }
+
   return(
     <>
       <div >
@@ -172,7 +175,7 @@ const NoteViewer = (props) => {
          
       </Container>
     </>
-     )
+  )
 }
 
 

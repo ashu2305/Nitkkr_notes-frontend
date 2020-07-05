@@ -1,5 +1,4 @@
 import React, { useState, useContext }  from 'react';
-
 import { Redirect, Link } from 'react-router-dom';
 
 import axios from 'axios';
@@ -14,14 +13,14 @@ import Wavebg from '../images/wave.png';
 import './pages.css';
 import './login.css';
 
-const Login = () =>{
+const Login = () => {
     const{ state, dispatch } = useContext(Store);
     const [data, setData] = useState({
         username: '',
         password: ''
     });
+
     const[load, setLoad] = useState(false);
-    
     const [errors, setError] = useState(0); 
     //0 no error
     //1 is empty error
@@ -29,7 +28,7 @@ const Login = () =>{
     //3 username does not exist
     //4 Password does not match
     
-    const handleChange = e =>{
+    const handleChange = e => {
         setData({
             ...data,
             [e.target.name]: e.target.value
@@ -43,57 +42,59 @@ const Login = () =>{
                 data
             );
            // console.log(res);
-            if(res.data)
-            {
+            if(res.data) {
                 //console.log(res.data);
                 localStorage.setItem('FBIdToken', `${res.data.token}`);
                 dispatch({
                     type: 'ONBOARD',
                     payload: res.data.token
                 });
-                
-                
             }            
-        }catch(error){
-            if(error.response.data.error === "unauthorized"){
+        }
+        catch(error) {
+            if(error.response.data.error === "unauthorized") {
                 setError(2);
             }
-            else if(error.response.data.error === "username does not exist"){
+            else if(error.response.data.error === "username does not exist") {
                 setError(3);
             }
-            else if(error.response.data.error === "Password does not match"){
+            else if(error.response.data.error === "Password does not match") {
                 setError(4);
             }
-            else{
+            else {
                 window.alert("Please try again");
             }
+
             setLoad(false);
             //console.log(error.response);
         }   
     }
-    if(errors === 2){
+
+    if(errors === 2) {
         window.alert("Please verify your email first");
         return <Redirect to='/signup' />;
     }
-    const onSubmit = e =>{
+
+    const onSubmit = e => {
         e.preventDefault();
-        if(data.username !== '' && data.password !== ''){
+        if(data.username !== '' && data.password !== '') {
             setError(0);
             setLoad(true);
             verify();
-        }else{
+        }
+        else {
             setError(1);
         }
         //console.log("hello in submit");
     }
-
     //console.log(state.isAuth); 
 
-    if(state.isAuth){
+    if(state.isAuth) { 
         //setLoad(false);
         return <Redirect to='/' />;
     }
-    return(
+
+    return (
         <>
             <img className="wave" src={Wavebg}></img>
             <div className="container_login">

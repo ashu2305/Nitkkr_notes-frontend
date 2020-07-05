@@ -1,11 +1,6 @@
 import { createContext } from 'react';
 
-
-
-
-
 const ltoken = (localStorage.getItem('FBIdToken') !== null)?true:false ;
-
 
 const Context = createContext({
     user: null ,

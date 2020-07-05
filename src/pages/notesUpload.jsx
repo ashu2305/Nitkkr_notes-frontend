@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect }  from 'react';
-
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
@@ -15,8 +14,7 @@ import './pages.css';
 import './login.css';
 import './notesUpload.css'
 
-
-const NotesUpload = () =>{
+const NotesUpload = () => {
     const{ state} = useContext(Store);
     const [data, setData] = useState({
         title: '',
@@ -26,7 +24,7 @@ const NotesUpload = () =>{
         subject: '', 
         noteFile: ''
     });
-    console.log(data);
+    //console.log(data);
     
     const [load, setLoad] = useState(false);
     const [errors, setError] = useState(0); 
@@ -40,14 +38,14 @@ const NotesUpload = () =>{
         Aos.init({ duration: 2000 });
     },[]);
     
-    const handleChange = e =>{
+    const handleChange = e => {
         setData({
             ...data,
             [e.target.name]: e.target.value
         });
     };
     
-    const fileChange = e =>{
+    const fileChange = e => {
         let filex = e.target.files[0]
         setData({
             ...data,
@@ -57,13 +55,15 @@ const NotesUpload = () =>{
 
     const verify = async() => {
         const formData = new FormData();
+
         formData.append('author', data.author);
         formData.append('sem', data.sem);
         formData.append('teacher', data.teacher);
         formData.append('title', data.title);
         formData.append('noteFile', data.noteFile);
         formData.append('subject', data.subject);
-        try{
+
+        try {
             const res = await axios({
                 url: `${config.BASE}/noteUpload`,
                 method: "POST",
@@ -73,9 +73,8 @@ const NotesUpload = () =>{
                 data: formData
             });
            // console.log(res);
-            if(res.data)
-            {
-                console.log(res.data);
+            if(res.data) {
+                //console.log(res.data);
                 setData({
                     title: '',
                     author: '',
@@ -87,27 +86,29 @@ const NotesUpload = () =>{
                 setLoad(false);
                 window.alert("Notes uploaded successfully");
             }            
-        }catch(error){
-            
+        }
+        catch(error) {
             setLoad(false);
-            console.log(error.response);
+            //console.log(error.response);
         }   
     }
-    const onSubmit = e =>{
+
+    const onSubmit = e => {
         e.preventDefault();
-        if(data.title !== '' && data.author !== '' && data.teacher !== '' && data.noteFile !== '' && data.sem !== '' && data.subject !== ''){
+        if(data.title !== '' && data.author !== '' && data.teacher !== '' && data.noteFile !== '' && data.sem !== '' && data.subject !== '') {
             setError(0);
             setLoad(true);
             verify();
-        }else{
+        }
+        else {
             setError(1);
-            console.log("error in submit")
+            //console.log("error in submit")
         }
         //console.log("hello in submit");
     }
 
    
-    return(
+    return (
         <>
             <div data-aos="fade-up" className="login-content">
                 <form className="upload">
@@ -116,101 +117,91 @@ const NotesUpload = () =>{
                         <h1>Upload</h1>
                     </div>
 
-                    <div className="set">
-                        
-                    <label className="lab">
-                        <input 
-                            type="text" 
-                            name='title'
-                            value = {data.title}
-                            onChange={handleChange}
-                            required='required'
-                            className="inp" 
-                            placeholder="Note Title"
-                        />
-                    </label>
-                    <label className="lab">
-                        <input 
-                            type="text"  
-                            name='author'
-                            value = {data.author}
-                            onChange={handleChange}
-                            required='required'
-                            className="inp" 
-                            placeholder="Author"
-                        />
-                    </label>
+                    <div className="set">  
+                        <label className="lab">
+                            <input 
+                                type="text" 
+                                name='title'
+                                value = {data.title}
+                                onChange={handleChange}
+                                required='required'
+                                className="inp" 
+                                placeholder="Note Title"
+                            />
+                        </label>
+                        <label className="lab">
+                            <input 
+                                type="text"  
+                                name='author'
+                                value = {data.author}
+                                onChange={handleChange}
+                                required='required'
+                                className="inp" 
+                                placeholder="Author"
+                            />
+                        </label>
                     </div>
                     
                     <div className="set">
-                    <label className="lab">
-                        <input 
-                            type="number"  
-                            name='sem'
-                            value = {data.sem}
-                            onChange={handleChange}
-                            required='required'
-                            className="inp" 
-                            placeholder="Semester"
-                        />
-                    </label>
-                    <label className="lab">
-                        <input 
-                            type="text"  
-                            name='teacher'
-                            value = {data.teacher}
-                            onChange={handleChange}
-                            required='required'
-                            className="inp" 
-                            placeholder="Teacher Name"
-                        />
-                    </label>
+                        <label className="lab">
+                            <input 
+                                type="number"  
+                                name='sem'
+                                value = {data.sem}
+                                onChange={handleChange}
+                                required='required'
+                                className="inp" 
+                                placeholder="Semester"
+                            />
+                        </label>
+                        <label className="lab">
+                            <input 
+                                type="text"  
+                                name='teacher'
+                                value = {data.teacher}
+                                onChange={handleChange}
+                                required='required'
+                                className="inp" 
+                                placeholder="Teacher Name"
+                            />
+                        </label>
                     </div>
                     
                     <div className="set">
-                    <label className="lab">
-                        <input 
-                            type="text"  
-                            name='subject'
-                            value = {data.subject}
-                            onChange={handleChange}
-                            required='required'
-                            className="inp" 
-                            placeholder="Subject"
-                        />
-                    </label>
-                    <label className="lab">
-                        <input 
-                            name= 'image'
-                            type ="file"
-                            onChange ={fileChange}
-                            className='inp'
-                        />
-                    </label>
+                        <label className="lab">
+                            <input 
+                                type="text"  
+                                name='subject'
+                                value = {data.subject}
+                                onChange={handleChange}
+                                required='required'
+                                className="inp" 
+                                placeholder="Subject"
+                            />
+                        </label>
+                        <label className="lab">
+                            <input 
+                                name= 'image'
+                                type ="file"
+                                onChange ={fileChange}
+                                className='inp'
+                            />
+                        </label>
                     </div>
                     
                     <br></br>
                     
-                    {state.isAuth && load &&
-                         
+                    {state.isAuth && load &&    
                             <button className="butt" type="submit"  ><i class="icon ion-md-lock"></i> Uploading</button>
-                        
                     } 
                     {state.isAuth && !load &&
-                         
                          <button className="butt" type="submit" onClick={onSubmit} ><i class="icon ion-md-lock"></i> Upload</button>
-                     
-                 }  
+                    }  
                     {!state.isAuth &&
-                        <Link to='/login' > <button className="butt" type="submit"><i class="icon ion-md-lock"></i>Login to Upload</button> </Link>
-                    
+                        <Link to='/login' > <button className="butt" type="submit"><i class="icon ion-md-lock"></i>Login to Upload</button> </Link>                 
                     }
 
-                    
-                    
-                    
-                    
-                    </form>
+                </form>
                 
             </div>
 

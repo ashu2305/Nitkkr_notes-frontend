@@ -12,36 +12,33 @@ const NavBar = () => {
     return(
         
         <>
-        <Navbar sticky="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
-        <Navbar.Brand href="/" className='Nav-head'>Notes ki Dukaan</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <div className = 'Nav-item-br'><Nav.Item><Link className='Nav-a' to = '/'>Home</Link></Nav.Item></div>
-            
-            
+          <Navbar sticky="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
+            <Navbar.Brand href="/" className='Nav-head'>Notes ki Dukaan</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <div className = 'Nav-item-br'><Nav.Item><Link className='Nav-a' to = '/'>Home</Link></Nav.Item></div>    
                 <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/notesUpload'>Upload Notes</Link></Nav.Item></div>    
-            
-            <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
-          </Nav>
-          <Nav>
-            {state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/profile'>Profile</Link></Nav.Item></div>
-            }
-            {state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/logout'>Logout</Link></Nav.Item></div>
-            }
-            
-            {!state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/login'>Login</Link></Nav.Item></div>
-            }
-            {!state.isAuth && 
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/signup'>SignUp</Link></Nav.Item></div>      
-            }
-          
-          </Nav>
-        </Navbar.Collapse>
-        </Navbar>
+                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
+              </Nav>
+              <Nav>
+                {state.isAuth && 
+                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/profile'>Profile</Link></Nav.Item></div>
+                }
+                {state.isAuth && 
+                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/logout'>Logout</Link></Nav.Item></div>
+                }
+        
+                {!state.isAuth && 
+                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/login'>Login</Link></Nav.Item></div>
+                }
+                {!state.isAuth && 
+                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/signup'>SignUp</Link></Nav.Item></div>      
+                }
+              
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </>
     );
 }

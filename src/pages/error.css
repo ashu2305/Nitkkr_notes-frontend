@@ -22,6 +22,7 @@
   width: 100%;
   margin: 0 auto;
 }
+
 .errorbody > * {
   display: -webkit-box;
   display: flex;
@@ -44,6 +45,7 @@
   background-repeat: no-repeat;
   background-size: 25px 100%;
 }
+
 .erroraside img {
   display: block;
   height: auto;
@@ -53,19 +55,23 @@
 .errormain {
   text-align: center;
 }
+
 .errormain h1 {
   font-family: "Fontdiner Swanky", cursive;
   font-size: 4rem;
   color: #c5dc50;
   margin-bottom: 1rem;
 }
+
 .errormain p {
   margin-bottom: 2.5rem;
 }
+
 .errormain p em {
   font-style: italic;
   color: #c5dc50;
 }
+
 .errormain button {
   font-family: "Fontdiner Swanky", cursive;
   font-size: 1rem;
@@ -79,6 +85,7 @@
   transition: all 0.1s ease;
   cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4424790/cursors-eye.png"), auto;
 }
+
 .errormain button:hover {
   background-color: #c5dc50;
   -webkit-transform: scale(1.15);
@@ -96,6 +103,7 @@
     -webkit-box-direction: normal;
             flex-flow: column;
   }
+
   .errorbody > * {
     max-width: 700px;
     height: 100%;
@@ -105,6 +113,7 @@
     background-image: none;
     background-color: white;
   }
+  
   .erroraside img {
     max-width: 300px;
   }

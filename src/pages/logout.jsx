@@ -12,6 +12,7 @@ const Logout = () => {
             });
         }    
     });
+    
     return <Redirect to='/login' />;
 }
 

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-/* ------------------------------------------------------ */
 .homeanim {
   margin:0 auto;
   padding:0;
@@ -12,7 +11,7 @@
 }
 
 /* -----------------------
-animation circle 回る玉 ~4s
+    animation circle
 ----------------------- */
 .circle {
   position: absolute;
@@ -84,7 +83,7 @@ animation circle 回る玉 ~4s
 }
 
 /* -----------------------
-animation big 広がる玉 4s~5.6s
+    animation big 
 ----------------------- */
 .big {
   position: absolute;
@@ -113,7 +112,7 @@ animation big 広がる玉 4s~5.6s
 }
 
 /* -----------------------
-animation tri 突き上げる三角 ~5.9s
+    animation triangle
 ----------------------- */
 .tri {
   position: absolute;
@@ -132,7 +131,7 @@ animation tri 突き上げる三角 ~5.9s
 }
 
 /* -----------------------
-animation squ 現れる四角 7.3s
+    animation square
 ----------------------- */
 .squ {
   position: absolute;
@@ -181,7 +180,7 @@ animation squ 現れる四角 7.3s
 }
 
 /* -----------------------
-animation end  
+    animation end  
 ----------------------- */
 .end {
   position: relative;

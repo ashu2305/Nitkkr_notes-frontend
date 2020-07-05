@@ -64,8 +64,8 @@ const Home = () => {
                     <section data-aos="fade-down" id="how-it-works" class="grow">
                         <h2 class="section__title grow__title">Excel Together</h2>
                         <p>
-                        Start using our college platform for notes, ask questions when you’re stuck and get help from 
-                        your collegues. Get notes fast, no matter your topics and subjects.
+                            Start using our college platform for notes, ask questions when you’re stuck and get help from 
+                            your collegues. Get notes fast, no matter your topics and subjects.
                         </p>
                         <svg width="174" height="341" viewBox="0 0 174 341" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <use xlinkHref={`#grow-illustration`}></use>
@@ -77,11 +77,11 @@ const Home = () => {
                     <div data-aos="fade-right" class="arrow-1"></div>
                     <section data-aos="fade-down" class="get-feedback">
                         <h2 class="section__title get-feedback__title">
-                        Get quality study material
+                            Get quality study material
                         </h2>
                         <p>
-                        We are here for you. Get the tools and resources you need, and find
-                        links with people that have the same goal as you.
+                            We are here for you. Get the tools and resources you need, and find
+                            links with people that have the same goal as you.
                         </p>
                         <svg width="519" height="366" viewBox="0 0 519 366" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <use xlinkHref={`#feedback`}></use>
@@ -90,11 +90,11 @@ const Home = () => {
                     <div data-aos="fade-left" class="arrow-2"></div>
                     <section data-aos="fade-down" class="learning">
                         <h2 class="section__title learning__title">
-                        Start using immediately
+                            Start using immediately
                         </h2>
                         <p>
-                        It takes no time to start learning with us, This means, once you sign up for an account, you can start
-                        learning immediately and get access to our content and resources.
+                            It takes no time to start learning with us, This means, once you sign up for an account, you can start
+                            learning immediately and get access to our content and resources.
                         </p>
                         <svg width="598" height="323" viewBox="0 0 598 323" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <use xlinkHref={`#learning`}></use>

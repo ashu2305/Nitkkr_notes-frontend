@@ -242,12 +242,12 @@ h1.second-name {
 }
 
 @keyframes loadProfile {
- from{
+  from{
     transform: translateY(100px);
     opacity: 0;
   }
- to {
-     transform: translateY(0px);
+  to {
+    transform: translateY(0px);
     opacity: 1;
   }
 }
@@ -257,19 +257,19 @@ h1.second-name {
     transform: translateY(50px);
     opacity: 0;
   }
- to {
-     transform: translateY(0px);
+  to {
+    transform: translateY(0px);
     opacity: 1;
   }
 }
 
 @keyframes titleEffect {
  from {
-   opacity:0;
-     transform: translateX(-75px);
+    opacity:0;
+    transform: translateX(-75px);
   }
   to {
-     transform: translateX(0px);
+    transform: translateX(0px);
     opacity: 1;
   }
 }
