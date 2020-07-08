@@ -28,7 +28,7 @@
   clear: both;
 }
 .App{
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .note-card-container {
