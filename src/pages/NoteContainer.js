@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import {Link} from 'react-router-dom';
 import NoteList from './NoteList'
 import NoteViewer from './NoteViewer'
@@ -12,6 +12,7 @@ class NoteContainer extends Component {
     isNoteViewOn: false,
     sortValue: 'Name',
     inputValue: '',
+    showScroll: false
   }
  
   componentDidMount(){
@@ -28,6 +29,8 @@ class NoteContainer extends Component {
         notes: notesData
       })
     })
+
+    window.addEventListener('scroll', this.checkScrollTop);
   }
 
   noteFilterOnChange = (event) => {
@@ -134,6 +137,23 @@ class NoteContainer extends Component {
       isNoteViewOn: false
     })
   }
+  
+    checkScrollTop = () => {    
+    if (!this.state.showScroll && window.pageYOffset > 200){
+      this.setState({
+        showScroll:true
+      })  
+    } else if (this.state.showScroll && window.pageYOffset <= 200){
+      this.setState({
+        showScroll:false
+      })    
+    }  
+    };
+    
+
+    scrollTop = () =>{
+        window.scrollTo({top: 0, behavior: 'smooth'});
+     };
 
   render() {
     const type = this.state.sortValue.toLowerCase();
@@ -171,7 +191,8 @@ class NoteContainer extends Component {
   
     return (
       <div className="note-container">
-        <Link to='/' className="scrolltopbtn">Top</Link>
+        <div onClick={this.scrollTop} className="scrolltopbtn" style={{ display: this.state.showScroll ? 'flex' : 'none'}}>Top</div>
+            
         <br></br>
         {!this.state.isNoteViewOn &&
         <>
