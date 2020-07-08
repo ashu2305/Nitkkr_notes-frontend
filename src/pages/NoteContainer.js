@@ -204,7 +204,7 @@ class NoteContainer extends Component {
             <option value="Name">Name</option>
             <option value="Author">Author</option>
             <option value="Teacher">Teacher</option>
-            <option value="Name">Semester</option>
+            <option value="Semester">Semester</option>
             </select>
           </div>
           </>
