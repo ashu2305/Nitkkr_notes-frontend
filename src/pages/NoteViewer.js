@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import NoteCard from './NoteCard'
 import { Button } from 'react-bootstrap'
 
@@ -20,14 +20,16 @@ import Store from '../store/store';
 
 const NoteViewer = (props) => {
   const {state} = useContext(Store);
-  const [data, setData] = useState({
-    noteId: ''
-  });
+  
   const [comments, setComments] = useState([]);
 
   const [postComment, setpostComment] = useState('');
 
   const[load, setLoad] = useState(false);
+
+  const [deleted, setDeleted] = useState(false);
+
+  const [show, setShow] = useState(false);
 
   const { noteId} = props.note
 
@@ -39,6 +41,18 @@ const NoteViewer = (props) => {
   dayjs.extend(relativeTime);
 
   useEffect(() => {
+    const currentTime = new Date().getTime();
+    const createdTime = Date.parse(props.note.createdAt);
+
+    const time = currentTime - createdTime;
+    let hours = Math.floor(time/3600000);
+    console.log(hours);
+    if(hours){
+      setShow(false);
+    }else{
+      setShow(true);
+    }
+
     const getComment = async () => {
       const data = {
         noteId : noteId
@@ -100,7 +114,42 @@ const NoteViewer = (props) => {
       //console.log("error");
     }
   }
+  const deletenote = async() =>{
+    const deleteData = {
+      noteId: props.note.noteId
+    }
+    try{
+      const res = await axios({
+        url: `${config.BASE}/deleteNote`,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.FBIdToken}`
+        },
+        data: deleteData
+      });
+  
+      if(res.data) {
+        //console.log(res.data);
+        setDeleted(true);
+      }
+    }
+    catch(error) {
+      //setLoad(false);
+        console.log(error);
+    }
+  }
+  if(deleted){
+    return <Redirect to='/' />
+  }
 
+
+
+  const deleteNote = e =>{
+    e.preventDefault();
+    deletenote();
+  }
+
+  //console.log(props);
   return(
     <>
       <div >
@@ -115,6 +164,12 @@ const NoteViewer = (props) => {
           }
           
           {"  "}<Button variant="primary" size="lg" onClick={props.handleNoteGoBack}>Back</Button>{' '}
+        </div>
+        <br/>
+        <div className="note-view-button">
+          {state.user === props.note.name && show && 
+            <Button variant="primary" size="lg" onClick={deleteNote} >Delete</Button>
+          }
         </div>
       </div>
 

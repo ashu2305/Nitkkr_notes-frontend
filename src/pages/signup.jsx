@@ -15,7 +15,7 @@ import Wavebg from '../images/wave.png';
 import './pages.css';
 
 const Signup = () => {
-    const{ state, dispatch } = useContext(Store);
+    const{ state } = useContext(Store);
     const [data, setData] = useState({
         emailId: '',
         password: '',

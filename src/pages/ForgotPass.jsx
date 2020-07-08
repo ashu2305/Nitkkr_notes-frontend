@@ -316,7 +316,7 @@ const ForgotPass = () => {
                 {firstVerify && secondVerify &&
                     <div className="login-content">
                         <form >
-                            <img src={Avatar}></img>
+                            <img src={Avatar} alt = "avatar"></img>
                             <h3 className="title">Change Password</h3>
                             <br></br>
                             <div className="input-div pass focus">

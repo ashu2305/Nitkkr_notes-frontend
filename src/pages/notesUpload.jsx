@@ -112,7 +112,7 @@ const NotesUpload = () => {
         <>
             <div data-aos="fade-up" className="login-content">
                 <form className="upload">
-                    <img src={Avatar}></img>
+                    <img src={Avatar} alt="avatar"></img>
                     <div class="segment">
                         <h1>Upload</h1>
                     </div>

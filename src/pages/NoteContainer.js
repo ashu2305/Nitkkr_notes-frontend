@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import NoteList from './NoteList'
 import NoteViewer from './NoteViewer'
 
@@ -170,7 +171,7 @@ class NoteContainer extends Component {
   
     return (
       <div className="note-container">
-        <a href='#' className="scrolltopbtn">Top</a>
+        <Link to='/' className="scrolltopbtn">Top</Link>
         <br></br>
         {!this.state.isNoteViewOn &&
         <>

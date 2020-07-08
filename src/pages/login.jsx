@@ -96,14 +96,14 @@ const Login = () => {
 
     return (
         <>
-            <img className="wave" src={Wavebg}></img>
+            <img className="wave" alt="backdrop" src={Wavebg}></img>
             <div className="container_login">
                 <div className="img">
-                    <img src={LoginMobile}></img>
+                    <img src={LoginMobile} alt="login"></img>
                 </div>
                 <div className="login-content">
                     <form >
-                        <img src={Avatar}></img>
+                        <img src={Avatar} alt="avatar"></img>
                         <h2 className="title">Welcome</h2>
                         <div className="input-div one focus">
                             <div className="i">

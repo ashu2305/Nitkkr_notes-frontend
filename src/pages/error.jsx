@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom';
 
-import Store from '../store/store';
 import '../pages/error.css';
 
 const Error = () => {
@@ -9,7 +8,7 @@ const Error = () => {
     return(
         <>
             <div className="errorbody">
-                <aside className="erroraside"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4424790/Mirror.png" alt="404 Image" /></aside>
+                <aside className="erroraside"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4424790/Mirror.png" alt="404" /></aside>
                 <main className="errormain">
                     <h1>Sorry!</h1>
                     <p>
