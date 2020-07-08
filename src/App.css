@@ -27,6 +27,9 @@
 .clear {
   clear: both;
 }
+.App{
+  overflow: hidden;
+}
 
 .note-card-container {
   width: 40vw;

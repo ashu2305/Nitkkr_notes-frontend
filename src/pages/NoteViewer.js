@@ -72,7 +72,7 @@ const NoteViewer = (props) => {
     };
     getComment();
   }, []);
-
+  console.log(state.user);
   const post = async() => {
     const postData = {
       body: postComment,
