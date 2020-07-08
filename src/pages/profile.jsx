@@ -116,7 +116,7 @@ const Profile = () => {
                                 <p>Hello {user.username}, how are you doing during quarantine ? Dear, user your <b>Email address </b> is <b>{user.email_id}</b> </p>
                                 <p>you are an eminent student of <b>College: {user.college} </b></p>
                                 <p>your specialization is in <b>{user.branch} </b> branch </p>
-                                <p>you are currently in {user.semester==='1' && <b>1st </b>}{user.semester==='2' && <b>2nd </b>}{user.semester!=='1' && user.semester!=='2' && <b>{user.semester}th</b>} semester at {user.college}. You are our consistent user since <b>25 June</b> </p>
+                                <p>you are currently in {user.semester==='1' && <b>1st </b>}{user.semester==='2' && <b>2nd </b>}{user.semester==='3' && <b>3rd </b>}{user.semester!=='1' && user.semester!=='2' && user.semester!=='3' && <b>{user.semester}th</b>} semester at {user.college}. You are our consistent user since <b>25 June</b> </p>
                             </div>
                             <div>
                                 <Button variant="primary" onClick={handleShow}>
