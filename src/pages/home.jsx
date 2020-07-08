@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useState,  useEffect } from 'react'
 import {Link} from 'react-router-dom';
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -13,7 +13,19 @@ import Gh from '../images/github-icon.svg'
 import './homeMain.css' 
 
 const Home = () => {
+    const [showScroll, setShowScroll] = useState(false)
+    const checkScrollTop = () => {    
+    if (!showScroll && window.pageYOffset > 200){
+        setShowScroll(true)    
+    } else if (showScroll && window.pageYOffset <= 200){
+        setShowScroll(false)    
+    }  
+    };
+    window.addEventListener('scroll', checkScrollTop)
 
+    const scrollTop = () =>{
+        window.scrollTo({top: 0, behavior: 'smooth'});
+     };
     useEffect(() => {
         Aos.init({ duration: 2000 });
     },[]);
@@ -21,7 +33,7 @@ const Home = () => {
     return(
         <>
             <div className="body">
-            <Link to='/' className="scrolltopbtn">Top</Link>
+            <div onClick={scrollTop} className="scrolltopbtn" style={{ display: showScroll ? 'flex' : 'none'}}>Top</div>
                 <main>
                     <section data-aos="fade-right" class="intro">
                         <h1 class="intro__title">

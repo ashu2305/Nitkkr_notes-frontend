@@ -47,7 +47,8 @@ const Login = () => {
                 localStorage.setItem('FBIdToken', `${res.data.token}`);
                 dispatch({
                     type: 'ONBOARD',
-                    payload: res.data.token
+                    payload: data.username,
+                    tokenPay: res.data.token
                 });
             }            
         }

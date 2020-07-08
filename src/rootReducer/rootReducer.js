@@ -1,17 +1,18 @@
 export default function rootReducer(state, action) {
     const {
         type,
-        payload
+        payload,
+        tokenPay
     } = action;
 
     switch (type) {
         case 'LOGIN':
         case 'ONBOARD':
-            localStorage.setItem('FBIdToken',  `${payload}`);
+            localStorage.setItem('FBIdToken',  `${tokenPay}`);
 
             return {
                 ...state,
-                token: payload,
+                user: payload,
                     isAuth: true
             }
         case 'LOGOUT':
