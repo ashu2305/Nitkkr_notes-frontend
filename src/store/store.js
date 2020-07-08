@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import jwt from 'jsonwebtoken';
 
 const ltoken = (localStorage.getItem('FBIdToken') !== null)?true:false ;
-var decode;
+var decode = null;
 if(ltoken){
     const token = localStorage.FBIdToken;
     decode = jwt.verify(token,'notes were very important');
