@@ -12,7 +12,7 @@ const NavBar = () => {
     return(
         
         <>
-          <Navbar sticky="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
+          <Navbar fixed="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
             <Navbar.Brand href="/" className='Nav-head'>Notes Club</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
