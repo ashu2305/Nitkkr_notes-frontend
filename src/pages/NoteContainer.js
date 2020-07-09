@@ -206,7 +206,7 @@ class NoteContainer extends Component {
     else if(type === 'subject'){
       filteredNotes = 
       this.state.notes.filter(note => {
-      return note.subject.toLowerCase().includes(this.state.inputValue)
+      return note.subject.toLowerCase().includes(this.state.inputValue.toLowerCase())
       })
     }
   
