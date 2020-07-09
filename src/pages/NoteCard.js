@@ -16,8 +16,8 @@ const NoteCard = (props) => {
         <div className="note-card" >
             <h1><b>Title : </b>{title} </h1>
             <h3><b>Subject : </b>{subject} </h3>
-            <p><b>Name : </b>{name} </p>
-            <p><b>Author : </b> {author}</p>
+            <p><b>Uploaded by : </b>{name} </p>
+            <p><b>Writer : </b> {author}</p>
             <p><b>Semester : </b> {sem}</p>
             <p><b>Teacher Name : </b> {teacher}</p>
             <p><b>Upload : </b> {dayjs(`${createdAt}`).fromNow()}</p>

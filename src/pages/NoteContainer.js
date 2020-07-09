@@ -118,10 +118,25 @@ class NoteContainer extends Component {
         }
       })
     }
+    else if(this.state.sortValue === "Subject") {
+      //console.log(notes);
+      return [...notes].sort((a,b) => {
+        if(a.subject > b.subject) {
+          return 1
+        }
+        else if (a.subject < b.subject) {
+          return -1
+        }
+        else {
+          return 0
+        }
+      })
+    }
     else {
       return notes
     }
   }
+  
 
   handleNoteView = (noteItem) => {
     //console.log("click", noteItem)
@@ -188,6 +203,12 @@ class NoteContainer extends Component {
       return note.sem.toLowerCase().includes(this.state.inputValue)
       })
     }
+    else if(type === 'subject'){
+      filteredNotes = 
+      this.state.notes.filter(note => {
+      return note.subject.toLowerCase().includes(this.state.inputValue)
+      })
+    }
   
     return (
       <div className="note-container">
@@ -201,8 +222,9 @@ class NoteContainer extends Component {
             <select  name="sortValue" onChange={this.handleSortNotes}>
             <option value="Name">All</option>
             <option value="Title">Title</option>
+            <option value="Subject">Subject</option>
             <option value="Name">Name</option>
-            <option value="Author">Author</option>
+            <option value="Author">Writer</option>
             <option value="Teacher">Teacher</option>
             <option value="Semester">Semester</option>
             </select>

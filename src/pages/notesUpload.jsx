@@ -137,7 +137,7 @@ const NotesUpload = () => {
                                 onChange={handleChange}
                                 required='required'
                                 className="inp" 
-                                placeholder="Author"
+                                placeholder="Writer"
                             />
                         </label>
                     </div>

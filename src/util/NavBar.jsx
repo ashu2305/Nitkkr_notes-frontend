@@ -13,7 +13,7 @@ const NavBar = () => {
         
         <>
           <Navbar sticky="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
-            <Navbar.Brand href="/" className='Nav-head'>Notes ki Dukaan</Navbar.Brand>
+            <Navbar.Brand href="/" className='Nav-head'>Notes Club</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">

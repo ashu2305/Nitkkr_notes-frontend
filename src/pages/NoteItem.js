@@ -5,7 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Button } from 'react-bootstrap';
 
 const NoteItem = (props) => {
-     const {name, title, subject, createdAt} = props.note;
+     const {author, title, subject, createdAt} = props.note;
 
      dayjs.extend(relativeTime);
      return (
@@ -18,7 +18,7 @@ const NoteItem = (props) => {
                          <p>{subject} </p>
                     </div>
                     <div className="note-info">
-                         <pre>By  {name} </pre>
+                         <pre>{'     '}By {author} </pre>
                     </div>  
                     <div className="note-time">
                          <pre>{dayjs(`${createdAt}`).fromNow()}</pre>
