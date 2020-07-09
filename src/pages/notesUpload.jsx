@@ -30,9 +30,7 @@ const NotesUpload = () => {
     const [errors, setError] = useState(0); 
     //0 no error
     //1 is empty error
-    //2 unauthorized(username exist but isVerified false)
-    //3 username does not exist
-    //4 Password does not match
+    
 
     useEffect(() => {
         Aos.init({ duration: 2000 });
@@ -89,6 +87,9 @@ const NotesUpload = () => {
         }
         catch(error) {
             setLoad(false);
+            if(error.response.data.erors === "note not uploaded"){
+                window.alert("Note not upload");
+            }
             //console.log(error.response);
         }   
     }
@@ -200,6 +201,10 @@ const NotesUpload = () => {
                     {!state.isAuth &&
                         <Link to='/login' > <button className="butt" type="submit"><i class="icon ion-md-lock"></i>Login to Upload</button> </Link>                 
                     }
+                    <br/>
+                    {errors === 1 && 
+                        <div style={{fontSize : '20px'}}>Fill all credentials</div>
+                    }                    
 
                 </form>
                 
