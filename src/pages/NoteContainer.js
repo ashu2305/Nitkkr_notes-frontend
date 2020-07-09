@@ -217,7 +217,7 @@ class NoteContainer extends Component {
         <br></br>
         {!this.state.isNoteViewOn &&
         <>
-          <label>Filter Notes</label>
+          <label className="labe">Filter Notes</label>
           <div class="box">
             <select  name="sortValue" onChange={this.handleSortNotes}>
             <option value="Name">All</option>

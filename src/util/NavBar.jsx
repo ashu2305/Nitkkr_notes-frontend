@@ -12,28 +12,28 @@ const NavBar = () => {
     return(
         
         <>
-          <Navbar fixed="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
+          <Navbar sticky="top" collapseOnSelect="true" expand="lg" bg="primary" variant="dark">
             <Navbar.Brand href="/" className='Nav-head'>Notes Club</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <div className = 'Nav-item-br'><Nav.Item><Link className='Nav-a' to = '/'>Home</Link></Nav.Item></div>    
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/notesUpload'>Upload Notes</Link></Nav.Item></div>    
-                <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/SearchNotes'>Search Notes</Link></Nav.Item></div>    
+                <div className = 'Nav-item-br'><Nav.Item className='Nav-a'><Nav.Link eventKey="1" as={Link} to="/">Home</Nav.Link></Nav.Item></div>    
+                <div className = 'Nav-item-br'><Nav.Item><Nav.Link eventKey="2" as={Link} to="/notesUpload">Upload Notes</Nav.Link></Nav.Item></div>    
+                <div className = 'Nav-item-br'><Nav.Item><Nav.Link eventKey="3" as={Link} to="/SearchNotes">Search Notes</Nav.Link></Nav.Item></div>    
               </Nav>
               <Nav>
                 {state.isAuth && 
-                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/profile'>Profile</Link></Nav.Item></div>
+                    <div className = 'Nav-item-br'><Nav.Item><Nav.Link eventKey="4" as={Link} to="/profile">Profile</Nav.Link></Nav.Item></div>
                 }
                 {state.isAuth && 
-                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/logout'>Logout</Link></Nav.Item></div>
+                    <div className = 'Nav-item-br'><Nav.Item><Nav.Link eventKey="5" as={Link} to="/logout">Logout</Nav.Link></Nav.Item></div>
                 }
         
                 {!state.isAuth && 
-                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/login'>Login</Link></Nav.Item></div>
+                    <div className = 'Nav-item-br'><Nav.Item><Nav.Link eventKey="6" as={Link} to="/login">Login</Nav.Link></Nav.Item></div>
                 }
                 {!state.isAuth && 
-                    <div className = 'Nav-item-br'><Nav.Item ><Link className='Nav-a' to = '/signup'>SignUp</Link></Nav.Item></div>      
+                    <div className = 'Nav-item-br'><Nav.Item><Nav.Link eventKey="7" as={Link} to="/signup">Sign Up</Nav.Link></Nav.Item></div>      
                 }
               
               </Nav>
