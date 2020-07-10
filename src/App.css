@@ -85,6 +85,7 @@
 }
 
 .note-list { 
+  align-items: center;
   text-align: center;
   padding-left: 40px;
 }
