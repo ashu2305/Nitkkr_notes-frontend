@@ -28,7 +28,7 @@ const Signup = () => {
 
     const [userOTP, setUserOTP] = useState('');
 
-    const [backOTP, setBackOTP] = useState('');
+    //const [backOTP, setBackOTP] = useState('');
 
     const [verified, setVerified] = useState(false);
 
@@ -73,9 +73,12 @@ const Signup = () => {
             if(res.data)
             {
                 //console.log(res.data.otp);
-                setBackOTP(res.data.otp);
-                setFirst(true);
-                setLoad(false);
+                // setBackOTP(res.data.otp);
+                if(res.data.otp === "otp send successfully"){
+                    setFirst(true);
+                    setLoad(false);
+                }
+                
             }            
         }
         catch(error) {
@@ -152,6 +155,7 @@ const Signup = () => {
             }
         }
         catch(error) {
+            window.alert("OTP does not match");
             setFirst(false);
             setLoad(false);
             console.log(error);
@@ -165,13 +169,16 @@ const Signup = () => {
     const submitOTP = (e) => {
         e.preventDefault();
         
-        if(backOTP === userOTP) {
-            setLoad(true);
-            verifyOTP();
-        }
-        else {
-            window.alert("OTP does not match");
-        }
+        // if(backOTP === userOTP) {
+        //     setLoad(true);
+            
+        // }
+        
+        // else {
+        //     window.alert("OTP does not match");
+        // }
+        setLoad(true);
+        verifyOTP();
     }
 
     const resendVerify = async() => {
@@ -189,9 +196,12 @@ const Signup = () => {
             
             if(res.data) {
                 //console.log(res.data.otp);
-                setBackOTP(res.data.otp);
-                setFirst(true);
-                setLoad(false);
+                // setBackOTP(res.data.otp);
+                
+                if(res.data.otp === "otp send successfully"){
+                    setFirst(true);
+                    setLoad(false);
+                }
             }            
         }
         catch(error) {
