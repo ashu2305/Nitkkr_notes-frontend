@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react'
 import {Link} from 'react-router-dom';
 import NoteList from './NoteList'
 import NoteViewer from './NoteViewer'
+import config from '../config.json';
 
 import './notesSearch.css';
 
@@ -21,7 +22,7 @@ class NoteContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     };
 
-    fetch('https://us-central1-nitkkrnotes-3130a.cloudfunctions.net/api/getNotes',requestOptions)
+    fetch(`${config.BASE}/getNotes`,requestOptions)
     .then(res => res.json())
     .then(notesData => {
       //  console.log(notesData)

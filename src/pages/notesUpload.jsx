@@ -204,7 +204,12 @@ const NotesUpload = () => {
                     <br/>
                     {errors === 1 && 
                         <div style={{fontSize : '20px'}}>Fill all credentials</div>
-                    }                    
+                    }  
+
+                    <br></br>
+
+                    <p>* Maximum file size which you can upload must be less than 10 MB.</p>
+                    <p>* Only .pdf, .docx, .ppt, .pptx files are acceptable for upload.</p>                  
 
                 </form>
                 
