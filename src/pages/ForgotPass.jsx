@@ -33,7 +33,7 @@ const ForgotPass = () => {
 
     const [userOTP, setUserOTP] = useState('');
 
-    const [backOTP, setBackOTP] = useState('');
+    //const [backOTP, setBackOTP] = useState('');
 
     const [verified, setVerified] = useState(false);
 

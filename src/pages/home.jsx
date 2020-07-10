@@ -1,4 +1,4 @@
-import React, {useState,  useEffect } from 'react'
+import React, {useState,  useEffect, useContext } from 'react'
 import {Link} from 'react-router-dom';
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -10,9 +10,11 @@ import Fb from '../images/fb-icon.svg'
 import Gh from '../images/github-icon.svg'
 
 // import './home.css'
-import './homeMain.css' 
+import './homeMain.css' ;
+import store from '../store/store';
 
 const Home = () => {
+    const {state} = useContext(store); 
     const [showScroll, setShowScroll] = useState(false)
     const checkScrollTop = () => {    
     if (!showScroll && window.pageYOffset > 200){
@@ -35,20 +37,25 @@ const Home = () => {
             <div className="body">
             <div onClick={scrollTop} className="scrolltopbtn" style={{ display: showScroll ? 'flex' : 'none'}}>Top</div>
                 <main>
-                    <section data-aos="fade-right" class="intro">
-                        <h1 class="intro__title">
+                    <section data-aos="fade-right" className="intro">
+                        <h1 className="intro__title">
                             Get Notes 
                         </h1>
-                        <p class="intro__subtitle">
-                            Visiting places in the world, getting a new note, or just looking for a way to find your required study material - this is
+                        <p className="intro__subtitle">
+                            Visiting places in the world, searching for new notes, or just looking for a way to find your required study material - this is
                             the perfect place for you.
                         </p>
-                        <Link to='/login' class="button">Get Started</Link>
-                        <img data-aos="fade-left" class="intro__illustration" src="https://res.cloudinary.com/alexandracaulea/image/upload/v1583497233/intro-illustration_qneuer.svg" alt="" />
+                        {state.isAuth ? 
+                            <Link to='/SearchNotes' className="button">Get Started</Link>   
+                            :
+                            <Link to='/login' className="button">Get Started</Link>
+                        }
+                        
+                        <img data-aos="fade-left" className="intro__illustration" src="https://res.cloudinary.com/alexandracaulea/image/upload/v1583497233/intro-illustration_qneuer.svg" alt="" />
                     </section>
-                    <section id="features" class="features">
-                        <h2 class="visuallyhidden">Features</h2>
-                        <ul class="features__list">
+                    <section id="features" className="features">
+                        <h2 className="visuallyhidden">Features</h2>
+                        <ul className="features__list">
                             <li data-aos="fade-up-right">
                                 <Link to='/SearchNotes'>
                                     <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -73,22 +80,22 @@ const Home = () => {
                             </li>
                         </ul>
                     </section>
-                    <section data-aos="fade-down" id="how-it-works" class="grow">
-                        <h2 class="section__title grow__title">Excel Together</h2>
+                    <section data-aos="fade-down" id="how-it-works" className="grow">
+                        <h2 className="section__title grow__title">Excel Together</h2>
                         <p>
-                            Start using our college platform for notes, ask questions when you’re stuck and get help from 
-                            your collegues. Get notes fast, no matter your topics and subjects.
+                            Start using our platform for getting educational resources, please leave your useful comment if you have any  
+                            related query or found a mistake. Get notes fast, no matter your topics and subjects.
                         </p>
                         <svg width="174" height="341" viewBox="0 0 174 341" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <use xlinkHref={`#grow-illustration`}></use>
                         </svg>
-                        <svg width="898" height="500" viewBox="0 0 898 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="blob">
+                        <svg width="898" height="500" viewBox="0 0 898 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="blob">
                         <use xlinkHref={`#grow-blob`}></use>
                         </svg>
                     </section>
-                    <div data-aos="fade-right" class="arrow-1"></div>
-                    <section data-aos="fade-down" class="get-feedback">
-                        <h2 class="section__title get-feedback__title">
+                    <div data-aos="fade-right" className="arrow-1"></div>
+                    <section data-aos="fade-down" className="get-feedback">
+                        <h2 className="section__title get-feedback__title">
                             Get quality study material
                         </h2>
                         <p>
@@ -99,9 +106,9 @@ const Home = () => {
                         <use xlinkHref={`#feedback`}></use>
                         </svg>
                     </section>
-                    <div data-aos="fade-left" class="arrow-2"></div>
-                    <section data-aos="fade-down" class="learning">
-                        <h2 class="section__title learning__title">
+                    <div data-aos="fade-left" className="arrow-2"></div>
+                    <section data-aos="fade-down" className="learning">
+                        <h2 className="section__title learning__title">
                             Start using immediately
                         </h2>
                         <p>
@@ -112,14 +119,14 @@ const Home = () => {
                         <use xlinkHref={`#learning`}></use>
                         </svg>
                     </section>
-                    <div id="get-started" class="get-started">
-                        <h2 data-aos="zoom-in" class="intro__title">Developers</h2>
-                         <div data-aos="fade-right" class="dev_container">                            
-                         <div class="dev_card">
-                                <div class="imgBox">
+                    <div id="get-started" className="get-started">
+                        <h2 data-aos="zoom-in" className="intro__title">Developers</h2>
+                         <div data-aos="fade-right" className="dev_container">                            
+                         <div className="dev_card">
+                                <div className="imgBox">
                                     <img width='400'src={devrakshak} alt = "prof-pic" />
                                  </div>
-                                <div class="dev_details">
+                                <div className="dev_details">
                                     <h1>Rakshak Aggarwal</h1>
                                     <br></br>
                                     <h4><b>MERN STACK DEVELOPER</b></h4>
@@ -135,22 +142,22 @@ const Home = () => {
                                     <a style={{ marginLeft: '.8rem' }} href="https://github.com/Rakshak001" rel="noopener noreferrer" target="_blank"><img src={Gh} alt="sm-icon" ></img></a>
                                     <a style={{ marginLeft: '.8rem' }}  href="https://www.instagram.com/rakshak.aggarwal/" rel="noopener noreferrer" target="_blank">
                                         <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.538 4.66203C16.538 5.32484 16.0006 5.86203 15.338 5.86203C14.6753 5.86203 14.138 5.32484 14.138 4.66203C14.138 3.99922 14.6753 3.46203 15.338 3.46203C16.0008 3.46203 16.538 3.99922 16.538 4.66203ZM10 13.3333C8.15906 13.3333 6.66672 11.8409 6.66672 10C6.66672 8.15906 8.15906 6.66672 10 6.66672C11.8409 6.66672 13.3333 8.15906 13.3333 10C13.3333 11.8409 11.8409 13.3333 10 13.3333ZM10 4.86484C7.16391 4.86484 4.86484 7.16391 4.86484 10C4.86484 12.8361 7.16391 15.1352 10 15.1352C12.8361 15.1352 15.1352 12.8361 15.1352 10C15.1352 7.16391 12.8361 4.86484 10 4.86484ZM10 1.80187C12.6702 1.80187 12.9864 1.81203 14.0408 1.86016C15.0158 1.90469 15.5453 2.0675 15.8977 2.20453C16.3644 2.38594 16.6975 2.60266 17.0475 2.95266C17.3975 3.3025 17.6142 3.63563 17.7956 4.1025C17.9325 4.45484 18.0955 4.98437 18.14 5.95937C18.1881 7.01391 18.1983 7.33016 18.1983 10.0003C18.1983 12.6705 18.1881 12.9867 18.14 14.0411C18.0955 15.0161 17.9327 15.5456 17.7956 15.898C17.6142 16.3647 17.3975 16.6978 17.0475 17.0478C16.6977 17.3978 16.3645 17.6145 15.8977 17.7959C15.5453 17.9328 15.0158 18.0958 14.0408 18.1403C12.9864 18.1884 12.6702 18.1986 10 18.1986C7.32969 18.1986 7.01344 18.1884 5.95906 18.1403C4.98406 18.0958 4.45453 17.933 4.10219 17.7959C3.63547 17.6145 3.30234 17.3978 2.95234 17.0478C2.6025 16.698 2.38563 16.3648 2.20422 15.898C2.06734 15.5456 1.90437 15.0161 1.85984 14.0411C1.81172 12.9866 1.80156 12.6703 1.80156 10.0003C1.80156 7.33016 1.81172 7.01391 1.85984 5.95937C1.90437 4.98437 2.06719 4.45484 2.20422 4.1025C2.38563 3.63578 2.60234 3.30266 2.95234 2.95266C3.30219 2.60266 3.63531 2.38594 4.10219 2.20453C4.45453 2.06766 4.98406 1.90469 5.95906 1.86016C7.01359 1.81203 7.32984 1.80187 10 1.80187ZM10 0C7.28422 0 6.94359 0.0115625 5.87703 0.0601562C4.81266 0.10875 4.08562 0.277812 3.44969 0.525C2.79203 0.780469 2.23437 1.1225 1.67844 1.67844C1.1225 2.23437 0.780469 2.79203 0.525 3.44969C0.277812 4.08578 0.10875 4.81266 0.0601562 5.87703C0.0115625 6.94359 0 7.28422 0 10C0 12.7158 0.0115625 13.0564 0.0601562 14.123C0.10875 15.1873 0.277812 15.9142 0.525 16.5503C0.780469 17.208 1.1225 17.7656 1.67844 18.3216C2.23437 18.8775 2.79203 19.2194 3.44969 19.475C4.08578 19.7222 4.81266 19.8912 5.87703 19.9398C6.94359 19.9884 7.28422 20 10 20C12.7158 20 13.0564 19.9884 14.123 19.9398C15.1873 19.8912 15.9142 19.7222 16.5503 19.475C17.208 19.2194 17.7656 18.8775 18.3216 18.3216C18.8775 17.7656 19.2194 17.208 19.475 16.5503C19.7222 15.9142 19.8912 15.1873 19.9398 14.123C19.9884 13.0564 20 12.7158 20 10C20 7.28422 19.9884 6.94359 19.9398 5.87703C19.8912 4.81266 19.7222 4.08578 19.475 3.44969C19.2194 2.79203 18.8775 2.23437 18.3216 1.67844C17.7656 1.1225 17.208 0.780625 16.5503 0.525C15.9142 0.277812 15.1873 0.10875 14.123 0.0601562C13.0564 0.0115625 12.7158 0 10 0Z" fill="url(#paint0_radial)" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M16.538 4.66203C16.538 5.32484 16.0006 5.86203 15.338 5.86203C14.6753 5.86203 14.138 5.32484 14.138 4.66203C14.138 3.99922 14.6753 3.46203 15.338 3.46203C16.0008 3.46203 16.538 3.99922 16.538 4.66203ZM10 13.3333C8.15906 13.3333 6.66672 11.8409 6.66672 10C6.66672 8.15906 8.15906 6.66672 10 6.66672C11.8409 6.66672 13.3333 8.15906 13.3333 10C13.3333 11.8409 11.8409 13.3333 10 13.3333ZM10 4.86484C7.16391 4.86484 4.86484 7.16391 4.86484 10C4.86484 12.8361 7.16391 15.1352 10 15.1352C12.8361 15.1352 15.1352 12.8361 15.1352 10C15.1352 7.16391 12.8361 4.86484 10 4.86484ZM10 1.80187C12.6702 1.80187 12.9864 1.81203 14.0408 1.86016C15.0158 1.90469 15.5453 2.0675 15.8977 2.20453C16.3644 2.38594 16.6975 2.60266 17.0475 2.95266C17.3975 3.3025 17.6142 3.63563 17.7956 4.1025C17.9325 4.45484 18.0955 4.98437 18.14 5.95937C18.1881 7.01391 18.1983 7.33016 18.1983 10.0003C18.1983 12.6705 18.1881 12.9867 18.14 14.0411C18.0955 15.0161 17.9327 15.5456 17.7956 15.898C17.6142 16.3647 17.3975 16.6978 17.0475 17.0478C16.6977 17.3978 16.3645 17.6145 15.8977 17.7959C15.5453 17.9328 15.0158 18.0958 14.0408 18.1403C12.9864 18.1884 12.6702 18.1986 10 18.1986C7.32969 18.1986 7.01344 18.1884 5.95906 18.1403C4.98406 18.0958 4.45453 17.933 4.10219 17.7959C3.63547 17.6145 3.30234 17.3978 2.95234 17.0478C2.6025 16.698 2.38563 16.3648 2.20422 15.898C2.06734 15.5456 1.90437 15.0161 1.85984 14.0411C1.81172 12.9866 1.80156 12.6703 1.80156 10.0003C1.80156 7.33016 1.81172 7.01391 1.85984 5.95937C1.90437 4.98437 2.06719 4.45484 2.20422 4.1025C2.38563 3.63578 2.60234 3.30266 2.95234 2.95266C3.30219 2.60266 3.63531 2.38594 4.10219 2.20453C4.45453 2.06766 4.98406 1.90469 5.95906 1.86016C7.01359 1.81203 7.32984 1.80187 10 1.80187ZM10 0C7.28422 0 6.94359 0.0115625 5.87703 0.0601562C4.81266 0.10875 4.08562 0.277812 3.44969 0.525C2.79203 0.780469 2.23437 1.1225 1.67844 1.67844C1.1225 2.23437 0.780469 2.79203 0.525 3.44969C0.277812 4.08578 0.10875 4.81266 0.0601562 5.87703C0.0115625 6.94359 0 7.28422 0 10C0 12.7158 0.0115625 13.0564 0.0601562 14.123C0.10875 15.1873 0.277812 15.9142 0.525 16.5503C0.780469 17.208 1.1225 17.7656 1.67844 18.3216C2.23437 18.8775 2.79203 19.2194 3.44969 19.475C4.08578 19.7222 4.81266 19.8912 5.87703 19.9398C6.94359 19.9884 7.28422 20 10 20C12.7158 20 13.0564 19.9884 14.123 19.9398C15.1873 19.8912 15.9142 19.7222 16.5503 19.475C17.208 19.2194 17.7656 18.8775 18.3216 18.3216C18.8775 17.7656 19.2194 17.208 19.475 16.5503C19.7222 15.9142 19.8912 15.1873 19.9398 14.123C19.9884 13.0564 20 12.7158 20 10C20 7.28422 19.9884 6.94359 19.9398 5.87703C19.8912 4.81266 19.7222 4.08578 19.475 3.44969C19.2194 2.79203 18.8775 2.23437 18.3216 1.67844C17.7656 1.1225 17.208 0.780625 16.5503 0.525C15.9142 0.277812 15.1873 0.10875 14.123 0.0601562C13.0564 0.0115625 12.7158 0 10 0Z" fill="url(#paint0_radial)" />
                                             <defs>
                                                 <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.98611 20.0694) scale(25.555)">
-                                                    <stop offset="0" stop-color="#FFB140" />
-                                                    <stop offset="0.2559" stop-color="#FF5445" />
-                                                    <stop offset="0.599" stop-color="#FC2B82" />
-                                                    <stop offset="1" stop-color="#8E40B7" />
+                                                    <stop offset="0" stopColor="#FFB140" />
+                                                    <stop offset="0.2559" stopColor="#FF5445" />
+                                                    <stop offset="0.599" stopColor="#FC2B82" />
+                                                    <stop offset="1" stopColor="#8E40B7" />
                                                 </radialGradient>
                                             </defs>
                                         </svg>
-                                        <span class="visuallyhidden">Instagram</span>
+                                        <span className="visuallyhidden">Instagram</span>
                                     </a>
                                     <a style={{ marginLeft: '.8rem' }}  href="https://twitter.com/Rakshak77734770" rel="noopener noreferrer" target="_blank"><svg width="20" height="16" viewBox="0 0 20 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                                         <use xlinkHref={`#twitter-icon`}></use>
                                         </svg>
-                                        <span class="visuallyhidden">Twitter</span>
+                                        <span className="visuallyhidden">Twitter</span>
                                     </a>
                                     <br></br>
                                     <br></br>
@@ -161,11 +168,11 @@ const Home = () => {
 
                             </div>
                             
-                            <div class="dev_card">
-                                <div class="imgBox">
+                            <div className="dev_card">
+                                <div className="imgBox">
                                     <img width='400'src={devaayush} alt="prof-pic" />
                                  </div>
-                                <div class="dev_details">
+                                <div className="dev_details">
                                     <h1>Aayush Gupta</h1>
                                     <br></br>
                                     <h4><b>MERN STACK DEVELOPER</b></h4>
@@ -181,22 +188,22 @@ const Home = () => {
                                     <a style={{ marginLeft: '.8rem' }} href="https://github.com/ashu2305" rel="noopener noreferrer" target="_blank"><img src={Gh} alt="sm-icon" ></img></a>
                                     <a style={{ marginLeft: '.8rem' }}  href="https://www.instagram.com/ashu_2305_/" rel="noopener noreferrer" target="_blank">
                                         <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.538 4.66203C16.538 5.32484 16.0006 5.86203 15.338 5.86203C14.6753 5.86203 14.138 5.32484 14.138 4.66203C14.138 3.99922 14.6753 3.46203 15.338 3.46203C16.0008 3.46203 16.538 3.99922 16.538 4.66203ZM10 13.3333C8.15906 13.3333 6.66672 11.8409 6.66672 10C6.66672 8.15906 8.15906 6.66672 10 6.66672C11.8409 6.66672 13.3333 8.15906 13.3333 10C13.3333 11.8409 11.8409 13.3333 10 13.3333ZM10 4.86484C7.16391 4.86484 4.86484 7.16391 4.86484 10C4.86484 12.8361 7.16391 15.1352 10 15.1352C12.8361 15.1352 15.1352 12.8361 15.1352 10C15.1352 7.16391 12.8361 4.86484 10 4.86484ZM10 1.80187C12.6702 1.80187 12.9864 1.81203 14.0408 1.86016C15.0158 1.90469 15.5453 2.0675 15.8977 2.20453C16.3644 2.38594 16.6975 2.60266 17.0475 2.95266C17.3975 3.3025 17.6142 3.63563 17.7956 4.1025C17.9325 4.45484 18.0955 4.98437 18.14 5.95937C18.1881 7.01391 18.1983 7.33016 18.1983 10.0003C18.1983 12.6705 18.1881 12.9867 18.14 14.0411C18.0955 15.0161 17.9327 15.5456 17.7956 15.898C17.6142 16.3647 17.3975 16.6978 17.0475 17.0478C16.6977 17.3978 16.3645 17.6145 15.8977 17.7959C15.5453 17.9328 15.0158 18.0958 14.0408 18.1403C12.9864 18.1884 12.6702 18.1986 10 18.1986C7.32969 18.1986 7.01344 18.1884 5.95906 18.1403C4.98406 18.0958 4.45453 17.933 4.10219 17.7959C3.63547 17.6145 3.30234 17.3978 2.95234 17.0478C2.6025 16.698 2.38563 16.3648 2.20422 15.898C2.06734 15.5456 1.90437 15.0161 1.85984 14.0411C1.81172 12.9866 1.80156 12.6703 1.80156 10.0003C1.80156 7.33016 1.81172 7.01391 1.85984 5.95937C1.90437 4.98437 2.06719 4.45484 2.20422 4.1025C2.38563 3.63578 2.60234 3.30266 2.95234 2.95266C3.30219 2.60266 3.63531 2.38594 4.10219 2.20453C4.45453 2.06766 4.98406 1.90469 5.95906 1.86016C7.01359 1.81203 7.32984 1.80187 10 1.80187ZM10 0C7.28422 0 6.94359 0.0115625 5.87703 0.0601562C4.81266 0.10875 4.08562 0.277812 3.44969 0.525C2.79203 0.780469 2.23437 1.1225 1.67844 1.67844C1.1225 2.23437 0.780469 2.79203 0.525 3.44969C0.277812 4.08578 0.10875 4.81266 0.0601562 5.87703C0.0115625 6.94359 0 7.28422 0 10C0 12.7158 0.0115625 13.0564 0.0601562 14.123C0.10875 15.1873 0.277812 15.9142 0.525 16.5503C0.780469 17.208 1.1225 17.7656 1.67844 18.3216C2.23437 18.8775 2.79203 19.2194 3.44969 19.475C4.08578 19.7222 4.81266 19.8912 5.87703 19.9398C6.94359 19.9884 7.28422 20 10 20C12.7158 20 13.0564 19.9884 14.123 19.9398C15.1873 19.8912 15.9142 19.7222 16.5503 19.475C17.208 19.2194 17.7656 18.8775 18.3216 18.3216C18.8775 17.7656 19.2194 17.208 19.475 16.5503C19.7222 15.9142 19.8912 15.1873 19.9398 14.123C19.9884 13.0564 20 12.7158 20 10C20 7.28422 19.9884 6.94359 19.9398 5.87703C19.8912 4.81266 19.7222 4.08578 19.475 3.44969C19.2194 2.79203 18.8775 2.23437 18.3216 1.67844C17.7656 1.1225 17.208 0.780625 16.5503 0.525C15.9142 0.277812 15.1873 0.10875 14.123 0.0601562C13.0564 0.0115625 12.7158 0 10 0Z" fill="url(#paint0_radial)" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M16.538 4.66203C16.538 5.32484 16.0006 5.86203 15.338 5.86203C14.6753 5.86203 14.138 5.32484 14.138 4.66203C14.138 3.99922 14.6753 3.46203 15.338 3.46203C16.0008 3.46203 16.538 3.99922 16.538 4.66203ZM10 13.3333C8.15906 13.3333 6.66672 11.8409 6.66672 10C6.66672 8.15906 8.15906 6.66672 10 6.66672C11.8409 6.66672 13.3333 8.15906 13.3333 10C13.3333 11.8409 11.8409 13.3333 10 13.3333ZM10 4.86484C7.16391 4.86484 4.86484 7.16391 4.86484 10C4.86484 12.8361 7.16391 15.1352 10 15.1352C12.8361 15.1352 15.1352 12.8361 15.1352 10C15.1352 7.16391 12.8361 4.86484 10 4.86484ZM10 1.80187C12.6702 1.80187 12.9864 1.81203 14.0408 1.86016C15.0158 1.90469 15.5453 2.0675 15.8977 2.20453C16.3644 2.38594 16.6975 2.60266 17.0475 2.95266C17.3975 3.3025 17.6142 3.63563 17.7956 4.1025C17.9325 4.45484 18.0955 4.98437 18.14 5.95937C18.1881 7.01391 18.1983 7.33016 18.1983 10.0003C18.1983 12.6705 18.1881 12.9867 18.14 14.0411C18.0955 15.0161 17.9327 15.5456 17.7956 15.898C17.6142 16.3647 17.3975 16.6978 17.0475 17.0478C16.6977 17.3978 16.3645 17.6145 15.8977 17.7959C15.5453 17.9328 15.0158 18.0958 14.0408 18.1403C12.9864 18.1884 12.6702 18.1986 10 18.1986C7.32969 18.1986 7.01344 18.1884 5.95906 18.1403C4.98406 18.0958 4.45453 17.933 4.10219 17.7959C3.63547 17.6145 3.30234 17.3978 2.95234 17.0478C2.6025 16.698 2.38563 16.3648 2.20422 15.898C2.06734 15.5456 1.90437 15.0161 1.85984 14.0411C1.81172 12.9866 1.80156 12.6703 1.80156 10.0003C1.80156 7.33016 1.81172 7.01391 1.85984 5.95937C1.90437 4.98437 2.06719 4.45484 2.20422 4.1025C2.38563 3.63578 2.60234 3.30266 2.95234 2.95266C3.30219 2.60266 3.63531 2.38594 4.10219 2.20453C4.45453 2.06766 4.98406 1.90469 5.95906 1.86016C7.01359 1.81203 7.32984 1.80187 10 1.80187ZM10 0C7.28422 0 6.94359 0.0115625 5.87703 0.0601562C4.81266 0.10875 4.08562 0.277812 3.44969 0.525C2.79203 0.780469 2.23437 1.1225 1.67844 1.67844C1.1225 2.23437 0.780469 2.79203 0.525 3.44969C0.277812 4.08578 0.10875 4.81266 0.0601562 5.87703C0.0115625 6.94359 0 7.28422 0 10C0 12.7158 0.0115625 13.0564 0.0601562 14.123C0.10875 15.1873 0.277812 15.9142 0.525 16.5503C0.780469 17.208 1.1225 17.7656 1.67844 18.3216C2.23437 18.8775 2.79203 19.2194 3.44969 19.475C4.08578 19.7222 4.81266 19.8912 5.87703 19.9398C6.94359 19.9884 7.28422 20 10 20C12.7158 20 13.0564 19.9884 14.123 19.9398C15.1873 19.8912 15.9142 19.7222 16.5503 19.475C17.208 19.2194 17.7656 18.8775 18.3216 18.3216C18.8775 17.7656 19.2194 17.208 19.475 16.5503C19.7222 15.9142 19.8912 15.1873 19.9398 14.123C19.9884 13.0564 20 12.7158 20 10C20 7.28422 19.9884 6.94359 19.9398 5.87703C19.8912 4.81266 19.7222 4.08578 19.475 3.44969C19.2194 2.79203 18.8775 2.23437 18.3216 1.67844C17.7656 1.1225 17.208 0.780625 16.5503 0.525C15.9142 0.277812 15.1873 0.10875 14.123 0.0601562C13.0564 0.0115625 12.7158 0 10 0Z" fill="url(#paint0_radial)" />
                                             <defs>
                                                 <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.98611 20.0694) scale(25.555)">
-                                                    <stop offset="0" stop-color="#FFB140" />
-                                                    <stop offset="0.2559" stop-color="#FF5445" />
-                                                    <stop offset="0.599" stop-color="#FC2B82" />
-                                                    <stop offset="1" stop-color="#8E40B7" />
+                                                    <stop offset="0" stopColor="#FFB140" />
+                                                    <stop offset="0.2559" stopColor="#FF5445" />
+                                                    <stop offset="0.599" stopColor="#FC2B82" />
+                                                    <stop offset="1" stopColor="#8E40B7" />
                                                 </radialGradient>
                                             </defs>
                                         </svg>
-                                        <span class="visuallyhidden">Instagram</span>
+                                        <span className="visuallyhidden">Instagram</span>
                                     </a>
                                     <a style={{ marginLeft: '.5rem' }}  href="https://twitter.com/_ashu_2305" rel="noopener noreferrer" target="_blank"><svg width="20" height="16" viewBox="0 0 20 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                                         <use xlinkHref={`#twitter-icon`}></use>
                                         </svg>
-                                        <span class="visuallyhidden">Twitter</span>
+                                        <span className="visuallyhidden">Twitter</span>
                                     </a>
                                     <br></br>
                                     <br></br>
@@ -213,30 +220,30 @@ const Home = () => {
                     </div>
                 </main>
             
-                <footer class="footer">
-                    <div class="footer-container">
-                        <nav class="footer-nav">
+                <footer className="footer">
+                    <div className="footer-container">
+                        <nav className="footer-nav">
                             <div>
-                                <h3 class="footer-title">Resources</h3>
+                                <h3 className="footer-title">Resources</h3>
                                 <ul>
-                                    <li><a class="footer-link" rel="noopener noreferrer" href="https://www.nitkkr.ac.in/sub_courses.php?id=367&id3=77" target="_blank">Library</a></li>
-                                    <li><a class="footer-link" rel="noopener noreferrer" href="https://www.nitkkr.ac.in/sub_courses.php?id=108&id4=387" target="_blank">CCN</a></li>    
+                                    <li><a className="footer-link" rel="noopener noreferrer" href="https://www.nitkkr.ac.in/sub_courses.php?id=367&id3=77" target="_blank">Library</a></li>
+                                    <li><a className="footer-link" rel="noopener noreferrer" href="https://www.nitkkr.ac.in/sub_courses.php?id=108&id4=387" target="_blank">CCN</a></li>    
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="footer-title">Contact Us</h3>
+                                <h3 className="footer-title">Contact Us</h3>
                                 <ul>
-                                    <li><a class="footer-link" rel="noopener noreferrer" href="https://www.nitkkr.ac.in" target="_blank">NIT Kurukshetra</a></li>
+                                    <li><a className="footer-link" rel="noopener noreferrer" href="https://www.nitkkr.ac.in" target="_blank">NIT Kurukshetra</a></li>
                                 </ul>
                             </div>
                         </nav>
-                        <div class="footer-newsletter" id="subscribe">
+                        <div className="footer-newsletter" id="subscribe">
                             <p>
-                                Stay up to date with all Notes and Papers by subscribing to our platform.
+                                Please leave your valuable feedback, it will help us to improve functionality 
                             </p>
-                            <form id="form" class="footer-form">
+                            <form id="form" className="footer-form">
                                 <input  type='text' />
-                                <input type="submit" id="submit" class="button button-email" value="Sign Up" />
+                                <input type="submit" id="submit" className="button button-email" value="Feedback" />
                             </form>
                         </div>
                     </div>
@@ -273,7 +280,7 @@ const Home = () => {
                     </symbol>
                     <symbol id="grow-illustration" viewBox="0 0 174 341" aria-hidden="true">
                         <path d="M83.596 8.873C37.427 8.873 0 33.723 0 64.378c0 13.688 7.466 26.216 19.836 35.893v40.285l26.5-26.482a118.96 118.96 0 0037.26 5.809c46.168 0 83.595-24.85 83.595-55.505S129.764 8.873 83.596 8.873z" fill="#F2F2F2" />
-                        <path d="M89.504 1C43.336 1 5.91 25.85 5.91 56.505c0 13.688 7.466 26.216 19.836 35.893v40.285l26.5-26.482a118.96 118.96 0 0037.26 5.809c46.168 0 83.595-24.85 83.595-55.505S135.673 1 89.504 1z" stroke="#3F3D56" stroke-miterlimit="10" />
+                        <path d="M89.504 1C43.336 1 5.91 25.85 5.91 56.505c0 13.688 7.466 26.216 19.836 35.893v40.285l26.5-26.482a118.96 118.96 0 0037.26 5.809c46.168 0 83.595-24.85 83.595-55.505S135.673 1 89.504 1z" stroke="#3F3D56" strokeMiterlimit="10" />
                         <path d="M53.182 144.622s-1.682-22.63-.89-26.769c.791-4.139 1.535-15.921-2.818-12.048-4.353 3.873-2.806 12.66-2.806 12.66s-4.131 23.917-.31 27.162c3.82 3.245 6.824-1.005 6.824-1.005z" fill="#A0616A" />
                         <path d="M56.317 167.002S43.36 155.454 44.06 145.655c0 0 7.704-5.949 9.455-2.799 1.751 3.149 14.478 15.436 12.317 19.616-2.161 4.18-9.515 4.53-9.515 4.53z" fill="#F1C6DE" />
                         <path d="M102.19 146.355s7.704-21.347 8.055-25.547c.35-4.199 2.801-15.747 5.953-10.848 3.151 4.899-.701 12.948-.701 12.948s-2.451 24.147-7.003 26.247c-4.553 2.099-6.304-2.8-6.304-2.8zM81.18 253.44h20.66l1.051 10.499-4.903 1.05s-11.556-3.5-18.209-2.45c-6.653 1.05 1.4-9.099 1.4-9.099z" fill="#A0616A" />
@@ -389,9 +396,9 @@ const Home = () => {
                         <path opacity=".1" d="M598 207.449a95.406 95.406 0 01-3.581 25.971 94.356 94.356 0 01-10.073 23.186c0 26.233-17.679 48.905-43.339 59.691A87.326 87.326 0 01507.171 323h-393.65c-21.04 0-40.538-5.687-56.528-15.374a97.04 97.04 0 01-12.98-9.367c-17.772-15.3-28.791-36.443-28.791-59.796A94.63 94.63 0 010 186.772c0-38.412 22.681-71.442 55.174-86.024a91.112 91.112 0 0113.335-4.776A87.69 87.69 0 0173.4 94.79a91.541 91.541 0 0113.335-1.832c1.62-.102 3.25-.16 4.888-.173h.899c1.809 0 3.602.063 5.384.167l.585-.994a138.6 138.6 0 012.206-3.566 134.76 134.76 0 014.276-6.336 145.846 145.846 0 014.888-6.482l.434-.524a139.91 139.91 0 012.948-3.56 174.611 174.611 0 019.932-10.656C160.869 23.824 219.922 0 286.308 0c51.656 0 98.874 14.425 135.041 38.26a90.932 90.932 0 0144.923-11.828c51.092 0 92.523 42.082 92.523 93.993a97 97 0 01-.523 9.834 94.191 94.191 0 0129.268 33.738A94.377 94.377 0 01598 207.449z" fill="#6C63FF" />
                         <defs>
                         <linearGradient id="paint0_linear" x1="459.482" y1="269.981" x2="459.482" y2="58.016" gradientUnits="userSpaceOnUse">
-                            <stop offset="0" stop-color="gray" stop-opacity=".25" />
-                            <stop offset=".54" stop-color="gray" stop-opacity=".12" />
-                            <stop offset="1" stop-color="gray" stop-opacity=".1" />
+                            <stop offset="0" stopColor="gray" stopOpacity=".25" />
+                            <stop offset=".54" stopColor="gray" stopOpacity=".12" />
+                            <stop offset="1" stopColor="gray" stopOpacity=".1" />
                         </linearGradient>
                         </defs>
                     </symbol>
@@ -418,7 +425,7 @@ const Home = () => {
                         <path d="M0 2.499v15.002A2.5 2.5 0 002.495 20h21.648a2.503 2.503 0 002.499-2.499V2.499A2.503 2.503 0 0024.142 0H2.496A2.499 2.499 0 000 2.499zm24.15 0v2.116c-1.17.95-3.03 2.43-7.004 5.541-.879.691-2.617 2.343-3.823 2.343-1.207 0-2.944-1.636-3.819-2.343-3.979-3.124-5.857-4.592-7.028-5.54V2.49L24.15 2.5zM2.496 17.501V7.829a732.25 732.25 0 005.467 4.295c1.171.922 3.143 2.87 5.365 2.858 2.222-.011 4.229-1.952 5.365-2.858 2.577-2.019 4.268-3.354 5.466-4.295v9.672H2.495z" fill="#b52b65" />
                     </symbol>
                     <symbol id="twitter-icon" viewBox="0 0 20 16">
-                        <path d="M6.29 16c7.547 0 11.675-6.156 11.675-11.495 0-.175 0-.349-.012-.522A8.265 8.265 0 0020 1.89a8.273 8.273 0 01-2.356.637A4.07 4.07 0 0019.448.293a8.303 8.303 0 01-2.606.98 4.153 4.153 0 00-5.806-.175 4.006 4.006 0 00-1.187 3.86A11.717 11.717 0 011.392.738 4.005 4.005 0 002.663 6.13 4.122 4.122 0 01.8 5.625v.051C.801 7.6 2.178 9.255 4.092 9.636a4.144 4.144 0 01-1.852.069c.537 1.646 2.078 2.773 3.833 2.806A8.315 8.315 0 010 14.185a11.754 11.754 0 006.29 1.812" fill="#1DA1F2" fill-rule="evenodd" />
+                        <path d="M6.29 16c7.547 0 11.675-6.156 11.675-11.495 0-.175 0-.349-.012-.522A8.265 8.265 0 0020 1.89a8.273 8.273 0 01-2.356.637A4.07 4.07 0 0019.448.293a8.303 8.303 0 01-2.606.98 4.153 4.153 0 00-5.806-.175 4.006 4.006 0 00-1.187 3.86A11.717 11.717 0 011.392.738 4.005 4.005 0 002.663 6.13 4.122 4.122 0 01.8 5.625v.051C.801 7.6 2.178 9.255 4.092 9.636a4.144 4.144 0 01-1.852.069c.537 1.646 2.078 2.773 3.833 2.806A8.315 8.315 0 010 14.185a11.754 11.754 0 006.29 1.812" fill="#1DA1F2" fillRule="evenodd" />
                     </symbol>
                 </svg>
 

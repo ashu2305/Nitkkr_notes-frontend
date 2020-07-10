@@ -1,5 +1,4 @@
-import React, { Component, useState } from 'react'
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react'
 import NoteList from './NoteList'
 import NoteViewer from './NoteViewer'
 import config from '../config.json';
