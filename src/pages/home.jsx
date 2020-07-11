@@ -8,6 +8,9 @@ import devaayush from '../images/dev-aayush.jpg';
 import Lk from '../images/linkedin-icon.svg' 
 import Fb from '../images/fb-icon.svg'
 import Gh from '../images/github-icon.svg'
+import Download from '../images/download.svg'
+import Upload from '../images/upload.svg'
+import Coming from '../images/coming.svg'
 
 // import './home.css'
 import './homeMain.css' ;
@@ -58,24 +61,31 @@ const Home = () => {
                         <ul className="features__list">
                             <li data-aos="fade-up-right">
                                 <Link to='/SearchNotes'>
-                                    <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    {/* <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <use xlinkHref={`#headphones-icon`}></use>
-                                    </svg>
+                                    </svg> */}
+                                    <img src={Upload} alt="sm-icon" ></img>
                                 </Link>    
+                                <br></br><br></br>
                                 <p><strong>Find useful material</strong> on a wide range on topics.</p>
                             </li>
                             <li data-aos="fade-up">
                                 <Link to='/notesUpload'>
-                                    <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <use xlinkHref={`#video-icon`}></use>              
-                                    </svg>
+                                    {/* <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> */}
+                                        {/* <use xlinkHref={`#video-icon`}></use>               */}
+                                        <img src={Download} alt="sm-icon" ></img>
+                                    {/* </svg> */}
                                 </Link>
+                                <br></br>
+                                <br></br>
                                 <p><strong>100+ notes pdfs</strong> from professional teachers.</p>
                             </li>
                             <li data-aos="fade-up-left">
-                                <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                {/* <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <use xlinkHref={`#email-icon`}></use>
-                                </svg>
+                                </svg> */}
+                                <img src={Coming} alt="sm-icon" ></img>
+                                <br></br><br></br>
                                 <p><strong>Weekly updates and previous papers</strong> to help you improve your CGPA in examination.</p>
                                 <p><strong>Coming soon...</strong></p>
                             </li>

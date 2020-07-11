@@ -4,6 +4,7 @@ import NoteViewer from './NoteViewer'
 import config from '../config.json';
 
 import './notesSearch.css';
+import Search from '../images/search.svg'
 
 class NoteContainer extends Component {
   state = {
@@ -246,7 +247,11 @@ class NoteContainer extends Component {
             }
             </>
           )
-          : <div><h1>loading...</h1></div>
+          : 
+          <div>
+            <h1>loading...</h1>
+            <img src={Search} alt="sm-icon" ></img>
+          </div>
         }
           
       </div>
