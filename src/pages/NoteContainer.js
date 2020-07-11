@@ -232,15 +232,23 @@ class NoteContainer extends Component {
           </>
         }
         {
-          this.state.isNoteViewOn ? 
-          <NoteViewer   note={this.state.note} 
-                        handleNoteGoBack={this.handleNoteGoBack} /> 
-                      :
-          <NoteList notes={this.sortNotes(filteredNotes)} 
-                    handleNoteView={this.handleNoteView}
-                    noteFilterOnChange={this.noteFilterOnChange}
-                    inputValue={this.state.inputValue} /> 
-        }  
+          this.state.notes.length > 0 ? (
+            <>
+            {
+              this.state.isNoteViewOn ? 
+              <NoteViewer   note={this.state.note} 
+                            handleNoteGoBack={this.handleNoteGoBack} /> 
+                          :
+              <NoteList notes={this.sortNotes(filteredNotes)} 
+                        handleNoteView={this.handleNoteView}
+                        noteFilterOnChange={this.noteFilterOnChange}
+                        inputValue={this.state.inputValue} /> 
+            }
+            </>
+          )
+          : <div><h1>loading...</h1></div>
+        }
+          
       </div>
     )
   }
