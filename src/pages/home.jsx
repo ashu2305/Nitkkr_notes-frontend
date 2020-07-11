@@ -77,6 +77,7 @@ const Home = () => {
                                 <use xlinkHref={`#email-icon`}></use>
                                 </svg>
                                 <p><strong>Weekly updates and previous papers</strong> to help you improve your CGPA in examination.</p>
+                                <p><strong>Coming soon...</strong></p>
                             </li>
                         </ul>
                     </section>
