@@ -33,7 +33,7 @@ const ForgotPass = () => {
 
     const [userOTP, setUserOTP] = useState('');
 
-    //const [backOTP, setBackOTP] = useState('');
+    const [backOTP, setBackOTP] = useState('');
 
     const [verified, setVerified] = useState(false);
 
@@ -78,12 +78,8 @@ const ForgotPass = () => {
             
             if(res.data) {
                 console.log(res.data.otp);
-                //setBackOTP(res.data.otp);
-                if(res.data.otp === "otp send successfully"){
-                    setFirst(true);
-                    //setLoad(false);
-                }
-                //setFirst(true);
+                setBackOTP(res.data.otp);
+                setFirst(true);
             }            
         }
         catch(error) {
@@ -128,12 +124,8 @@ const ForgotPass = () => {
             
             if(res.data){
                 //console.log(res.data.otp);
-                if(res.data.otp === "otp send successfully"){
-                    setFirst(true);
-                    //setLoad(false);
-                }
-                //setBackOTP(res.data.otp);
-                //setFirst(true);
+                setBackOTP(res.data.otp);
+                setFirst(true);
                 // localStorage.setItem('FBIdToken', `${res.data.token}`);
                 // dispatch({
                 //     type: 'ONBOARD',
@@ -166,7 +158,6 @@ const ForgotPass = () => {
 
         }
         catch(error) {
-            window.alert("OTP does not match");
             setFirst(false);
             //console.log(error);
         }
@@ -180,13 +171,12 @@ const ForgotPass = () => {
     
     const submitOTP = (e) => {
         e.preventDefault();
-        verifyOTP();
-        // if(backOTP === userOTP) {
-            
-        // }
-        // else {
-        //     window.alert("OTP does not match");
-        // }
+        if(backOTP === userOTP) {
+            verifyOTP();
+        }
+        else {
+            window.alert("OTP does not match");
+        }
     }
 
     const passwordChange = async() => {
