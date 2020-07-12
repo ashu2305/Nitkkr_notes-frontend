@@ -8,8 +8,8 @@ import devaayush from '../images/dev-aayush.jpg';
 import Lk from '../images/linkedin-icon.svg' 
 import Fb from '../images/fb-icon.svg'
 import Gh from '../images/github-icon.svg'
-import Download from '../images/download.svg'
-import Upload from '../images/upload.svg'
+import Upload from '../images/download.svg'
+import Download from '../images/upload.svg'
 import Coming from '../images/coming.svg'
 
 // import './home.css'

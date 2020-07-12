@@ -11,7 +11,7 @@ class NoteContainer extends Component {
     notes: [],
     note: {},
     isNoteViewOn: false,
-    sortValue: 'Name',
+    sortValue: 'Title',
     inputValue: '',
     showScroll: false
   }
@@ -174,13 +174,13 @@ class NoteContainer extends Component {
   render() {
     const type = this.state.sortValue.toLowerCase();
     let filteredNotes;
-    if(type === '' || type === 'name') {
+    if(type === 'name') {
       filteredNotes = 
       this.state.notes.filter(note => {
       return note.name.toLowerCase().includes(this.state.inputValue.toLowerCase())
       })
     }
-    else if(type === 'title'){
+    else if(type === '' || type === 'title'){
       filteredNotes = 
       this.state.notes.filter(note => {
       return note.title.toLowerCase().includes(this.state.inputValue.toLowerCase())
@@ -221,7 +221,6 @@ class NoteContainer extends Component {
           <label className="labe">Filter Notes</label>
           <div class="box">
             <select  name="sortValue" onChange={this.handleSortNotes}>
-            <option value="Name">All</option>
             <option value="Title">Title</option>
             <option value="Subject">Subject</option>
             <option value="Name">Name</option>

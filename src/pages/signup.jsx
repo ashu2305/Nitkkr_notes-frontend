@@ -28,7 +28,7 @@ const Signup = () => {
 
     const [userOTP, setUserOTP] = useState('');
 
-    //const [backOTP, setBackOTP] = useState('');
+    const [backOTP, setBackOTP] = useState('');
 
     const [verified, setVerified] = useState(false);
 
@@ -73,20 +73,17 @@ const Signup = () => {
             if(res.data)
             {
                 //console.log(res.data.otp);
-                // setBackOTP(res.data.otp);
-                if(res.data.otp === "otp send successfully"){
-                    setFirst(true);
-                    setLoad(false);
-                }
-                
+                setBackOTP(res.data.otp);
+                setFirst(true);
+                setLoad(false);
             }            
         }
         catch(error) {
-            if(error.response.data.error === "username already exist but verification required") {
+            if(error.response.data.username === "username already exist but verification required") {
                 setError(4);
                 window.alert("Either choose any other username or verify email as this username already exist");
             }
-            else if(error.response.data.error === "username already exist") {
+            else if(error.response.data.username === "username already exist") {
                 setError(5);
                 window.alert("Please login as this username exist");
             }
@@ -155,7 +152,6 @@ const Signup = () => {
             }
         }
         catch(error) {
-            window.alert("OTP does not match");
             setFirst(false);
             setLoad(false);
             console.log(error);
@@ -169,16 +165,13 @@ const Signup = () => {
     const submitOTP = (e) => {
         e.preventDefault();
         
-        // if(backOTP === userOTP) {
-        //     setLoad(true);
-            
-        // }
-        
-        // else {
-        //     window.alert("OTP does not match");
-        // }
-        setLoad(true);
-        verifyOTP();
+        if(backOTP === userOTP) {
+            setLoad(true);
+            verifyOTP();
+        }
+        else {
+            window.alert("OTP does not match");
+        }
     }
 
     const resendVerify = async() => {
@@ -196,12 +189,9 @@ const Signup = () => {
             
             if(res.data) {
                 //console.log(res.data.otp);
-                // setBackOTP(res.data.otp);
-                
-                if(res.data.otp === "otp send successfully"){
-                    setFirst(true);
-                    setLoad(false);
-                }
+                setBackOTP(res.data.otp);
+                setFirst(true);
+                setLoad(false);
             }            
         }
         catch(error) {
