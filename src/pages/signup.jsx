@@ -73,9 +73,13 @@ const Signup = () => {
             if(res.data)
             {
                 //console.log(res.data.otp);
-                setBackOTP(res.data.otp);
-                setFirst(true);
-                setLoad(false);
+                if(res.data.otp === "otp sent successfully"){
+                    setFirst(true);
+                    setLoad(false);
+                }
+                // setBackOTP(res.data.otp);
+                // setFirst(true);
+                // setLoad(false);
             }            
         }
         catch(error) {
@@ -87,7 +91,7 @@ const Signup = () => {
                 setError(5);
                 window.alert("Please login as this username exist");
             }
-            else if(error.response.data.error === "email already exist") {
+            else if(error.response.data.email === "email already exist") {
                 setError(6);
             } 
             else if(error.response.data.error === "smtp error") {
@@ -152,9 +156,11 @@ const Signup = () => {
             }
         }
         catch(error) {
-            setFirst(false);
+            // setFirst(false);
+            setUserOTP('');
             setLoad(false);
             console.log(error);
+            window.alert("OTP does not match");
         }
     }
 
@@ -165,13 +171,13 @@ const Signup = () => {
     const submitOTP = (e) => {
         e.preventDefault();
         
-        if(backOTP === userOTP) {
+        
             setLoad(true);
             verifyOTP();
-        }
-        else {
-            window.alert("OTP does not match");
-        }
+        
+        
+           
+    
     }
 
     const resendVerify = async() => {

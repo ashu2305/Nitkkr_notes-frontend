@@ -77,9 +77,13 @@ const ForgotPass = () => {
             });
             
             if(res.data) {
-                console.log(res.data.otp);
-                setBackOTP(res.data.otp);
-                setFirst(true);
+                if(res.data.otp === "otp sent successfully"){
+                    setFirst(true);
+                    // setLoad(false);
+                }
+                // console.log(res.data.otp);
+                // setBackOTP(res.data.otp);
+                // setFirst(true);
             }            
         }
         catch(error) {
@@ -124,7 +128,7 @@ const ForgotPass = () => {
             
             if(res.data){
                 //console.log(res.data.otp);
-                setBackOTP(res.data.otp);
+                //setBackOTP(res.data.otp);
                 setFirst(true);
                 // localStorage.setItem('FBIdToken', `${res.data.token}`);
                 // dispatch({
@@ -158,7 +162,8 @@ const ForgotPass = () => {
 
         }
         catch(error) {
-            setFirst(false);
+            window.alert("OTP does not match");
+            // setFirst(false);
             //console.log(error);
         }
     }
@@ -171,12 +176,11 @@ const ForgotPass = () => {
     
     const submitOTP = (e) => {
         e.preventDefault();
-        if(backOTP === userOTP) {
+    
             verifyOTP();
-        }
-        else {
-            window.alert("OTP does not match");
-        }
+        
+            
+        
     }
 
     const passwordChange = async() => {
