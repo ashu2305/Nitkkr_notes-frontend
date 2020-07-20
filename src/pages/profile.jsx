@@ -127,6 +127,18 @@ const Profile = () => {
                                 <div class="profile-card-inf__title">{user.contribution}</div>
                                 <div class="profile-card-inf__txt">Contributions</div>
                             </div>
+                            <div class="profile-card-inf__item">
+                                <div class="profile-card-inf__title">{user.likecount}</div>
+                                <div class="profile-card-inf__txt">Likes</div>
+                            </div>
+                            <div class="profile-card-inf__item">
+                                <div class="profile-card-inf__title">{user.dislikecount}</div>
+                                <div class="profile-card-inf__txt">Dislikes</div>
+                            </div>
+                            <div class="profile-card-inf__item">
+                                <div class="profile-card-inf__title">{user.blockedcount}</div>
+                                <div class="profile-card-inf__txt">Blocked</div>
+                            </div>
                         </div>
 
                         <div class="profile-card-ctr">
