@@ -252,9 +252,11 @@ const Home = () => {
                             <p>
                                 Please leave your valuable feedback, it will help us to improve functionality 
                             </p>
-                            <form id="form" className="footer-form">
-                                <input  type='text' />
+                            <form id="form" className="footer-form" action="mailto:notes4you3130@gmail.com" method="POST">
+                                <input type='text' />
+                                
                                 <input type="submit" id="submit" className="button button-email" value="Feedback" />
+                        
                             </form>
                         </div>
                     </div>
