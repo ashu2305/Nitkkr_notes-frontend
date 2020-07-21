@@ -1,4 +1,4 @@
-import React, {useContext, useReducer} from 'react';
+import React, {useContext, useEffect, useReducer} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import Button from 'react-bootstrap/Button';
@@ -22,9 +22,16 @@ import error from './pages/error';
 import Store from './store/store';
 import rootReducer from './rootReducer/rootReducer';
 
+import axios from 'axios';
+import config from './config.json';
+
 const  App = () => {
   const initState = useContext(Store);
   const [state, dispatch] = useReducer(rootReducer, initState);
+  //const {statez, dispatch} = useContext(Store);
+  
+  //console.log(state);
+  
 
   return (
     <>

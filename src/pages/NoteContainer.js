@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import NoteList from './NoteList'
 import NoteViewer from './NoteViewer'
 import config from '../config.json';
+import Store from '../store/store';
 
 import './notesSearch.css';
 import Search from '../images/search.svg'
@@ -14,7 +15,9 @@ class NoteContainer extends Component {
     sortValue: 'Title',
     inputValue: '',
     showScroll: false
-  }
+  };
+
+  
  
   componentDidMount(){
     const requestOptions = {
@@ -30,6 +33,8 @@ class NoteContainer extends Component {
         notes: notesData
       })
     })
+
+    
 
     window.addEventListener('scroll', this.checkScrollTop);
   }

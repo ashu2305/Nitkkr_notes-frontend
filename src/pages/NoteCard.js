@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+
 
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -9,11 +11,13 @@ const NoteCard = (props) => {
   //console.log(sem);
   
   
+  
   dayjs.extend(relativeTime);
   return(
     <>
       <div className="note-card-container"> 
         <div className="note-card" >
+          
             <h1><b>Title : </b>{title} </h1>
             <h3><b>Subject : </b>{subject} </h3>
             <p><b>Uploaded by : </b>{name} </p>

@@ -65,7 +65,7 @@
   padding-top: 10px;
   text-align: center;
   overflow: hidden;
-  font-size: 50px;
+  font-size: 45px;
 }
 
 .note-view-button {
@@ -74,14 +74,12 @@
 
 .note-sub {
   padding-top: 10px;
-  text-align: center;
-  
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .note-time {
-  margin-left: 40%;
-  font-size: 20px;
+  padding-top: 10px;
+  font-size: 24px;
 }
 
 .note-list { 
@@ -114,13 +112,13 @@
 }
 
 .note-item {
-  width: 22%;
+  width: 320px;
   float: left;
   margin: 20px;
   text-align: center;
   align-items: center;
   height: 340px;
-  overflow: auto;
+  overflow: hidden;
   box-shadow: 3px 3px 5px 6px #ccc;
   border-radius: 15px;
   font-family: 'Courgette', cursive;

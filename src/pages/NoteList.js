@@ -1,8 +1,13 @@
-import React from 'react'
-import NoteItem from './NoteItem'
+import React, {useEffect, useContext} from 'react'
+import NoteItem from './NoteItem';
+
+import axios from 'axios';
+import config from '../config.json';
+
+import Store from '../store/store';
 
 const NoteList = (props) => {
-   
+    console.log(props.notes.likesarr);
    return(
       <> 
          <div class="search__container">

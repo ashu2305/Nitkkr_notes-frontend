@@ -2,7 +2,8 @@ export default function rootReducer(state, action) {
     const {
         type,
         payload,
-        tokenPay
+        tokenPay,
+        flag
     } = action;
 
     switch (type) {
@@ -22,10 +23,15 @@ export default function rootReducer(state, action) {
                 token: null,
                 isAuth: false
             }
-        case 'UPDATE' : 
+        case 'INITIAL' : 
             return{
                 ...state,
-                user: payload
+                like: payload
+            }
+        case 'LIKE' :
+            return{
+                ...state,
+                like: payload
             }
 
         default:
