@@ -1,5 +1,15 @@
 # Nitkkr_notes-frontend
 
+
+This is a place where you can share notes, request them and download notes by other users.
+You'll no longer have questions like, "Where do I start? What's the syllabus? What's relevant?" as you'll be provided with all the content right here. 
+You now have a one stop for all your exam needs. 
+This also includes login for every user who want to download notes, sign-up includes OTP verification through email
+
+Deployed link 
+
+https://nitkkrnotes-3130a.web.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
